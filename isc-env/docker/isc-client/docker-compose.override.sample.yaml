@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  isc-client:
+    image: local/isc-client:latest
+    container_name: isc-client
+    volumes:
+      - type: bind
+        source: ./artifacts/conf
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./artifacts/build
+        target: /usr/share/nginx/html/static
+      - type: bind
+        source: /tmp/isc-logs/isc-client
+        target: /var/log/nginx
+    environment:
+      - TARGET_ENV=local
+      - ES_HOST=isc-elasticsearch
+      - ES_PORT=9200
+      - KIBANA_HOST=isc-kibana
+      - KIBANA_PORT=5601
+      - APP_SERVER_HOST=isc-app
+      - APP_SERVER_PORT=9090

@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://video.net/ConfigurationService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://video.net/ConfigurationService" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://video.net/ConfigurationService/Imports">
+			<xsd:import namespace="http://video.net/ConfigurationService" schemaLocation="./ConfigurationApiService_xsd0.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException" schemaLocation="./ConfigurationApiService_xsd4.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ConfigurationApiService_xsd1.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI" schemaLocation="./ConfigurationApiService_xsd2.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ConfigurationApiService_xsd3.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IConfigurationService_GetItem_InputMessage">
+		<wsdl:part element="tns:GetItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_OutputMessage">
+		<wsdl:part element="tns:GetItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q1:ArgumentExceptionFault" name="detail" xmlns:q1="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q2:ArgumentNullExceptionFault" name="detail" xmlns:q2="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q3:LicenseExceptionFault" name="detail" xmlns:q3="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q4:NotSupportedExceptionFault" name="detail" xmlns:q4="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q5:PathNotFoundExceptionFault" name="detail" xmlns:q5="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q6:UnauthorizedAccessFault" name="detail" xmlns:q6="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q7:ServerExceptionFault" name="detail" xmlns:q7="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_InputMessage">
+		<wsdl:part element="tns:GetItems" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_OutputMessage">
+		<wsdl:part element="tns:GetItemsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q8:ArgumentExceptionFault" name="detail" xmlns:q8="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q9:ArgumentNullExceptionFault" name="detail" xmlns:q9="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q10:LicenseExceptionFault" name="detail" xmlns:q10="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q11:NotSupportedExceptionFault" name="detail" xmlns:q11="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q12:PathNotFoundExceptionFault" name="detail" xmlns:q12="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q13:UnauthorizedAccessFault" name="detail" xmlns:q13="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetItems_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q14:ServerExceptionFault" name="detail" xmlns:q14="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_InputMessage">
+		<wsdl:part element="tns:SetItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_OutputMessage">
+		<wsdl:part element="tns:SetItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q15:ArgumentExceptionFault" name="detail" xmlns:q15="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q16:ArgumentNullExceptionFault" name="detail" xmlns:q16="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q17:LicenseExceptionFault" name="detail" xmlns:q17="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q18:NotSupportedExceptionFault" name="detail" xmlns:q18="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q19:PathNotFoundExceptionFault" name="detail" xmlns:q19="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q20:UnauthorizedAccessFault" name="detail" xmlns:q20="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_SetItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q21:ServerExceptionFault" name="detail" xmlns:q21="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_InputMessage">
+		<wsdl:part element="tns:HasChildItems" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_OutputMessage">
+		<wsdl:part element="tns:HasChildItemsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q22:ArgumentExceptionFault" name="detail" xmlns:q22="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q23:ArgumentNullExceptionFault" name="detail" xmlns:q23="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q24:LicenseExceptionFault" name="detail" xmlns:q24="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q25:NotSupportedExceptionFault" name="detail" xmlns:q25="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q26:PathNotFoundExceptionFault" name="detail" xmlns:q26="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q27:UnauthorizedAccessFault" name="detail" xmlns:q27="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_HasChildItems_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q28:ServerExceptionFault" name="detail" xmlns:q28="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_InputMessage">
+		<wsdl:part element="tns:GetChildItems" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_OutputMessage">
+		<wsdl:part element="tns:GetChildItemsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q29:ArgumentExceptionFault" name="detail" xmlns:q29="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q30:ArgumentNullExceptionFault" name="detail" xmlns:q30="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q31:LicenseExceptionFault" name="detail" xmlns:q31="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q32:NotSupportedExceptionFault" name="detail" xmlns:q32="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q33:PathNotFoundExceptionFault" name="detail" xmlns:q33="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q34:UnauthorizedAccessFault" name="detail" xmlns:q34="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItems_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q35:ServerExceptionFault" name="detail" xmlns:q35="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_InputMessage">
+		<wsdl:part element="tns:ConstructItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_OutputMessage">
+		<wsdl:part element="tns:ConstructItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q36:ArgumentExceptionFault" name="detail" xmlns:q36="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q37:ArgumentNullExceptionFault" name="detail" xmlns:q37="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q38:LicenseExceptionFault" name="detail" xmlns:q38="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q39:NotSupportedExceptionFault" name="detail" xmlns:q39="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q40:PathNotFoundExceptionFault" name="detail" xmlns:q40="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q41:UnauthorizedAccessFault" name="detail" xmlns:q41="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q42:ServerExceptionFault" name="detail" xmlns:q42="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_InputMessage">
+		<wsdl:part element="tns:ConstructChildItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_OutputMessage">
+		<wsdl:part element="tns:ConstructChildItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q43:ArgumentExceptionFault" name="detail" xmlns:q43="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q44:ArgumentNullExceptionFault" name="detail" xmlns:q44="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q45:LicenseExceptionFault" name="detail" xmlns:q45="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q46:NotSupportedExceptionFault" name="detail" xmlns:q46="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q47:PathNotFoundExceptionFault" name="detail" xmlns:q47="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q48:UnauthorizedAccessFault" name="detail" xmlns:q48="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ConstructChildItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q49:ServerExceptionFault" name="detail" xmlns:q49="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_InputMessage">
+		<wsdl:part element="tns:ValidateItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_OutputMessage">
+		<wsdl:part element="tns:ValidateItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q50:ArgumentExceptionFault" name="detail" xmlns:q50="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q51:ArgumentNullExceptionFault" name="detail" xmlns:q51="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q52:LicenseExceptionFault" name="detail" xmlns:q52="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q53:NotSupportedExceptionFault" name="detail" xmlns:q53="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q54:PathNotFoundExceptionFault" name="detail" xmlns:q54="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q55:UnauthorizedAccessFault" name="detail" xmlns:q55="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_ValidateItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q56:ServerExceptionFault" name="detail" xmlns:q56="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_InputMessage">
+		<wsdl:part element="tns:DeleteItem" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_OutputMessage">
+		<wsdl:part element="tns:DeleteItemResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q57:ArgumentExceptionFault" name="detail" xmlns:q57="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q58:ArgumentNullExceptionFault" name="detail" xmlns:q58="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q59:LicenseExceptionFault" name="detail" xmlns:q59="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q60:NotSupportedExceptionFault" name="detail" xmlns:q60="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q61:PathNotFoundExceptionFault" name="detail" xmlns:q61="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q62:UnauthorizedAccessFault" name="detail" xmlns:q62="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_DeleteItem_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q63:ServerExceptionFault" name="detail" xmlns:q63="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_InputMessage">
+		<wsdl:part element="tns:GetDependantItems" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_OutputMessage">
+		<wsdl:part element="tns:GetDependantItemsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q64:ArgumentExceptionFault" name="detail" xmlns:q64="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q65:ArgumentNullExceptionFault" name="detail" xmlns:q65="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q66:LicenseExceptionFault" name="detail" xmlns:q66="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q67:NotSupportedExceptionFault" name="detail" xmlns:q67="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q68:PathNotFoundExceptionFault" name="detail" xmlns:q68="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q69:UnauthorizedAccessFault" name="detail" xmlns:q69="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetDependantItems_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q70:ServerExceptionFault" name="detail" xmlns:q70="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_InputMessage">
+		<wsdl:part element="tns:GetMethodInfos" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_OutputMessage">
+		<wsdl:part element="tns:GetMethodInfosResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q71:ArgumentExceptionFault" name="detail" xmlns:q71="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q72:ArgumentNullExceptionFault" name="detail" xmlns:q72="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q73:LicenseExceptionFault" name="detail" xmlns:q73="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q74:NotSupportedExceptionFault" name="detail" xmlns:q74="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q75:PathNotFoundExceptionFault" name="detail" xmlns:q75="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q76:UnauthorizedAccessFault" name="detail" xmlns:q76="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfos_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q77:ServerExceptionFault" name="detail" xmlns:q77="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_InputMessage">
+		<wsdl:part element="tns:GetMethodInfo" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_OutputMessage">
+		<wsdl:part element="tns:GetMethodInfoResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q78:ArgumentExceptionFault" name="detail" xmlns:q78="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q79:ArgumentNullExceptionFault" name="detail" xmlns:q79="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q80:LicenseExceptionFault" name="detail" xmlns:q80="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q81:NotSupportedExceptionFault" name="detail" xmlns:q81="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q82:PathNotFoundExceptionFault" name="detail" xmlns:q82="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q83:UnauthorizedAccessFault" name="detail" xmlns:q83="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetMethodInfo_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q84:ServerExceptionFault" name="detail" xmlns:q84="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_InputMessage">
+		<wsdl:part element="tns:InvokeMethod" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_OutputMessage">
+		<wsdl:part element="tns:InvokeMethodResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q85:ArgumentExceptionFault" name="detail" xmlns:q85="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q86:ArgumentNullExceptionFault" name="detail" xmlns:q86="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q87:LicenseExceptionFault" name="detail" xmlns:q87="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q88:NotSupportedExceptionFault" name="detail" xmlns:q88="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q89:PathNotFoundExceptionFault" name="detail" xmlns:q89="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q90:UnauthorizedAccessFault" name="detail" xmlns:q90="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_InvokeMethod_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q91:ServerExceptionFault" name="detail" xmlns:q91="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_InputMessage">
+		<wsdl:part element="tns:GetTranslations" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_OutputMessage">
+		<wsdl:part element="tns:GetTranslationsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q92:ArgumentExceptionFault" name="detail" xmlns:q92="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q93:ArgumentNullExceptionFault" name="detail" xmlns:q93="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q94:LicenseExceptionFault" name="detail" xmlns:q94="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q95:NotSupportedExceptionFault" name="detail" xmlns:q95="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q96:PathNotFoundExceptionFault" name="detail" xmlns:q96="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q97:UnauthorizedAccessFault" name="detail" xmlns:q97="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetTranslations_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q98:ServerExceptionFault" name="detail" xmlns:q98="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_InputMessage">
+		<wsdl:part element="tns:GetChildItemsHierarchy" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_OutputMessage">
+		<wsdl:part element="tns:GetChildItemsHierarchyResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q99:ArgumentExceptionFault" name="detail" xmlns:q99="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q100:ArgumentNullExceptionFault" name="detail" xmlns:q100="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q101:LicenseExceptionFault" name="detail" xmlns:q101="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q102:NotSupportedExceptionFault" name="detail" xmlns:q102="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q103:PathNotFoundExceptionFault" name="detail" xmlns:q103="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q104:UnauthorizedAccessFault" name="detail" xmlns:q104="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_GetChildItemsHierarchy_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q105:ServerExceptionFault" name="detail" xmlns:q105="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_InputMessage">
+		<wsdl:part element="tns:QueryItems" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_OutputMessage">
+		<wsdl:part element="tns:QueryItemsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_ArgumentExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q106:ArgumentExceptionFault" name="detail" xmlns:q106="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_ArgumentNullExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q107:ArgumentNullExceptionFault" name="detail" xmlns:q107="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_LicenseExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q108:LicenseExceptionFault" name="detail" xmlns:q108="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_NotSupportedExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q109:NotSupportedExceptionFault" name="detail" xmlns:q109="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_PathNotFoundExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q110:PathNotFoundExceptionFault" name="detail" xmlns:q110="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_UnauthorizedAccessFaultFault_FaultMessage">
+		<wsdl:part element="q111:UnauthorizedAccessFault" name="detail" xmlns:q111="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:message name="IConfigurationService_QueryItems_ServerExceptionFaultFault_FaultMessage">
+		<wsdl:part element="q112:ServerExceptionFault" name="detail" xmlns:q112="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI.ConfigurationFaultException"/>
+	</wsdl:message>
+	<wsdl:portType name="IConfigurationService">
+		<wsdl:operation name="GetItem">
+			<wsdl:input message="tns:IConfigurationService_GetItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItem"/>
+			<wsdl:output message="tns:IConfigurationService_GetItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetItems">
+			<wsdl:input message="tns:IConfigurationService_GetItems_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItems"/>
+			<wsdl:output message="tns:IConfigurationService_GetItems_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetItems_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetItemsServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetItem">
+			<wsdl:input message="tns:IConfigurationService_SetItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItem"/>
+			<wsdl:output message="tns:IConfigurationService_SetItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_SetItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/SetItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="HasChildItems">
+			<wsdl:input message="tns:IConfigurationService_HasChildItems_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItems"/>
+			<wsdl:output message="tns:IConfigurationService_HasChildItems_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_HasChildItems_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/HasChildItemsServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetChildItems">
+			<wsdl:input message="tns:IConfigurationService_GetChildItems_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItems"/>
+			<wsdl:output message="tns:IConfigurationService_GetChildItems_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItems_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ConstructItem">
+			<wsdl:input message="tns:IConfigurationService_ConstructItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItem"/>
+			<wsdl:output message="tns:IConfigurationService_ConstructItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ConstructChildItem">
+			<wsdl:input message="tns:IConfigurationService_ConstructChildItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItem"/>
+			<wsdl:output message="tns:IConfigurationService_ConstructChildItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ConstructChildItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ValidateItem">
+			<wsdl:input message="tns:IConfigurationService_ValidateItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItem"/>
+			<wsdl:output message="tns:IConfigurationService_ValidateItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_ValidateItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/ValidateItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteItem">
+			<wsdl:input message="tns:IConfigurationService_DeleteItem_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItem"/>
+			<wsdl:output message="tns:IConfigurationService_DeleteItem_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_DeleteItem_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/DeleteItemServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetDependantItems">
+			<wsdl:input message="tns:IConfigurationService_GetDependantItems_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItems"/>
+			<wsdl:output message="tns:IConfigurationService_GetDependantItems_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetDependantItems_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetDependantItemsServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMethodInfos">
+			<wsdl:input message="tns:IConfigurationService_GetMethodInfos_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfos"/>
+			<wsdl:output message="tns:IConfigurationService_GetMethodInfos_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfos_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfosServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMethodInfo">
+			<wsdl:input message="tns:IConfigurationService_GetMethodInfo_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfo"/>
+			<wsdl:output message="tns:IConfigurationService_GetMethodInfo_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetMethodInfo_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfoServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="InvokeMethod">
+			<wsdl:input message="tns:IConfigurationService_InvokeMethod_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethod"/>
+			<wsdl:output message="tns:IConfigurationService_InvokeMethod_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_InvokeMethod_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/InvokeMethodServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetTranslations">
+			<wsdl:input message="tns:IConfigurationService_GetTranslations_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslations"/>
+			<wsdl:output message="tns:IConfigurationService_GetTranslations_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetTranslations_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetTranslationsServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetChildItemsHierarchy">
+			<wsdl:input message="tns:IConfigurationService_GetChildItemsHierarchy_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchy"/>
+			<wsdl:output message="tns:IConfigurationService_GetChildItemsHierarchy_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_GetChildItemsHierarchy_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchyServerExceptionFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="QueryItems">
+			<wsdl:input message="tns:IConfigurationService_QueryItems_InputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItems"/>
+			<wsdl:output message="tns:IConfigurationService_QueryItems_OutputMessage" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsResponse"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_ArgumentExceptionFaultFault_FaultMessage" name="ArgumentExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsArgumentExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_ArgumentNullExceptionFaultFault_FaultMessage" name="ArgumentNullExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsArgumentNullExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_LicenseExceptionFaultFault_FaultMessage" name="LicenseExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsLicenseExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_NotSupportedExceptionFaultFault_FaultMessage" name="NotSupportedExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsNotSupportedExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_PathNotFoundExceptionFaultFault_FaultMessage" name="PathNotFoundExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsPathNotFoundExceptionFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_UnauthorizedAccessFaultFault_FaultMessage" name="UnauthorizedAccessFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsUnauthorizedAccessFaultFault"/>
+			<wsdl:fault message="tns:IConfigurationService_QueryItems_ServerExceptionFaultFault_FaultMessage" name="ServerExceptionFaultFault" wsaw:Action="http://video.net/ConfigurationService/IConfigurationService/QueryItemsServerExceptionFaultFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

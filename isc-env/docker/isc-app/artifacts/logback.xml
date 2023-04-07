@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <root level="info"/>
+
+    <logger name="com.iscweb" level="debug" />
+
+    <logger name="org.springframework.filter" level="debug" />
+
+    <logger name="org.springframework.security.web.session" level="debug"/>
+
+    <logger name="org.hibernate" level="info"/>
+
+    <logger name="org.springframework.security.authentication.dao.DaoAuthenticationProvider" level="info"/>
+
+    <logger name="org.flywaydb" level="DEBUG"/>
+
+    <logger name="org.springframework.web.socket.messaging.StompSubProtocolHandler" level="OFF"/>
+    <logger name="org.apache.cxf" level="ERROR"/>
+    <logger name="com.iscweb.common.security" level="WARN"/>
+    <logger name="com.iscweb.app.main.util" level="WARN"/>
+    <logger name="com.iscweb.app.main.util" level="WARN"/>
+    <logger name="com.iscweb.integration.cameras.services" level="INFO"/>
+
+    <logger name="com.iscweb.app.main.config.Config09SecurityWeb" level="INFO"/>
+    <logger name="com.iscweb.app.main.config.Config08WebSockets" level="INFO"/>
+    <logger name="com.iscweb.component.web.auth.jwt.JwtTokenAuthenticationProcessingFilter" level="INFO"/>
+    <logger name="com.iscweb.component.web.controller.graphql.queries" level="INFO"/>
+    <logger name="com.iscweb.component.web.controller.rest" level="WARN"/>
+    <logger name="com.iscweb.component.web.controller.rest.FileController" level="DEBUG"/>
+
+    <!-- logger name="org.springframework.data.elasticsearch.client.WIRE" level="WARN" / -->
+    <!-- <logger name="org.springframework.security" level="TRACE" /> -->
+
+    <!-- Trace transactions open/close -->
+    <!--
+    <logger name="org.springframework.transaction.interceptor" level="TRACE" />
+    -->
+
+    <!-- Trace DB connection pool stats & DB queries -->
+    <logger name="com.zaxxer.hikari.HikariConfig" level="DEBUG"/>
+    <logger name="com.zaxxer.hikari" level="TRACE"/>
+    <!--
+    <logger name="org.hibernate.SQL" level="DEBUG" />
+    <logger name="org.hibernate.type" level="TRACE" />
+    -->
+
+</included>

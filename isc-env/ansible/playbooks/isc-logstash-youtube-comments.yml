@@ -1,0 +1,36 @@
+---
+- name: ISC-Logstash-Youtube-Comments
+  hosts: isc_logstash_youtube_comments
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-logstash-youtube-comments
+
+  tasks:
+    - name: Create shared data directory
+      file:
+        path: "{{ isc_data_home }}/isc-logstash-youtube-videos"
+        state: directory
+        owner: ubuntu
+        group: root
+        mode: 0755
+
+    - name: Create logstash config directory
+      file:
+        path: "{{ isc_docker_home }}/{{ container_name }}/conf"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0755
+
+    - name: Copy logstash config file
+      copy:
+        src: "{{ job_home }}/isc-env/docker/{{ container_name }}/conf/logstash.yml"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/conf/logstash.yml"
+        owner: 1000
+        group: "{{ isc_username }}"
+        mode: 0750
+
+    - import_tasks: common/isc_docker_deployment.yml

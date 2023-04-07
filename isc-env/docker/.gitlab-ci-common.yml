@@ -1,0 +1,68 @@
+---
+.gradle-build:
+  # image: gradle:7.4.0-jdk17
+  image: west-1.amazonaws.com/openjdk:12.0.2-jdk
+  tags:
+    - docker_spot_runner
+  variables:
+    GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true"
+  before_script:
+    - export GRADLE_USER_HOME=$(pwd)/isc-main/.gradle
+
+.docker-build:
+  image: west-1.amazonaws.com/docker:20.10.14-alpine3.15
+  tags:
+    - docker_spot_runner
+  variables:
+    DOCKER_BUILDKIT: 1
+    DOCKER_TLS_CERTDIR: "/certs"
+    REPO_NAME: ${APP_NAME}
+  services:
+    - name: west-1.amazonaws.com/docker:20.10.14-dind-alpine3.15
+      alias: docker
+  before_script:
+    - apk update -qq && apk add -qq curl jq python3 py-pip
+    - pip install awscli~=1.22
+    - aws --version
+    - aws ecr describe-repositories --repository-names ${REPO_NAME} || aws ecr create-repository --repository-name ${REPO_NAME}
+    - aws ecr get-login-password | docker login --username AWS --password-stdin ${ECR_REGISTRY}
+  script:
+    - cd isc-env/docker/${REPO_NAME}
+    - docker build -t ${ECR_REGISTRY}/${REPO_NAME}:${CI_PIPELINE_IID} -t ${ECR_REGISTRY}/${REPO_NAME}:latest .
+    - docker push ${ECR_REGISTRY}/${REPO_NAME}:${CI_PIPELINE_IID}
+    - docker push ${ECR_REGISTRY}/${REPO_NAME}:latest
+
+.ansible-deploy:
+  image: west-1.amazonaws.com/isc-builder:latest
+  tags:
+    - docker_spot_runner
+  before_script:
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/isc-security/isc-wormhole-dev.git
+  script:
+    - chmod 700 isc-env/ansible
+    - chmod 400 ${SSH_KEY_DEV}
+    - cd isc-env/ansible
+    - ansible-playbook -i ./inventory/gitlab.yml --extra-vars ansible_private_key_file=${SSH_KEY_DEV} --user satoshi ./playbooks/${APP_NAME}.yml
+  environment:
+    name: Dev
+    deployment_tier: development
+  resource_group: Dev
+
+.ansible-deploy-prod:
+  image: west-1.amazonaws.com/isc-builder:latest
+  tags:
+    - docker_spot_runner
+  before_script:
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/isc-security/isc-wormhole-prod.git
+    - openvpn --config ${CLIENT_OVPN} --daemon
+    - sleep 15
+  script:
+    - chmod 700 isc-env/ansible
+    - chmod 400 ${SSH_KEY_PROD}
+    - cd isc-env/ansible
+    - ansible-playbook -i ./inventory/prod.yml --extra-vars ansible_private_key_file=${SSH_KEY_PROD} --user satoshi ./playbooks/${APP_NAME}.yml
+  environment:
+    name: Prod
+    deployment_tier: production
+  resource_group: Prod
+  when: manual

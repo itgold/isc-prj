@@ -1,0 +1,140 @@
+<configuration>
+
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+    <contextName>isc</contextName>
+
+    <springProperty name="stdout_enabled" source="logging.custom.stdout.enabled" defaultValue="true"/>
+    <springProperty name="colored_logfile_enabled" source="logging.custom.file.enabled" defaultValue="false"/>
+    <springProperty name="file_rollover_size" source="logging.custom.file.rollover-size" defaultValue="100MB"/>
+    <springProperty name="file_log_dir" source="logging.custom.file.path"/>
+    <springProperty name="file_log_name" source="logging.custom.file.name"/>
+
+    <if condition="${stdout_enabled}">
+        <then>
+            <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <Pattern>
+                        %boldYellow(%date) %highlight(%-5level) [%thread] %boldCyan(%logger{5}) - %highlight(%msg%n)
+                    </Pattern>
+                </layout>
+            </appender>
+        </then>
+    </if>
+
+    <if condition="${colored_logfile_enabled}">
+        <then>
+            <appender name="ColoredFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>${file_log_dir}/${file_log_name}</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                    <fileNamePattern>${file_log_dir}/${file_log_name}.%i</fileNamePattern>
+                    <minIndex>1</minIndex>
+                    <maxIndex>10</maxIndex>
+                </rollingPolicy>
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <maxFileSize>${file_rollover_size}</maxFileSize>
+                </triggeringPolicy>
+
+                <encoder>
+                    <charset>UTF-8</charset>
+                    <pattern>%boldYellow(%date) %highlight(%-5level) [%thread] %boldCyan(%logger{5}) - %highlight(%msg%n) </pattern>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+
+    <root level="info">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </root>
+
+    <logger name="com.iscweb" level="debug" additivity="false">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.springframework.filter" level="debug" additivity="false">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.springframework.security.web.session" level="debug" additivity="false">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.hibernate" level="info" additivity="false">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.springframework.security.authentication.dao.DaoAuthenticationProvider" level="info" additivity="false">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.flywaydb" level="DEBUG">
+        <if condition="${stdout_enabled}">
+            <then>
+                <appender-ref ref="STDOUT"/>
+            </then>
+        </if>
+        <if condition="${colored_logfile_enabled}">
+            <then>
+                <appender-ref ref="ColoredFileAppender"/>
+            </then>
+        </if>
+    </logger>
+
+    <logger name="org.springframework.web.socket.messaging.StompSubProtocolHandler" level="OFF" />
+    <logger name="org.apache.cxf" level="ERROR" />
+    <logger name="org.springframework.data.elasticsearch.client.WIRE" level="DEBUG" />
+
+</configuration>

@@ -1,0 +1,10 @@
+group 'io.iscweb'
+version '$iscVersion'
+
+wrapper {
+    doLast {
+        delete "${projectDir}/gradlew.bat"
+        delete "${projectDir}/gradlew"
+        delete "${projectDir}/gradle"
+    }
+}

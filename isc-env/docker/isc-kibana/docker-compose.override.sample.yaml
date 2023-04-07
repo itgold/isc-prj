@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  isc-kibana:
+    image: local/isc-kibana:latest
+    container_name: isc-kibana
+    environment:
+      - TARGET_ENV=local
+      - ELASTICSEARCH_HOSTS=http://isc-elasticsearch:9200

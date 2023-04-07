@@ -1,0 +1,29 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-app:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: ./artifacts/application.yml
+        target: /app/application.yml
+#      - type: bind
+#        source: ./artifacts/logback.xml
+#        target: /app/logback.xml
+      - type: bind
+        source: "${ISC_LOGS_HOME}/${container_name}"
+        target: /opt/isc/logs
+      - type: bind
+        source: "${ISC_DATA_HOME}/isc-mock-videos"
+        target: /opt/data/isc-mock-videos
+    environment:
+      - APP_SERVER_HOST=${APP_SERVER_HOST}
+      - DB_HOST=${DB_HOST}
+    ports:
+      - 9090:9090
+      - 10000:10000/udp

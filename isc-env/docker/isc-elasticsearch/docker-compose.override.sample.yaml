@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  isc-elasticsearch:
+    image: local/isc-elasticsearch:latest
+    container_name: isc-elasticsearch
+    volumes:
+      - type: bind
+        source: /tmp/isc-data/isc-elasticsearch
+        target: /usr/share/elasticsearch/data
+      - type: bind
+        source: /tmp/isc-logs/isc-elasticsearch
+        target: /usr/share/elasticsearch/logs
+      - type: bind
+        source: /tmp/isc-backup/isc-elasticsearch
+        target: /usr/share/elasticsearch/backup
+#      - type: bind
+#        source: conf/elasticsearch.yml
+#        target: /usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - TARGET_ENV=local

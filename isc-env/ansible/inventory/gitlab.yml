@@ -1,0 +1,48 @@
+---
+all:
+  hosts:
+    pre-prod-dev-app:
+      ansible_host: 10.0.2.154
+    pre-prod-dev-es-kb:
+      ansible_host: 10.0.2.133
+  vars:
+    env_name: dev
+    authorized_key_pub: "ssh-rsa AAAAB3VjXW8FYqqw== satoshi"
+    isc_username: satoshi
+    isc_docker_repo: "{{ ecr_registry }}"
+    isc_docker_tag: latest
+    server_host: dev.iscweb.io
+    isc_backup_home: /opt/backup
+    aws_region: "{{ lookup('env','AWS_DEFAULT_REGION') }}"
+    aws_access_key_id: "{{ lookup('env','AWS_ACCESS_KEY_ID') }}"
+    aws_secret_access_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
+    ecr_registry: "{{ lookup('env','ECR_REGISTRY') }}"
+    job_home: "{{ lookup('env','CI_PROJECT_DIR') }}"
+
+isc_app:
+  hosts:
+    pre-prod-dev-app:
+isc_client:
+  hosts:
+    pre-prod-dev-app:
+isc_postgres:
+  hosts:
+    pre-prod-dev-app:
+isc_rabbitmq:
+  hosts:
+    pre-prod-dev-app:
+isc_elasticsearch:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_kibana:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_twitter:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_youtube_comments:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_youtube_videos:
+  hosts:
+    pre-prod-dev-es-kb:

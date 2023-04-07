@@ -1,0 +1,30 @@
+cluster:
+  name: es_dev
+
+network:
+  host: 0.0.0.0
+
+transport:
+  port: 9300
+  compress: true
+
+http:
+  port: 9200
+
+discovery:
+  type: single-node
+
+indices:
+  query:
+    bool:
+      max_clause_count: 2000
+
+path:
+  data:
+    - /usr/share/elasticsearch/data
+  logs:
+    - /usr/share/elasticsearch/logs
+
+xpack:
+  ml:
+    enabled: false

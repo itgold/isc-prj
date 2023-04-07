@@ -1,0 +1,35 @@
+/**
+ * User: skurenkov
+ * Date: 12/6/19
+ */
+module iscweb.common {
+
+    requires lombok;
+    requires spring.boot;
+    requires org.aspectj.weaver;
+    requires com.google.common;
+    requires org.slf4j;
+    requires spring.context;
+    requires spring.security.core;
+    requires spring.core;
+    requires spring.web;
+    requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.databind;
+    requires spring.data.commons;
+    requires spring.security.oauth2;
+
+    exports com.iscweb.common.exception;
+    exports com.iscweb.common.exception.util;
+    exports com.iscweb.common.log;
+    exports com.iscweb.common.model.entity;
+    exports com.iscweb.common.model.metadata;
+    exports com.iscweb.common.model.dto.entity;
+    exports com.iscweb.common.model.dto;
+    exports com.iscweb.common.model;
+    exports com.iscweb.common.security;
+    exports com.iscweb.common.util;
+    exports com.iscweb.common.service;
+    exports com.iscweb.common.model.dto.api.v10;
+    exports com.iscweb.common.model.dto.api.v13;
+    exports com.iscweb.common.model.dto.metadata;
+}

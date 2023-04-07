@@ -1,0 +1,48 @@
+---
+- name: ISC-Logstash-Twitter
+  hosts: isc_logstash_twitter
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-logstash-twitter
+
+  tasks:
+    - name: Create logstash config directory
+      file:
+        path: "{{ isc_docker_home }}/{{ container_name }}/conf"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0755
+
+    - name: Copy logstash config file
+      copy:
+        src: "{{ job_home }}/isc-env/docker/{{ container_name }}/conf/logstash.yml"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/conf/logstash.yml"
+        owner: 1000
+        group: "{{ isc_username }}"
+        mode: 0750
+
+    - name: Copy logstash-twitter directory
+      copy:
+        src: logstash-twitter
+        dest: /tmp
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0640
+
+    - name: Copy initiation script
+      template:
+        src: logstash-twitter/init_all.sh
+        dest: /tmp/logstash-twitter/init_all.sh
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0755
+        # force: yes
+
+    - name: Execute initiation script
+      command: chdir=/tmp/logstash-twitter ./init_all.sh
+
+    - import_tasks: common/isc_docker_deployment.yml

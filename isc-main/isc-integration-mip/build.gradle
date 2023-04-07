@@ -1,0 +1,74 @@
+configurations {
+    cxf
+}
+
+ext {
+    moduleName = 'isc-integration-mip'
+
+    wsdlDir = file("${projectDir}/src/main/resources/wsdl")
+    outputDir = file("$projectDir/src/main/java")
+    sourceWsdls = [
+            "registry": "$wsdlDir/ServiceRegistrationService.wsdl",
+            "command": "$wsdlDir/ServerCommandService.wsdl",
+            "config": "$wsdlDir/ConfigurationApiService.wsdl",
+            "recorderCommand": "$wsdlDir/RecorderCommandService.wsdl",
+            "recorderStatus": "$wsdlDir/RecorderStatusService.wsdl",
+            "alarmService": "$wsdlDir/AlarmServiceToken.wsdl"
+    ]
+}
+
+sourceSets.main.java.srcDirs += "$outputDir"
+
+// TODO(eric): Is this not accounted for in the subprojects configuration for isc-main?
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {}
+}
+
+dependencies {
+    implementation project(':isc-common')
+    testImplementation project(':isc-test')
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.13.1'
+    implementation group: 'com.fasterxml.woodstox', name: 'woodstox-core', version: '6.2.1'
+
+    // SOAP services
+    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'org.glassfish.main.javaee-api:javax.jws:3.1.2.2'
+    implementation 'com.sun.activation:javax.activation:1.2.0'
+    implementation 'org.apache.cxf:cxf-rt-frontend-jaxws:3.4.0'
+    implementation 'org.apache.cxf:cxf-rt-transports-http:3.4.0'
+
+    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.29'
+
+    // Generate Java from WSDL
+    cxf (
+            'javax.xml.ws:jaxws-api:2.3.1',
+            'org.glassfish.main.javaee-api:javax.jws:3.1.2.2',
+            'org.apache.cxf:cxf-tools-wsdlto-core:3.3.6',
+            'org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:3.3.6',
+            'org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:3.3.6',
+    )
+}
+
+task generateJavaClasses {
+    doLast {
+        sourceWsdls.each { wsdlFile ->
+            javaexec {
+                // Params: https://cxf.apache.org/docs/wsdl-to-java.html
+                classpath configurations.cxf
+                main = 'org.apache.cxf.tools.wsdlto.WSDLToJava'
+                args '-d', outputDir
+                args '-p', "com.mip.$wsdlFile.key"
+                args '-client'
+                args '-b', 'bindings.txt'
+                args wsdlFile.value
+            }
+        }
+    }
+}

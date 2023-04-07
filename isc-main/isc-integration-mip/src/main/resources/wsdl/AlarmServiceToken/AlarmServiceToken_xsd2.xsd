@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="urn:milestone-systems" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="urn:milestone-systems" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./AlarmServiceToken_xsd1.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./AlarmServiceToken_xsd4.xsd"/>
+	<xs:complexType name="Alarm">
+		<xs:sequence>
+			<xs:element name="EventHeader" nillable="true" type="tns:EventHeader">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="StartTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="EndTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Location" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="State" type="xs:unsignedShort">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Category" type="xs:unsignedShort">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="AssignedTo" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Count" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="RuleList" nillable="true" type="tns:RuleList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ObjectList" nillable="true" type="tns:AnalyticsObjectList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ReferenceList" nillable="true" type="tns:ReferenceList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="SnapshotList" nillable="true" type="tns:SnapshotList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Vendor" nillable="true" type="tns:Vendor">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Alarm" nillable="true" type="tns:Alarm"/>
+	<xs:complexType name="EventHeader">
+		<xs:sequence>
+			<xs:element name="ID" type="ser:guid"/>
+			<xs:element name="Timestamp" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Class" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Version" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Priority" type="xs:unsignedShort">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="PriorityName" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Message" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="CustomTag" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Source" nillable="true" type="tns:EventSource">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ExpireTimestamp" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="MessageId" type="ser:guid">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EventHeader" nillable="true" type="tns:EventHeader"/>
+	<xs:complexType name="EventSource">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FQID" nillable="true" type="tns:FQID">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EventSource" nillable="true" type="tns:EventSource"/>
+	<xs:complexType name="FQID">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ServerId" nillable="true" type="tns:ServerId">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ParentId" type="ser:guid">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ObjectId" type="ser:guid">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ObjectIdString" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FolderType" type="tns:FolderType"/>
+			<xs:element minOccurs="0" name="Kind" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FQID" nillable="true" type="tns:FQID"/>
+	<xs:complexType name="ServerId">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Hostname" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Port" type="xs:int">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Scheme" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServerId" nillable="true" type="tns:ServerId"/>
+	<xs:simpleType name="FolderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="FolderType" nillable="true" type="tns:FolderType"/>
+	<xs:complexType name="RuleList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Rule" nillable="true" type="tns:Rule"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RuleList" nillable="true" type="tns:RuleList"/>
+	<xs:complexType name="Rule">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ID" type="ser:guid">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="PolygonList" nillable="true" type="tns:PolygonList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Rule" nillable="true" type="tns:Rule"/>
+	<xs:complexType name="PolygonList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Polygon" nillable="true" type="tns:TPolygon"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PolygonList" nillable="true" type="tns:PolygonList"/>
+	<xs:complexType name="TPolygon">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Closed" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Color" nillable="true" type="tns:TColor">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FillColor" nillable="true" type="tns:TColor">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="PointList" nillable="true" type="tns:PointList">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TPolygon" nillable="true" type="tns:TPolygon"/>
+	<xs:complexType name="TColor">
+		<xs:sequence>
+			<xs:element name="A" type="xs:unsignedByte"/>
+			<xs:element name="R" type="xs:unsignedByte"/>
+			<xs:element name="G" type="xs:unsignedByte"/>
+			<xs:element name="B" type="xs:unsignedByte"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TColor" nillable="true" type="tns:TColor"/>
+	<xs:complexType name="PointList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Point" nillable="true" type="tns:TPoint"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PointList" nillable="true" type="tns:PointList"/>
+	<xs:complexType name="TPoint">
+		<xs:sequence>
+			<xs:element name="X" type="xs:double"/>
+			<xs:element name="Y" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TPoint" nillable="true" type="tns:TPoint"/>
+	<xs:complexType name="AnalyticsObjectList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Object" nillable="true" type="tns:AnalyticsObject"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalyticsObjectList" nillable="true" type="tns:AnalyticsObjectList"/>
+	<xs:complexType name="AnalyticsObject">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ID" type="ser:guid">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Confidence" type="xs:double">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="AlarmTrigger" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Removed" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Color" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Size" type="xs:double">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="SizeUnit" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="BoundingBox" nillable="true" type="tns:BoundingBox">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Polygon" nillable="true" type="tns:TPolygon">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Motion" nillable="true" type="tns:ObjectMotion">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Mask" nillable="true" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalyticsObject" nillable="true" type="tns:AnalyticsObject"/>
+	<xs:complexType name="BoundingBox">
+		<xs:sequence>
+			<xs:element name="Top" type="xs:double"/>
+			<xs:element name="Left" type="xs:double"/>
+			<xs:element name="Bottom" type="xs:double"/>
+			<xs:element name="Right" type="xs:double"/>
+			<xs:element minOccurs="0" name="Color" nillable="true" type="tns:TColor">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BoundingBox" nillable="true" type="tns:BoundingBox"/>
+	<xs:complexType name="ObjectMotion">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Speed" type="xs:double">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="SpeedUnit" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Path" nillable="true" type="tns:TPolygon">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ObjectMotion" nillable="true" type="tns:ObjectMotion"/>
+	<xs:complexType name="ReferenceList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Reference" nillable="true" type="tns:Reference"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReferenceList" nillable="true" type="tns:ReferenceList"/>
+	<xs:complexType name="Reference">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="FQID" nillable="true" type="tns:FQID">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Reference" nillable="true" type="tns:Reference"/>
+	<xs:complexType name="SnapshotList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Snapshot" nillable="true" type="tns:Snapshot"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SnapshotList" nillable="true" type="tns:SnapshotList"/>
+	<xs:complexType name="Snapshot">
+		<xs:sequence>
+			<xs:element name="TimeOffset" type="xs:int"/>
+			<xs:element minOccurs="0" name="Width" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Height" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="HasOverlay" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="SizeInBytes" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="Path" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FQID" nillable="true" type="tns:FQID">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Snapshot" nillable="true" type="tns:Snapshot"/>
+	<xs:complexType name="Vendor">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="CustomData" nillable="true" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Vendor" nillable="true" type="tns:Vendor"/>
+	<xs:complexType name="BaseEvent">
+		<xs:sequence>
+			<xs:element name="EventHeader" nillable="true" type="tns:EventHeader"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BaseEvent" nillable="true" type="tns:BaseEvent"/>
+	<xs:complexType name="AnalyticsEvent">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:BaseEvent">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="StartTime" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="EndTime" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="Location" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Count" type="xs:unsignedInt"/>
+					<xs:element minOccurs="0" name="RuleList" nillable="true" type="tns:RuleList"/>
+					<xs:element minOccurs="0" name="ObjectList" nillable="true" type="tns:AnalyticsObjectList"/>
+					<xs:element minOccurs="0" name="ReferenceList" nillable="true" type="tns:ReferenceList"/>
+					<xs:element minOccurs="0" name="SnapshotList" nillable="true" type="tns:SnapshotList"/>
+					<xs:element minOccurs="0" name="Vendor" nillable="true" type="tns:Vendor"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AnalyticsEvent" nillable="true" type="tns:AnalyticsEvent"/>
+	<xs:complexType name="EventData">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:BaseEvent">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="EventSequence" nillable="true" type="tns:EventSequence"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EventData" nillable="true" type="tns:EventData"/>
+	<xs:complexType name="EventSequence">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="EndDateTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="SnapshotJPEGs" nillable="true" type="q1:ArrayOfbase64Binary" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:element minOccurs="0" name="StartDateTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EventSequence" nillable="true" type="tns:EventSequence"/>
+	<xs:complexType name="AccessControlEvent">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:BaseEvent">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="AccessControlSystemEventId" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="AccessControlSystemId" type="ser:guid"/>
+					<xs:element minOccurs="0" name="AccessControlEventTypeId" type="ser:guid"/>
+					<xs:element minOccurs="0" name="AccessControlEventSourceTypeId" type="ser:guid"/>
+					<xs:element minOccurs="0" name="AccessControlEventSourceId" type="ser:guid"/>
+					<xs:element minOccurs="0" name="RelatedAccessControlCredentialHolderIds" nillable="true" type="q2:ArrayOfstring" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+					<xs:element minOccurs="0" name="RelatedAccessControlElementIds" nillable="true" type="q3:ArrayOfguid" xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+					<xs:element minOccurs="0" name="EventCategories" nillable="true" type="q4:ArrayOfguid" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+					<xs:element minOccurs="0" name="RelatedSurveillanceItems" nillable="true" type="tns:ArrayOfFQID"/>
+					<xs:element minOccurs="0" name="Properties" nillable="true" type="tns:ArrayOfProperty"/>
+					<xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AccessControlEvent" nillable="true" type="tns:AccessControlEvent"/>
+	<xs:complexType name="ArrayOfFQID">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="FQID" nillable="true" type="tns:FQID"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfFQID" nillable="true" type="tns:ArrayOfFQID"/>
+	<xs:complexType name="ArrayOfProperty">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Property" nillable="true" type="tns:Property"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfProperty" nillable="true" type="tns:ArrayOfProperty"/>
+	<xs:complexType name="Property">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Key" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Property" nillable="true" type="tns:Property"/>
+	<xs:complexType name="ArrayOfBaseEvent">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="BaseEvent" nillable="true" type="tns:BaseEvent"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfBaseEvent" nillable="true" type="tns:ArrayOfBaseEvent"/>
+</xs:schema>

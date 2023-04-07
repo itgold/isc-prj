@@ -1,0 +1,44 @@
+---
+- name: ISC-Postgres
+  hosts: isc_postgres
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-postgres
+
+  tasks:
+    - name: Create shared data directory
+      file:
+        path: "{{ isc_data_home }}/{{ container_name }}"
+        state: directory
+        owner: ubuntu
+        group: root
+        mode: 0755
+
+    - import_tasks: common/isc_docker_deployment.yml
+
+    - name: Create backup directory
+      file:
+        path: "{{ isc_backup_home }}/{{ container_name }}"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0755
+
+    - name: Ensure backup script exists
+      template:
+        src: "{{ container_name }}/backup.sh"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/backup.sh"
+        owner: "{{ isc_username }}"
+        group: "{{ isc_username }}"
+        mode: 0755
+
+    - name: Ensure backup cronjob exists
+      ansible.builtin.cron:
+        name: "Backup postgres"
+        user: "{{ isc_username }}"
+        minute: "0"
+        hour: "1"
+        job: "{{ isc_docker_home }}/{{ container_name }}/backup.sh"

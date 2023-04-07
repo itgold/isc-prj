@@ -1,0 +1,27 @@
+---
+include:
+  - local: isc-env/docker/.gitlab-ci-common.yml
+
+stages:
+  - docker-build
+  - ansible-deploy
+
+docker-build:
+  stage: docker-build
+  extends: .docker-build
+
+ansible-deploy-dev:
+  stage: ansible-deploy
+  extends: .ansible-deploy
+  needs:
+    - job: docker-build
+  except:
+    - prod
+
+ansible-deploy-prod:
+  stage: ansible-deploy
+  extends: .ansible-deploy-prod
+  needs:
+    - job: docker-build
+  only:
+    - prod

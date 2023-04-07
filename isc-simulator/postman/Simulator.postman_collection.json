@@ -1,0 +1,1605 @@
+{
+	"info": {
+		"_postman_id": "fdfda07b-f798-4220-a078-25350c8dfc21",
+		"name": "Simulator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ES",
+			"item": [
+				{
+					"name": "List All Raw Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/raw_events/_search",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"raw_events",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Device Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/events/_search",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"events",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All State Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/states/_search",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"states",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIst All Indexes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/_cat/indices?v=",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIst Index Mappings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/_cat/indices?v=",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear Event Indices",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{esURL}}/raw_events,events,states",
+							"host": [
+								"{{esURL}}"
+							],
+							"path": [
+								"raw_events,events,states"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SALTO EVENTS",
+			"item": [
+				{
+					"name": "Example with Date/Time",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"GUEST_KEY_NEW_HOTEL\",\n    \"deviceId\"      : {{doorId}},\n    \"operatorId\"    : {{operatorId}},\n    \"eventDateTime\" : \"2021-02-20 10:45:55\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GUEST_KEY_NEW_HOTEL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"GUEST_KEY_NEW_HOTEL\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOOR_OPENED_KEY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DOOR_OPENED_KEY\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOOR_CLOSED_KEY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DOOR_CLOSED_KEY\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DLO_START",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DLO_START\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DLO_END",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DLO_END\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORCE_CLOSING_START",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"FORCE_CLOSING_START\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORCE_CLOSING_END",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"FORCE_CLOSING_END\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORCE_OPENING_START",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"FORCE_OPENING_START\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FORCE_OPENING_END",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"FORCE_OPENING_END\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALARM_DURESS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"ALARM_DURESS\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALARM_INTRUSION_START",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"ALARM_INTRUSION_START\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALARM_INTRUSION_END",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"ALARM_INTRUSION_END\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALARM_TAMPER_START",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"ALARM_TAMPER_START\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALARM_TAMPER_END",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"ALARM_TAMPER_END\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOOR_COMM_LOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DOOR_COMM_LOST\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOOR_COMM_REGAIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"DOOR_COMM_REGAIN\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SALTO_COMM_LOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"SALTO_COMM_LOST\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SALTO_COMM_REGAIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"SALTO_COMM_REGAIN\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_KEY_INACTIVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_KEY_INACTIVE\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_KEY_EXPIRED",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_KEY_EXPIRED\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_KEY_OUTDATED",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_KEY_OUTDATED\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_THIS_DOOR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_THIS_DOOR\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_OUT_OF_TIME",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_OUT_OF_TIME\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NOT_ALLOWED_DOOR_IN_PRIVACY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"NOT_ALLOWED_DOOR_IN_PRIVACY\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OPENING_NOT_ALLOWED_OLD_HOTEL_GUEST_KEY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"saltoOperation\": \"OPENING_NOT_ALLOWED_OLD_HOTEL_GUEST_KEY\",\n    \"deviceId\"      : \"{{doorId}}\",\n    \"operatorId\"    : \"{{operatorId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/sync/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"sync",
+								"single"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SALTO SYNC",
+			"item": [
+				{
+					"name": "OFFICE MODE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceId\"          : \"{{doorId}}\",\n    \"operatorId\"        : \"{{operatorId}}\",\n    \"deviceName\"        : \"\",\n    \"deviceDescription\" : \"\",\n    \"batteryLevel\"      : 15,\n    \"deviceOpeningMode\" : 1, \n    \"doorStatus\"        : 1,\n    \"commStatus\"        : 1,\n    \"tamperStatus\"      : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/sync/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"sync",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "COMM LOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceId\"          : \"{{doorId}}\",\n    \"operatorId\"        : \"{{operatorId}}\",\n    \"deviceName\"        : \"\",\n    \"deviceDescription\" : \"\",\n    \"batteryLevel\"      : 15,\n    \"deviceOpeningMode\" : 1, \n    \"doorStatus\"        : 1,\n    \"commStatus\"        : 1,\n    \"tamperStatus\"      : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/salto/sync/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"salto",
+								"sync",
+								"single"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CAMERAS",
+			"item": [
+				{
+					"name": "LiveFeedStopped",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"LiveFeedStopped\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LiveFeedStarted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"LiveFeedStarted\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedNoMotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedNoMotion\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedWithMotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedWithMotion\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedNotRecorded",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedNotRecorded\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedRecorded",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedRecorded\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NoEvents",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"NoEvents\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SomeEvents",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"SomeEvents\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConnectionRestored",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"ConnectionRestored\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConnectionLost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"ConnectionLost\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DBAccessRestored",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"DBAccessRestored\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DBAccessLost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"DBAccessLost\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DiskSpaceOk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"DiskSpaceOk\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DiskSpaceOut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"DiskSpaceOut\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedRestored",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedRestored\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FeedLost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"FeedLost\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CameraMaintenance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"CameraMaintenance\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LicenseIssue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"LicenseIssue\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OverflowIssue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"OverflowIssue\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WritingGopIssue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mipOperation\": \"WritingGopIssue\",\n    \"deviceId\"    : \"{{cameraId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{simulatorURL}}/simulate/mip/single",
+							"host": [
+								"{{simulatorURL}}"
+							],
+							"path": [
+								"simulate",
+								"mip",
+								"single"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EXAMPLES",
+			"item": [
+				{
+					"name": "Youtube video search by keyword",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAdfBFp3m_GX_I9vtYFZQYndd7PVR_mQ_E&q=hills&part=snippet&maxResults=10&type=video&order=date",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "AIzaSyAdfBFp3m_GX_I9vtYFZQYndd7PVR_mQ_E"
+								},
+								{
+									"key": "q",
+									"value": "hills"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "maxResults",
+									"value": "10"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "order",
+									"value": "date"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Youtube comments search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAdfBFp3m_GX_I9vtYFZQYndd7PVR_mQ_E&textFormat=plainText&part=snippet&videoId=08gj69AZBkU&maxResults=50",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"commentThreads"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "AIzaSyAdfBFp3m_GX_I9vtYFZQYndd7PVR_mQ_E"
+								},
+								{
+									"key": "textFormat",
+									"value": "plainText"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "videoId",
+									"value": "08gj69AZBkU"
+								},
+								{
+									"key": "maxResults",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="ConfigurationApiService" targetNamespace="http://tempuri.org/" xmlns:i0="http://video.net/ConfigurationService" xmlns:i1="urn:videoos:management:server:configurationapiservice" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsp:Policy wsu:Id="BasicHttpBinding_IConfigurationService_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken RequireClientCertificate="false"/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+					</wsp:Policy>
+				</sp:TransportBinding>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:import location="./ConfigurationApiService/ConfigurationApiService_wsdl0.wsdl" namespace="http://video.net/ConfigurationService"/>
+	<wsdl:import location="./ConfigurationApiService/ConfigurationApiService_wsdl1.wsdl" namespace="urn:videoos:management:server:configurationapiservice"/>
+	<wsdl:types/>
+	<wsdl:binding name="BasicHttpBinding_IConfigurationService" type="i0:IConfigurationService">
+		<wsp:PolicyReference URI="#BasicHttpBinding_IConfigurationService_policy"/>
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetItems">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetItems" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SetItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/SetItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="HasChildItems">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/HasChildItems" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetChildItems">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetChildItems" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ConstructItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/ConstructItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ConstructChildItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/ConstructChildItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ValidateItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/ValidateItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteItem">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/DeleteItem" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetDependantItems">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetDependantItems" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetMethodInfos">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfos" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetMethodInfo">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetMethodInfo" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="InvokeMethod">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/InvokeMethod" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetTranslations">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetTranslations" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetChildItemsHierarchy">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/GetChildItemsHierarchy" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="QueryItems">
+			<soap:operation soapAction="http://video.net/ConfigurationService/IConfigurationService/QueryItems" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ArgumentExceptionFaultFault">
+				<soap:fault name="ArgumentExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ArgumentNullExceptionFaultFault">
+				<soap:fault name="ArgumentNullExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="LicenseExceptionFaultFault">
+				<soap:fault name="LicenseExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="NotSupportedExceptionFaultFault">
+				<soap:fault name="NotSupportedExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PathNotFoundExceptionFaultFault">
+				<soap:fault name="PathNotFoundExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnauthorizedAccessFaultFault">
+				<soap:fault name="UnauthorizedAccessFaultFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerExceptionFaultFault">
+				<soap:fault name="ServerExceptionFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ConfigurationApiService">
+		<wsdl:port binding="tns:BasicHttpBinding_IConfigurationService" name="BasicHttpBinding_IConfigurationService">
+			<soap:address location="https://desktop-6q9rcaj/ManagementServer/ConfigurationApiService.svc"/>
+		</wsdl:port>
+		<wsdl:port binding="i1:WSHttpBinding_IConfigurationService" name="WSHttpBinding_IConfigurationService">
+			<soap12:address location="http://192.168.1.199/ManagementServer/ConfigurationApiService.svc"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>http://192.168.1.199/ManagementServer/ConfigurationApiService.svc</wsa10:Address>
+				<Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+					<Spn>host/DESKTOP-6Q9RCAJ</Spn>
+				</Identity>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+		<wsdl:port binding="i1:WSHttpBinding_IConfigurationService" name="WSHttpBinding_IConfigurationService1">
+			<soap12:address location="urn:videoos:management:server:configurationapiservice"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>urn:videoos:management:server:configurationapiservice</wsa10:Address>
+				<Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+					<Spn>host/DESKTOP-6Q9RCAJ</Spn>
+				</Identity>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

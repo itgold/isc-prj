@@ -1,0 +1,5 @@
+ALTER TABLE isc.cameras ADD COLUMN c_last_sync_time TIMESTAMP WITH TIME ZONE;
+ALTER TABLE isc.doors ADD COLUMN d_last_sync_time TIMESTAMP WITH TIME ZONE;
+ALTER TABLE isc.drones ADD COLUMN dr_last_sync_time TIMESTAMP WITH TIME ZONE;
+ALTER TABLE isc.speakers ADD COLUMN sp_last_sync_time TIMESTAMP WITH TIME ZONE;
+ALTER TABLE isc.external_users ADD COLUMN eu_last_sync_time TIMESTAMP WITH TIME ZONE;

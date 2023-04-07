@@ -1,0 +1,121 @@
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    schools(page: PageRequest, sort: [SortOrder]): [School]
+    querySchools(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): SchoolSearchResult
+    districts(page: PageRequest, sort: [SortOrder]): [SchoolDistrict]
+    queryDistricts(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): DistrictSearchResult
+
+    doors(page: PageRequest, sort: [SortOrder]): [Door]
+    queryDoors(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): DoorSearchResult
+
+    cameras(page: PageRequest, sort: [SortOrder]): [Camera]
+    camerasByRegion(regionId: String, page: PageRequest, sort: [SortOrder]): [Camera]
+    queryCameras(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): CameraSearchResult
+
+    speakers(page: PageRequest, sort: [SortOrder]): [Speaker]
+    querySpeakers(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): SpeakerSearchResult
+
+    drones(page: PageRequest, sort: [SortOrder]): [Drone]
+    queryDrones(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): DroneSearchResult
+
+    utilities(page: PageRequest, sort: [SortOrder]): [Utility]
+    queryUtilities(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): UtilitySearchResult
+
+    regions(page: PageRequest, sort: [SortOrder]): [Region]
+    queryRegions(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): RegionSearchResult
+
+    queryZones(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): ZoneSearchResult
+
+    users(page: PageRequest, sort: [SortOrder]) : [User]
+    queryUsers(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): UserSearchResult
+    queryExternalUsers(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): ExternalUserSearchResult
+
+    safeties(page: PageRequest, sort: [SortOrder]): [Safety]
+    querySafeties(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): SafetySearchResult
+
+    roles(page: PageRequest, sort: [SortOrder]) : [Role]
+    queryTags(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): TagSearchResult
+
+    tags(page: PageRequest, sort: [SortOrder]) : [Tag]
+    queryTags(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): TagSearchResult
+
+    events(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): IncrementalEventsSearchResult
+    queryAlertTriggers(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): AlertTriggerSearchResult
+    queryAlerts(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): AlertSearchResult
+
+    deviceCodes: [CodeDictionaryTuple]
+
+    radios(page: PageRequest, sort: [SortOrder]): [Radio]
+    queryRadios(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): RadioSearchResult
+}
+
+type Mutation {
+    newSchool(school: SchoolInput): School
+    updateSchool(school: SchoolInput): School
+    deleteSchool(schoolId: String): UpdateResult
+
+    newDistrict(district: SchoolDistrictInput): SchoolDistrict
+    updateDistrict(district: SchoolDistrictInput): SchoolDistrict
+    deleteDistrict(districtId: String): UpdateResult
+
+    newDoor(door: DoorInput, tags: [TagInput]): Door
+    updateDoor(door: DoorInput, tags: [TagInput]): Door
+    deleteDoor(doorId: String): UpdateResult
+
+    newCamera(camera: CameraInput, tags: [TagInput]): Camera
+    updateCamera(camera: CameraInput, tags: [TagInput]): Camera
+    deleteCamera(cameraId: String): UpdateResult
+
+    newSpeaker(speaker: SpeakerInput, tags: [TagInput]): Speaker
+    updateSpeaker(speaker: SpeakerInput, tags: [TagInput]): Speaker
+    deleteSpeaker(speakerId: String): UpdateResult
+
+    newSafety(safety: SafetyInput, tags: [TagInput]): Safety
+    updateSafety(safety: SafetyInput, tags: [TagInput]): Safety
+    deleteSafety(safetyId: String): UpdateResult
+
+    newDrone(drone: DroneInput, tags: [TagInput]): Drone
+    updateDrone(drone: DroneInput, tags: [TagInput]): Drone
+    deleteDrone(droneId: String): UpdateResult
+
+    newUtility(utility: UtilityInput, tags: [TagInput]): Utility
+    updateUtility(utility: UtilityInput, tags: [TagInput]): Utility
+    deleteUtility(utilityId: String): UpdateResult
+
+    newRadio(radio: RadioInput, tags: [TagInput]): Radio
+    updateRadio(radio: RadioInput, tags: [TagInput]): Radio
+    deleteRadio(radioId: String): UpdateResult
+
+    newRegion(region: RegionInput): Region
+    updateRegion(region: RegionInput): Region
+    updateRegionByName(region: RegionInput): Region
+    deleteRegion(regionId: String, moveChildrenTo: String): UpdateResult
+
+    newUser(user: UserInput): User
+    updateUser(user: UserInput): User
+    deleteUser(userId: String): UpdateResult
+
+    newRole(role: RoleInput): Role
+    updateRole(role: RoleInput): Role
+    deleteRole(roleId: String): UpdateResult
+
+    newTag(tag: TagInput): Tag
+    updateTag(tag: TagInput): Tag
+    deleteTag(tagId: String): UpdateResult
+
+    newZone(zone: ZoneInput): Zone
+    updateZone(zone: ZoneInput): Zone
+
+    deviceAction(action: DeviceAction): DeviceActionResult
+
+    newAlertTrigger(alertTrigger: AlertTriggerInput): AlertTrigger
+    updateAlertTrigger(alertTrigger: AlertTriggerInput): AlertTrigger
+    deleteAlertTrigger(alertTriggerId: String): UpdateResult
+
+    updateAlert(action: AlertUpdateRequest): UpdateResult
+}

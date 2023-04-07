@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  isc-rabbitmq:
+    image: local/isc-rabbitmq:latest
+    container_name: isc-rabbitmq
+    volumes:
+      - type: bind
+        source: /tmp/isc-data/isc-rabbitmq
+        target: /var/lib/rabbitmq
+      - type: bind
+        source: /tmp/isc-logs/isc-rabbitmq
+        target: /var/log/rabbitmq
+    environment:
+      - TARGET_ENV=local
+      - RABBITMQ_DATA=/tmp/isc-data/isc-rabbitmq
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
+    command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]

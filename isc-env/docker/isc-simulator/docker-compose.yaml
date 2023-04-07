@@ -1,0 +1,22 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-simulator:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: ./artifacts/application.yml
+        target: /app/application.yml
+      - type: bind
+        source: "${ISC_LOGS_HOME}/${container_name}"
+        target: /opt/isc/logs
+    environment:
+      - APP_SERVER_HOST=${APP_SERVER_HOST}
+      - DB_HOST=${DB_HOST}
+    ports:
+      - 9091:9091

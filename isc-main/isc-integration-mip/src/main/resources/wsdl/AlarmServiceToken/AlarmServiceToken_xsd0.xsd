@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://video.net/2/CentralServerAlarmCommand" xmlns:tns="http://video.net/2/CentralServerAlarmCommand" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="urn:milestone-systems" schemaLocation="./AlarmServiceToken_xsd2.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./AlarmServiceToken_xsd1.xsd"/>
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" schemaLocation="./AlarmServiceToken_xsd5.xsd"/>
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm" schemaLocation="./AlarmServiceToken_xsd3.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./AlarmServiceToken_xsd4.xsd"/>
+	<xs:element name="Add">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="alarm" nillable="true" type="q1:Alarm" xmlns:q1="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="baseEvent" nillable="true" type="q2:BaseEvent" xmlns:q2="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddEventResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddAsEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="alarm" nillable="true" type="q3:Alarm" xmlns:q3="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddAsEventResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Get">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q4:guid" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetResult" nillable="true" type="q5:Alarm" xmlns:q5="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q6:guid" xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetEventResult" nillable="true" type="q7:BaseEvent" xmlns:q7="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetHeader">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q8:guid" xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetHeaderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetHeaderResult" nillable="true" type="q9:EventHeader" xmlns:q9="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSnapshots">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q10:guid" xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSnapshotsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetSnapshotsResult" nillable="true" type="q11:SnapshotList" xmlns:q11="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AttachSnapshot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q12:guid" xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="snapshot" nillable="true" type="q13:Snapshot" xmlns:q13="urn:milestone-systems"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AttachSnapshotResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateAlarmValues">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q14:guid" xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="updates" nillable="true" type="q15:ArrayOfKeyValuePairOfstringstring" xmlns:q15="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateAlarmValuesResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateAlarm">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q16:guid" xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="text" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="state" type="xs:int"/>
+				<xs:element minOccurs="0" name="priority" type="xs:int"/>
+				<xs:element minOccurs="0" name="time" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="assignedTo" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateAlarmResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Acknowledge">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q17:guid" xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AcknowledgeResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateMultipleAlarms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="objectId" type="q18:guid" xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="oldState" type="xs:int"/>
+				<xs:element minOccurs="0" name="newState" type="xs:int"/>
+				<xs:element minOccurs="0" name="time" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="assignedTo" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdateMultipleAlarmsResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AcknowledgeMultipleAlarms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="objectId" type="q19:guid" xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AcknowledgeMultipleAlarmsResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StartAlarmLineSession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="filter" nillable="true" type="q20:AlarmFilter" xmlns:q20="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StartAlarmLineSessionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="StartAlarmLineSessionResult" type="q21:guid" xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StopAlarmLineSession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="sessionId" type="q22:guid" xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StopAlarmLineSessionResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSessionAlarmLines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="maxCount" type="xs:int"/>
+				<xs:element minOccurs="0" name="sessionId" type="q23:guid" xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSessionAlarmLinesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetSessionAlarmLinesResult" nillable="true" type="q24:AlarmUpdateData" xmlns:q24="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmLines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="from" type="xs:int"/>
+				<xs:element minOccurs="0" name="maxCount" type="xs:int"/>
+				<xs:element minOccurs="0" name="filter" nillable="true" type="q25:AlarmFilter" xmlns:q25="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmLinesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetAlarmLinesResult" nillable="true" type="q26:ArrayOfAlarmLine" xmlns:q26="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmsWithRelatedHardware">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="maxCount" type="xs:int"/>
+				<xs:element minOccurs="0" name="filter" nillable="true" type="q27:ArrayOfAlarmSearchCriteria" xmlns:q27="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmsWithRelatedHardwareResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetAlarmsWithRelatedHardwareResult" nillable="true" type="q28:ArrayOfAlarmLine" xmlns:q28="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StartEventLineSession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="filter" nillable="true" type="q29:EventFilter" xmlns:q29="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StartEventLineSessionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="StartEventLineSessionResult" type="q30:guid" xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StopEventLineSession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="sessionId" type="q31:guid" xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StopEventLineSessionResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSessionEventLines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="maxCount" type="xs:int"/>
+				<xs:element minOccurs="0" name="sessionId" type="q32:guid" xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSessionEventLinesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetSessionEventLinesResult" nillable="true" type="q33:EventUpdateData" xmlns:q33="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventLines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="from" type="xs:int"/>
+				<xs:element minOccurs="0" name="maxCount" type="xs:int"/>
+				<xs:element minOccurs="0" name="filter" nillable="true" type="q34:EventFilter" xmlns:q34="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventLinesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetEventLinesResult" nillable="true" type="q35:ArrayOfEventLine" xmlns:q35="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStatistics">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStatisticsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetStatisticsResult" nillable="true" type="q36:ArrayOfStatistic" xmlns:q36="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmHistory">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q37:guid" xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmHistoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetAlarmHistoryResult" nillable="true" type="q38:ArrayOfAlarmHistory" xmlns:q38="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmUpdateHistory">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="q39:guid" xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmUpdateHistoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetAlarmUpdateHistoryResult" nillable="true" type="q40:ArrayOfAlarmUpdate" xmlns:q40="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmMessages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAlarmMessagesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetAlarmMessagesResult" nillable="true" type="q41:ArrayOfstring" xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventLines2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="parameters" nillable="true" type="q42:GetEventLines2Params" xmlns:q42="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventLines2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetEventLines2Result" nillable="true" type="q43:GetEventLines2Resp" xmlns:q43="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventCount">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="parameters" nillable="true" type="q44:GetEventCountParams" xmlns:q44="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventCountResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetEventCountResult" nillable="true" type="q45:GetEventCountResp" xmlns:q45="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEvents">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="parameters" nillable="true" type="q46:GetEventsParams" xmlns:q46="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetEventsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetEventsResult" nillable="true" type="q47:GetEventsResp" xmlns:q47="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

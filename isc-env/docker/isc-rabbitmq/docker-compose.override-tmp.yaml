@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  isc-rabbitmq:
+    image: local/isc-rabbitmq:latest
+    container_name: isc-rabbitmq
+    volumes:
+      - type: bind
+        source: /opt/isc-data/isc-rabbitmq
+        target: /var/lib/rabbitmq
+    environment:
+      - TARGET_ENV=local
+      - RABBITMQ_DATA=/opt/data/isc-rabbitmq
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass

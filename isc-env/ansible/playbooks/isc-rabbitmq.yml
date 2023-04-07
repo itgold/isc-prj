@@ -1,0 +1,20 @@
+---
+- name: ISC-RabbitMQ
+  hosts: isc_rabbitmq
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-rabbitmq
+
+  tasks:
+    - name: Create data directory
+      file:
+        path: "{{ isc_data_home }}/{{ container_name }}"
+        state: directory
+        owner: ubuntu
+        group: root
+        mode: 0755
+
+    - import_tasks: common/isc_docker_deployment.yml

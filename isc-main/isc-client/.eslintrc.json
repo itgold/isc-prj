@@ -1,0 +1,104 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+        // "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
+        "plugin:@typescript-eslint/recommended",
+
+        "plugin:jsx-a11y/recommended", // this is rules for JSX syntax
+        "airbnb-typescript", // this guy seems to disable/configure some rules from above
+
+        // https://github.com/prettier/eslint-config-prettier - covers other plugins
+        // like prettier/@typescript-eslint and prettier/react
+        "plugin:prettier/recommended" // must be LAST one
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        // Allows for the parsing of modern ECMAScript features
+        "ecmaVersion": 2020,
+        // Allows for the use of imports
+        "sourceType": "module",
+        // https://blog.geographer.fr/eslint-parser-services, https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+        "project": "./tsconfig.json",
+
+        "ecmaFeatures": {
+            "jsx": true // Allows for the parsing of JSX
+        }
+    },
+    // "plugins": ["react", "react-hooks", "jest", "jsx-a11y", "@typescript-eslint", "prettier"],
+    "plugins": ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "prettier"],
+    "rules": {
+        "@typescript-eslint/no-this-alias": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-module-boundary-types": ["off"],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true,
+                "allowHigherOrderFunctions": true,
+                "allowConciseArrowFunctionExpressionsStartingWithVoid": true
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
+        "import/no-cycle": "off",
+        "no-multi-assign": "off",
+        "react/require-default-props": "off",
+        "react/destructuring-assignment": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/no-array-index-key": "off",
+        "react/no-unescaped-entities": "off",
+        "react/state-in-constructor": "off",
+        "react/no-danger": "off",
+        "react/forbid-prop-types": "off",
+        "no-unused-vars": "off",
+        "no-param-reassign": "off",
+        "no-console": "off",
+        "no-use-before-define": "off",
+        "no-nested-ternary": "off",
+        "no-underscore-dangle": "off",
+        "import/no-unresolved": "off",
+        "no-constant-condition": "off",
+        "global-require": "off",
+        "import/imports-first": ["error", "absolute-first"],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx", ".tsx"]
+            }
+        ],
+        "quotes": [
+            2,
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+            }
+        ]
+    },
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            // "babel-module": {},
+            "typescript": {}
+        },
+        "react": {
+            "version": "detect"
+        }
+    }
+}

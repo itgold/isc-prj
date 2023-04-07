@@ -1,0 +1,29 @@
+---
+- name: ISC-Simulator
+  hosts: isc_app
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-simulator
+
+  tasks:
+    - name: Create target directory
+      file:
+        path: "{{ isc_docker_home }}/{{ container_name }}/artifacts"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0755
+
+    - name: Copy application.yaml configuration file to the remote server
+      template:
+        src: "{{ job_home }}/isc-wormhole-{{ env_name }}/{{ container_name }}/{{ env_name }}.application.yml"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/artifacts/application.yml"
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0750
+        # force: yes
+
+    - import_tasks: common/isc_docker_deployment.yml

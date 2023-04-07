@@ -1,0 +1,23 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-logstash-youtube-videos:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: "${isc_docker_home}/${container_name}/conf/logstash.yml"
+        target: /usr/share/logstash/config/logstash.yml
+      - type: bind
+        source: "${ISC_DATA_HOME}/${container_name}"
+        target: /out
+    environment:
+      - YOUTUBE_SEARCH_KEY=${YOUTUBE_SEARCH_KEY}
+      - YOUTUBE_SEARCH_MAX=${YOUTUBE_SEARCH_MAX}
+      - YOUTUBE_SEARCH_QUERY=${YOUTUBE_SEARCH_QUERY}
+      - YOUTUBE_COMMENTS_KEY=${YOUTUBE_COMMENTS_KEY}
+      - YOUTUBE_COMMENTS_MAX=${YOUTUBE_COMMENTS_MAX}

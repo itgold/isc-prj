@@ -1,0 +1,2025 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://video.net/2/XProtectCSServerCommand" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ServerCommandService_xsd1.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ServerCommandService_xsd2.xsd"/>
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.WebService.Common.ServerCommandService" schemaLocation="./ServerCommandService_xsd3.xsd"/>
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections" schemaLocation="./ServerCommandService_xsd4.xsd"/>
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server" schemaLocation="./ServerCommandService_xsd5.xsd"/>
+	<xs:element name="GetVersion">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetVersionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetVersionResult" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServerVersion">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServerVersionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetServerVersionResult" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetProductInfo">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetProductInfoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetProductInfoResult" nillable="true" type="q1:ProductInfo" xmlns:q1="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ProductInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BuildConfiguration" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="BuildDate" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="BuildNumber" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="MajorVersion" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="MinorVersion" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ProductCode" type="xs:int"/>
+			<xs:element minOccurs="0" name="ProductLine" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="SLC" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="SubProduct" type="ser:guid"/>
+			<xs:element minOccurs="0" name="VendorId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductInfo" nillable="true" type="q2:ProductInfo" xmlns:q2="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetSystemLicenseInfo">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSystemLicenseInfoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetSystemLicenseInfoResult" nillable="true" type="q3:SystemLicenseInfo" xmlns:q3="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SystemLicenseInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Expires" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Features" nillable="true" type="q4:ArrayOfstring" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:element minOccurs="0" name="HasLicense" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IsTrialLicense" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ProductSku" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="SLC" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SystemLicenseInfo" nillable="true" type="q5:SystemLicenseInfo" xmlns:q5="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetSmartClientVersion">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetSmartClientVersionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetSmartClientVersionResult" nillable="true" type="q6:SmartClientVersion" xmlns:q6="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SmartClientVersion">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Beta" type="xs:int"/>
+			<xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ForceUpgrade" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Major" type="xs:int"/>
+			<xs:element minOccurs="0" name="Minor" type="xs:int"/>
+			<xs:element minOccurs="0" name="Revision" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="UpgradeInfo" nillable="true" type="q7:UpgradeInfo" xmlns:q7="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SmartClientVersion" nillable="true" type="q8:SmartClientVersion" xmlns:q8="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="UpgradeInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Hostname" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Path" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Port" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UpgradeInfo" nillable="true" type="q9:UpgradeInfo" xmlns:q9="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="CheckSmartClientVersion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="major" type="xs:int"/>
+				<xs:element minOccurs="0" name="minor" type="xs:int"/>
+				<xs:element minOccurs="0" name="revision" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CheckSmartClientVersionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="CheckSmartClientVersionResult" nillable="true" type="q10:SmartClientVersion" xmlns:q10="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IsOnline">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IsOnlineResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="IsOnlineResult" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Login">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instanceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="currentToken" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LoginResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="LoginResult" nillable="true" type="q11:LoginInfo" xmlns:q11="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="LoginInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="RegistrationTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="TimeToLive" nillable="true" type="q12:TimeDuration" xmlns:q12="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="TimeToLiveLimited" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Token" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LoginInfo" nillable="true" type="q13:LoginInfo" xmlns:q13="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="TimeDuration">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="MicroSeconds" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TimeDuration" nillable="true" type="q14:TimeDuration" xmlns:q14="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="Logout">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instanceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="currentToken" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LogoutResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Authorize">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="userDomainName" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="type" type="q15:AuthorizationActionType" xmlns:q15="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="AuthorizationActionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="LogOn"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AuthorizationActionType" nillable="true" type="q16:AuthorizationActionType" xmlns:q16="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="AuthorizeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="AuthorizeResult" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetUserInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetUserInfoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetUserInfoResult" nillable="true" type="q17:UserInfo" xmlns:q17="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="UserInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="sid" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserInfo" nillable="true" type="q18:UserInfo" xmlns:q18="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetConfiguration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetConfigurationResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetConfigurationResult" nillable="true" type="q19:ConfigurationInfo" xmlns:q19="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ConfigurationInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AlertTypeGroups" nillable="true" type="q20:ArrayOfAlertTypeGroupInfo" xmlns:q20="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="AlertTypes" nillable="true" type="q21:ArrayOfAlertTypeInfo" xmlns:q21="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="ApplicationAccess" nillable="true" type="q22:ApplicationSecurityInfo" xmlns:q22="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="AudioMessages" nillable="true" type="q23:ArrayOfAudioMessageInfo" xmlns:q23="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="BookmarkSettings" nillable="true" type="q24:BookmarkSettingInfo" xmlns:q24="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="CameraGroups" nillable="true" type="q25:ArrayOfCameraGroupInfo" xmlns:q25="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="DeviceMappings" nillable="true" type="q26:ArrayOfDeviceMappingInfo" xmlns:q26="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="EventTypeGroups" nillable="true" type="q27:ArrayOfEventTypeGroupInfo" xmlns:q27="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="EventTypes" nillable="true" type="q28:ArrayOfEventTypeInfo" xmlns:q28="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="FailoverCheckInterval" type="xs:int"/>
+			<xs:element minOccurs="0" name="InputGroups" nillable="true" type="q29:ArrayOfInputGroupInfo" xmlns:q29="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Licenses" nillable="true" type="q30:ArrayOfLicenseInfo" xmlns:q30="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="MatrixMonitors" nillable="true" type="q31:ArrayOfMatrixMonitorInfo" xmlns:q31="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="MetadataDeviceGroups" nillable="true" type="q32:ArrayOfMetadataDeviceGroupInfo" xmlns:q32="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="MicrophoneGroups" nillable="true" type="q33:ArrayOfMicrophoneGroupInfo" xmlns:q33="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="OutputGroups" nillable="true" type="q34:ArrayOfOutputGroupInfo" xmlns:q34="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Recorders" nillable="true" type="q35:ArrayOfRecorderInfo" xmlns:q35="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="RetentionSettings" nillable="true" type="q36:RetentionSettingInfo" xmlns:q36="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="ServerDescription" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ServerId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ServerOptions" nillable="true" type="q37:ArrayOfServerOption" xmlns:q37="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="SpeakerGroups" nillable="true" type="q38:ArrayOfSpeakerGroupInfo" xmlns:q38="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="SystemEventTypes" nillable="true" type="q39:ArrayOfSystemEventTypeInfo" xmlns:q39="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConfigurationInfo" nillable="true" type="q40:ConfigurationInfo" xmlns:q40="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfAlertTypeGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="AlertTypeGroupInfo" nillable="true" type="q41:AlertTypeGroupInfo" xmlns:q41="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfAlertTypeGroupInfo" nillable="true" type="q42:ArrayOfAlertTypeGroupInfo" xmlns:q42="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="AlertTypeGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q43:GroupInfo" xmlns:q43="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="AlertTypeGroups" nillable="true" type="q43:ArrayOfAlertTypeGroupInfo"/>
+					<xs:element minOccurs="0" name="AlertTypes" nillable="true" type="q44:ArrayOfguid" xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AlertTypeGroupInfo" nillable="true" type="q45:AlertTypeGroupInfo" xmlns:q45="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="GroupInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="GroupId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GroupInfo" nillable="true" type="q46:GroupInfo" xmlns:q46="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfAlertTypeInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="AlertTypeInfo" nillable="true" type="q47:AlertTypeInfo" xmlns:q47="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfAlertTypeInfo" nillable="true" type="q48:ArrayOfAlertTypeInfo" xmlns:q48="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="AlertTypeInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AlertTypeId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AlertTypeInfo" nillable="true" type="q49:AlertTypeInfo" xmlns:q49="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ApplicationSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="SmartClientSecurity" nillable="true" type="q50:SmartClientSecurityInfo" xmlns:q50="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ApplicationSecurityInfo" nillable="true" type="q51:ApplicationSecurityInfo" xmlns:q51="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="SmartClientSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="SmartClientBrowse" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="SmartClientLive" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="SmartClientReport" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="SmartClientSetup" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SmartClientSecurityInfo" nillable="true" type="q52:SmartClientSecurityInfo" xmlns:q52="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfAudioMessageInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="AudioMessageInfo" nillable="true" type="q53:AudioMessageInfo" xmlns:q53="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfAudioMessageInfo" nillable="true" type="q54:ArrayOfAudioMessageInfo" xmlns:q54="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="AudioMessageInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AudioMessageInfo" nillable="true" type="q55:AudioMessageInfo" xmlns:q55="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="BookmarkSettingInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DefaultPostTimeSec" type="xs:int"/>
+			<xs:element minOccurs="0" name="DefaultPreTimeSec" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BookmarkSettingInfo" nillable="true" type="q56:BookmarkSettingInfo" xmlns:q56="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfCameraGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="CameraGroupInfo" nillable="true" type="q57:CameraGroupInfo" xmlns:q57="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfCameraGroupInfo" nillable="true" type="q58:ArrayOfCameraGroupInfo" xmlns:q58="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="CameraGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q59:GroupInfo" xmlns:q59="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="CameraGroups" nillable="true" type="q59:ArrayOfCameraGroupInfo"/>
+					<xs:element minOccurs="0" name="Cameras" nillable="true" type="q60:ArrayOfguid" xmlns:q60="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CameraGroupInfo" nillable="true" type="q61:CameraGroupInfo" xmlns:q61="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfDeviceMappingInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="DeviceMappingInfo" nillable="true" type="q62:DeviceMappingInfo" xmlns:q62="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfDeviceMappingInfo" nillable="true" type="q63:ArrayOfDeviceMappingInfo" xmlns:q63="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="DeviceMappingInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DeviceA" type="ser:guid"/>
+			<xs:element minOccurs="0" name="DeviceB" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DeviceMappingInfo" nillable="true" type="q64:DeviceMappingInfo" xmlns:q64="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfEventTypeGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="EventTypeGroupInfo" nillable="true" type="q65:EventTypeGroupInfo" xmlns:q65="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfEventTypeGroupInfo" nillable="true" type="q66:ArrayOfEventTypeGroupInfo" xmlns:q66="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="EventTypeGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q67:GroupInfo" xmlns:q67="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="EventTypeGroups" nillable="true" type="q67:ArrayOfEventTypeGroupInfo"/>
+					<xs:element minOccurs="0" name="EventTypes" nillable="true" type="q68:ArrayOfguid" xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EventTypeGroupInfo" nillable="true" type="q69:EventTypeGroupInfo" xmlns:q69="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfEventTypeInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="EventTypeInfo" nillable="true" type="q70:EventTypeInfo" xmlns:q70="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfEventTypeInfo" nillable="true" type="q71:ArrayOfEventTypeInfo" xmlns:q71="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="EventTypeInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="EventTypeId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EventTypeInfo" nillable="true" type="q72:EventTypeInfo" xmlns:q72="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfInputGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="InputGroupInfo" nillable="true" type="q73:InputGroupInfo" xmlns:q73="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfInputGroupInfo" nillable="true" type="q74:ArrayOfInputGroupInfo" xmlns:q74="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="InputGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q75:GroupInfo" xmlns:q75="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="InputGroups" nillable="true" type="q75:ArrayOfInputGroupInfo"/>
+					<xs:element minOccurs="0" name="Inputs" nillable="true" type="q76:ArrayOfguid" xmlns:q76="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InputGroupInfo" nillable="true" type="q77:InputGroupInfo" xmlns:q77="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfLicenseInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="LicenseInfo" nillable="true" type="q78:LicenseInfo" xmlns:q78="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfLicenseInfo" nillable="true" type="q79:ArrayOfLicenseInfo" xmlns:q79="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="LicenseInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Data" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="LicenseId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseInfo" nillable="true" type="q80:LicenseInfo" xmlns:q80="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMatrixMonitorInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MatrixMonitorInfo" nillable="true" type="q81:MatrixMonitorInfo" xmlns:q81="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMatrixMonitorInfo" nillable="true" type="q82:ArrayOfMatrixMonitorInfo" xmlns:q82="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MatrixMonitorInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="MatrixMonitorId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MatrixMonitorInfo" nillable="true" type="q83:MatrixMonitorInfo" xmlns:q83="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMetadataDeviceGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MetadataDeviceGroupInfo" nillable="true" type="q84:MetadataDeviceGroupInfo" xmlns:q84="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMetadataDeviceGroupInfo" nillable="true" type="q85:ArrayOfMetadataDeviceGroupInfo" xmlns:q85="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MetadataDeviceGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q86:GroupInfo" xmlns:q86="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="MetadataDeviceGroups" nillable="true" type="q86:ArrayOfMetadataDeviceGroupInfo"/>
+					<xs:element minOccurs="0" name="MetadataDevices" nillable="true" type="q87:ArrayOfguid" xmlns:q87="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MetadataDeviceGroupInfo" nillable="true" type="q88:MetadataDeviceGroupInfo" xmlns:q88="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMicrophoneGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MicrophoneGroupInfo" nillable="true" type="q89:MicrophoneGroupInfo" xmlns:q89="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMicrophoneGroupInfo" nillable="true" type="q90:ArrayOfMicrophoneGroupInfo" xmlns:q90="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MicrophoneGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q91:GroupInfo" xmlns:q91="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="MicrophoneGroups" nillable="true" type="q91:ArrayOfMicrophoneGroupInfo"/>
+					<xs:element minOccurs="0" name="Microphones" nillable="true" type="q92:ArrayOfguid" xmlns:q92="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MicrophoneGroupInfo" nillable="true" type="q93:MicrophoneGroupInfo" xmlns:q93="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfOutputGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="OutputGroupInfo" nillable="true" type="q94:OutputGroupInfo" xmlns:q94="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfOutputGroupInfo" nillable="true" type="q95:ArrayOfOutputGroupInfo" xmlns:q95="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="OutputGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q96:GroupInfo" xmlns:q96="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="OutputGroups" nillable="true" type="q96:ArrayOfOutputGroupInfo"/>
+					<xs:element minOccurs="0" name="Outputs" nillable="true" type="q97:ArrayOfguid" xmlns:q97="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="OutputGroupInfo" nillable="true" type="q98:OutputGroupInfo" xmlns:q98="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfRecorderInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="RecorderInfo" nillable="true" type="q99:RecorderInfo" xmlns:q99="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfRecorderInfo" nillable="true" type="q100:ArrayOfRecorderInfo" xmlns:q100="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="RecorderInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Cameras" nillable="true" type="q101:ArrayOfCameraInfo" xmlns:q101="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="DefaultRecordingTimeSeconds" type="xs:int"/>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Hardware" nillable="true" type="q102:ArrayOfHardwareInfo" xmlns:q102="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Inputs" nillable="true" type="q103:ArrayOfInputInfo" xmlns:q103="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="LastModified" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="MetadataDevices" nillable="true" type="q104:ArrayOfMetadataDeviceInfo" xmlns:q104="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Microphones" nillable="true" type="q105:ArrayOfMicrophoneInfo" xmlns:q105="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Outputs" nillable="true" type="q106:ArrayOfOutputInfo" xmlns:q106="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="RecorderId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ServiceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Speakers" nillable="true" type="q107:ArrayOfSpeakerInfo" xmlns:q107="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="TimeZoneName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="WebServerUri" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="XmlEncoding" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecorderInfo" nillable="true" type="q108:RecorderInfo" xmlns:q108="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfCameraInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="CameraInfo" nillable="true" type="q109:CameraInfo" xmlns:q109="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfCameraInfo" nillable="true" type="q110:ArrayOfCameraInfo" xmlns:q110="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="CameraInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q111:DeviceInfo" xmlns:q111="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="BrowsableStream" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="CameraSecurity" nillable="true" type="q111:CameraSecurityInfo"/>
+					<xs:element minOccurs="0" name="EdgeStoragePlayback" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="EdgeStorageSupported" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="IpixSettings" nillable="true" type="q111:IpixInfo"/>
+					<xs:element minOccurs="0" name="MaxFPS" type="xs:double"/>
+					<xs:element minOccurs="0" name="MulticastEnabled" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="PanoramicLensSettings" nillable="true" type="q111:PanoramicLensInfo"/>
+					<xs:element minOccurs="0" name="PtzSettings" nillable="true" type="q111:PtzInfo"/>
+					<xs:element minOccurs="0" name="StopManualRecordingSeconds" type="xs:int"/>
+					<xs:element minOccurs="0" name="Streams" nillable="true" type="q111:ArrayOfStreamInfo"/>
+					<xs:element minOccurs="0" name="Tracks" nillable="true" type="q111:ArrayOfTrackInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CameraInfo" nillable="true" type="q112:CameraInfo" xmlns:q112="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="DeviceInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="CoverageDepth" type="xs:double"/>
+			<xs:element minOccurs="0" name="CoverageDirection" type="xs:double"/>
+			<xs:element minOccurs="0" name="CoverageFieldOfView" type="xs:double"/>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="DeviceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="DeviceIndex" type="xs:int"/>
+			<xs:element minOccurs="0" name="GisPoint" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="HardwareId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Icon" type="xs:int"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="RecorderId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Shortcut" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DeviceInfo" nillable="true" type="q113:DeviceInfo" xmlns:q113="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="CameraSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BookmarkAdd" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkDelete" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkEdit" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Browse" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportAvi" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportDatabase" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportJpeg" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="GetSequences" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Live" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ManagePatrollingProfiles" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ManagePresetLocks" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ManagePresets" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="PtzSecurity" nillable="true" type="q114:PtzSecurityInfo" xmlns:q114="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="RetentionCreate" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionRemove" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetrieveEdgeRecordings" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="SmartSearch" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StartRecording" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StopRecording" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CameraSecurityInfo" nillable="true" type="q115:CameraSecurityInfo" xmlns:q115="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PtzSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ManualControl" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="PresetControl" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ReserveControl" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PtzSecurityInfo" nillable="true" type="q116:PtzSecurityInfo" xmlns:q116="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="IpixInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="CeilingMounted" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Hemisphere" nillable="true" type="q117:HemisphereInfo" xmlns:q117="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Homeposition" nillable="true" type="q118:PositionInfo" xmlns:q118="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="IpixEnabled" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IpixInfo" nillable="true" type="q119:IpixInfo" xmlns:q119="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="HemisphereInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="CenterX" type="xs:double"/>
+			<xs:element minOccurs="0" name="CenterY" type="xs:double"/>
+			<xs:element minOccurs="0" name="RadiusX" type="xs:double"/>
+			<xs:element minOccurs="0" name="RadiusY" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HemisphereInfo" nillable="true" type="q120:HemisphereInfo" xmlns:q120="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PositionInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Pan" type="xs:double"/>
+			<xs:element minOccurs="0" name="Tilt" type="xs:double"/>
+			<xs:element minOccurs="0" name="Zoom" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PositionInfo" nillable="true" type="q121:PositionInfo" xmlns:q121="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PanoramicLensInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="CameraMount" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ImmerVision" nillable="true" type="q122:ImmerVisionInfo" xmlns:q122="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="PanoramicLensEnabled" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="PanoramicLensType" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PanoramicLensInfo" nillable="true" type="q123:PanoramicLensInfo" xmlns:q123="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ImmerVisionInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="LensProfileData" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="LensProfileFieldOfView" type="xs:double"/>
+			<xs:element minOccurs="0" name="LensProfileName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="LensProfileRpl" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ImmerVisionInfo" nillable="true" type="q124:ImmerVisionInfo" xmlns:q124="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PtzInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Capabilities" nillable="true" type="q125:ArrayOfCapabilityInfo" xmlns:q125="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="EditPreset" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IsCenterOnPositionInViewSupported" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IsPtzCenterAndZoomToRectangleSupported" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IsPtzDiagonalSupported" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IsPtzHomeSupported" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Presets" nillable="true" type="q126:ArrayOfPresetInfo" xmlns:q126="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="PtzEnabled" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PtzInfo" nillable="true" type="q127:PtzInfo" xmlns:q127="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfCapabilityInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="CapabilityInfo" nillable="true" type="q128:CapabilityInfo" xmlns:q128="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfCapabilityInfo" nillable="true" type="q129:ArrayOfCapabilityInfo" xmlns:q129="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="CapabilityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Absolute" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Automatic" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="CapabilityId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Relative" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Speed" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Start" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Stop" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CapabilityInfo" nillable="true" type="q130:CapabilityInfo" xmlns:q130="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfPresetInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="PresetInfo" nillable="true" type="q131:PresetInfo" xmlns:q131="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfPresetInfo" nillable="true" type="q132:ArrayOfPresetInfo" xmlns:q132="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PresetInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Locked" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Position" nillable="true" type="q133:PositionInfo" xmlns:q133="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Shortcut" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PresetInfo" nillable="true" type="q134:PresetInfo" xmlns:q134="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfStreamInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="StreamInfo" nillable="true" type="q135:StreamInfo" xmlns:q135="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfStreamInfo" nillable="true" type="q136:ArrayOfStreamInfo" xmlns:q136="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="StreamInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Default" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="StreamId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StreamInfo" nillable="true" type="q137:StreamInfo" xmlns:q137="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfTrackInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="TrackInfo" nillable="true" type="q138:TrackInfo" xmlns:q138="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfTrackInfo" nillable="true" type="q139:ArrayOfTrackInfo" xmlns:q139="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="TrackInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Edge" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="TrackId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TrackInfo" nillable="true" type="q140:TrackInfo" xmlns:q140="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfHardwareInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="HardwareInfo" nillable="true" type="q141:HardwareInfo" xmlns:q141="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfHardwareInfo" nillable="true" type="q142:ArrayOfHardwareInfo" xmlns:q142="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="HardwareInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="DeviceIds" nillable="true" type="q143:ArrayOfguid" xmlns:q143="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:element minOccurs="0" name="HardwareId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Interconnected" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="LastModified" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="RecorderId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HardwareInfo" nillable="true" type="q144:HardwareInfo" xmlns:q144="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfInputInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="InputInfo" nillable="true" type="q145:InputInfo" xmlns:q145="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfInputInfo" nillable="true" type="q146:ArrayOfInputInfo" xmlns:q146="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="InputInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q147:DeviceInfo" xmlns:q147="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="InputSecurity" nillable="true" type="q147:InputSecurityInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InputInfo" nillable="true" type="q148:InputInfo" xmlns:q148="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="InputSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ReadInput" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InputSecurityInfo" nillable="true" type="q149:InputSecurityInfo" xmlns:q149="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMetadataDeviceInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MetadataDeviceInfo" nillable="true" type="q150:MetadataDeviceInfo" xmlns:q150="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMetadataDeviceInfo" nillable="true" type="q151:ArrayOfMetadataDeviceInfo" xmlns:q151="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MetadataDeviceInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q152:DeviceInfo" xmlns:q152="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="EdgeStoragePlayback" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="EdgeStorageSupported" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="MetadataDeviceSecurity" nillable="true" type="q152:MetadataDeviceSecurityInfo"/>
+					<xs:element minOccurs="0" name="MetadataTypes" nillable="true" type="q152:ArrayOfMetadataTypeInfo"/>
+					<xs:element minOccurs="0" name="MulticastEnabled" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="StopManualRecordingSeconds" type="xs:int"/>
+					<xs:element minOccurs="0" name="Tracks" nillable="true" type="q152:ArrayOfTrackInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MetadataDeviceInfo" nillable="true" type="q153:MetadataDeviceInfo" xmlns:q153="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MetadataDeviceSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Browse" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportDatabase" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="GetSequences" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Live" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionCreate" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionRemove" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetrieveEdgeRecordings" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StartRecording" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StopRecording" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetadataDeviceSecurityInfo" nillable="true" type="q154:MetadataDeviceSecurityInfo" xmlns:q154="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMetadataTypeInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MetadataTypeInfo" nillable="true" type="q155:MetadataTypeInfo" xmlns:q155="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMetadataTypeInfo" nillable="true" type="q156:ArrayOfMetadataTypeInfo" xmlns:q156="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MetadataTypeInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DisplayId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ValidTime" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetadataTypeInfo" nillable="true" type="q157:MetadataTypeInfo" xmlns:q157="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfMicrophoneInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MicrophoneInfo" nillable="true" type="q158:MicrophoneInfo" xmlns:q158="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMicrophoneInfo" nillable="true" type="q159:ArrayOfMicrophoneInfo" xmlns:q159="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MicrophoneInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q160:DeviceInfo" xmlns:q160="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="EdgeStoragePlayback" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="EdgeStorageSupported" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="MicrophoneSecurity" nillable="true" type="q160:MicrophoneSecurityInfo"/>
+					<xs:element minOccurs="0" name="MulticastEnabled" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="StopManualRecordingSeconds" type="xs:int"/>
+					<xs:element minOccurs="0" name="Tracks" nillable="true" type="q160:ArrayOfTrackInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MicrophoneInfo" nillable="true" type="q161:MicrophoneInfo" xmlns:q161="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MicrophoneSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BookmarkAdd" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkDelete" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkEdit" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Browse" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportDatabase" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="GetSequences" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Live" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionCreate" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionRemove" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetrieveEdgeRecordings" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StartRecording" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StopRecording" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MicrophoneSecurityInfo" nillable="true" type="q162:MicrophoneSecurityInfo" xmlns:q162="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfOutputInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="OutputInfo" nillable="true" type="q163:OutputInfo" xmlns:q163="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfOutputInfo" nillable="true" type="q164:ArrayOfOutputInfo" xmlns:q164="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="OutputInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q165:DeviceInfo" xmlns:q165="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="OutputSecurity" nillable="true" type="q165:OutputSecurityInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="OutputInfo" nillable="true" type="q166:OutputInfo" xmlns:q166="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="OutputSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Activate" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OutputSecurityInfo" nillable="true" type="q167:OutputSecurityInfo" xmlns:q167="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfSpeakerInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="SpeakerInfo" nillable="true" type="q168:SpeakerInfo" xmlns:q168="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfSpeakerInfo" nillable="true" type="q169:ArrayOfSpeakerInfo" xmlns:q169="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="SpeakerInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q170:DeviceInfo" xmlns:q170="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="EdgeStoragePlayback" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="EdgeStorageSupported" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="MulticastEnabled" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="SpeakerSecurity" nillable="true" type="q170:SpeakerSecurityInfo"/>
+					<xs:element minOccurs="0" name="StopManualRecordingSeconds" type="xs:int"/>
+					<xs:element minOccurs="0" name="Tracks" nillable="true" type="q170:ArrayOfTrackInfo"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SpeakerInfo" nillable="true" type="q171:SpeakerInfo" xmlns:q171="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="SpeakerSecurityInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BookmarkAdd" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkDelete" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkEdit" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="BookmarkView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Browse" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ExportDatabase" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="GetSequences" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Live" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionCreate" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionRemove" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetentionView" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="RetrieveEdgeRecordings" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Speak" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StartRecording" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="StopRecording" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SpeakerSecurityInfo" nillable="true" type="q172:SpeakerSecurityInfo" xmlns:q172="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="RetentionSettingInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="RetentionOptions" nillable="true" type="q173:ArrayOfRetentionOption" xmlns:q173="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RetentionSettingInfo" nillable="true" type="q174:RetentionSettingInfo" xmlns:q174="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfRetentionOption">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="RetentionOption" nillable="true" type="q175:RetentionOption" xmlns:q175="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfRetentionOption" nillable="true" type="q176:ArrayOfRetentionOption" xmlns:q176="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="RetentionOption">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="RetentionOptionType" type="q177:RetentionOptionType" xmlns:q177="http://schemas.datacontract.org/2004/07/VideoOS.WebService.Common.ServerCommandService"/>
+			<xs:element minOccurs="0" name="RetentionUnits" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RetentionOption" nillable="true" type="q178:RetentionOption" xmlns:q178="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfServerOption">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="ServerOption" nillable="true" type="q179:ServerOption" xmlns:q179="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfServerOption" nillable="true" type="q180:ArrayOfServerOption" xmlns:q180="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ServerOption">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Key" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServerOption" nillable="true" type="q181:ServerOption" xmlns:q181="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfSpeakerGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="SpeakerGroupInfo" nillable="true" type="q182:SpeakerGroupInfo" xmlns:q182="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfSpeakerGroupInfo" nillable="true" type="q183:ArrayOfSpeakerGroupInfo" xmlns:q183="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="SpeakerGroupInfo">
+		<xs:complexContent mixed="false">
+			<xs:extension base="q184:GroupInfo" xmlns:q184="http://video.net/2/XProtectCSServerCommand">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="SpeakerGroups" nillable="true" type="q184:ArrayOfSpeakerGroupInfo"/>
+					<xs:element minOccurs="0" name="Speakers" nillable="true" type="q185:ArrayOfguid" xmlns:q185="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SpeakerGroupInfo" nillable="true" type="q186:SpeakerGroupInfo" xmlns:q186="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfSystemEventTypeInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="SystemEventTypeInfo" nillable="true" type="q187:SystemEventTypeInfo" xmlns:q187="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfSystemEventTypeInfo" nillable="true" type="q188:ArrayOfSystemEventTypeInfo" xmlns:q188="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="SystemEventTypeInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="EventSource" type="q189:EventSource" xmlns:q189="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="EventTypeId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SystemEventTypeInfo" nillable="true" type="q190:SystemEventTypeInfo" xmlns:q190="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:simpleType name="EventSource">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Undefined"/>
+			<xs:enumeration value="Device"/>
+			<xs:enumeration value="External"/>
+			<xs:enumeration value="Hardware"/>
+			<xs:enumeration value="Recorder"/>
+			<xs:enumeration value="Server"/>
+			<xs:enumeration value="System"/>
+			<xs:enumeration value="Timer"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="EventSource" nillable="true" type="q191:EventSource" xmlns:q191="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetConfigurationRecorders">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="recorderIds" nillable="true" type="q192:ArrayOfguid" xmlns:q192="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetConfigurationRecordersResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetConfigurationRecordersResult" nillable="true" type="q193:ArrayOfRecorderInfo" xmlns:q193="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetConfigurationHardware">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="hardwareIds" nillable="true" type="q194:ArrayOfguid" xmlns:q194="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetConfigurationHardwareResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetConfigurationHardwareResult" nillable="true" type="q195:ArrayOfHardwareInfo" xmlns:q195="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetDevicesDisabled">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetDevicesDisabledResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetDevicesDisabledResult" nillable="true" type="q196:ArrayOfDeviceDisabledInfo" xmlns:q196="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfDeviceDisabledInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="DeviceDisabledInfo" nillable="true" type="q197:DeviceDisabledInfo" xmlns:q197="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfDeviceDisabledInfo" nillable="true" type="q198:ArrayOfDeviceDisabledInfo" xmlns:q198="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="DeviceDisabledInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DeviceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="DeviceName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="DeviceType" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="HardwareId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="RecorderId" type="ser:guid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DeviceDisabledInfo" nillable="true" type="q199:DeviceDisabledInfo" xmlns:q199="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetVmoServicesList">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetVmoServicesListResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetVmoServicesListResult" nillable="true" type="q200:ArrayOfDictionaryEntry" xmlns:q200="http://schemas.datacontract.org/2004/07/System.Collections"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetViewGroups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetViewGroupsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetViewGroupsResult" nillable="true" type="q201:ArrayOfViewGroupInfo" xmlns:q201="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfViewGroupInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="ViewGroupInfo" nillable="true" type="q202:ViewGroupInfo" xmlns:q202="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfViewGroupInfo" nillable="true" type="q203:ArrayOfViewGroupInfo" xmlns:q203="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ViewGroupInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="LastModifiedTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="LastModifiedUser" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ReadOnly" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="ViewGroupType" type="q204:ViewGroupType" xmlns:q204="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ViewGroupInfo" nillable="true" type="q205:ViewGroupInfo" xmlns:q205="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:simpleType name="ViewGroupType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ViewGroupType" nillable="true" type="q206:ViewGroupType" xmlns:q206="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetViewGroupData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="viewGroupId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetViewGroupDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetViewGroupDataResult" nillable="true" type="q207:ViewGroupInternal" xmlns:q207="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetViewGroupData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="viewGroupId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="viewGroupdata" nillable="true" type="q208:ViewGroupInternalData" xmlns:q208="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetViewGroupDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetViewGroupDataResult" type="q209:SetViewGroupDataResultType" xmlns:q209="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="SetViewGroupDataResultType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UnspecifiedError"/>
+			<xs:enumeration value="Success"/>
+			<xs:enumeration value="ReadOnlyError"/>
+			<xs:enumeration value="ModifiedError"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="SetViewGroupDataResultType" nillable="true" type="q210:SetViewGroupDataResultType" xmlns:q210="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetCustomSettingDataGlobal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataGlobalResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetCustomSettingDataGlobalResult" nillable="true" type="q211:CustomSettingInternal" xmlns:q211="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CustomSettingInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="LastModifiedTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="LastModifiedUser" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CustomSettingInfo" nillable="true" type="q212:CustomSettingInfo" xmlns:q212="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetCustomSettingDataUser">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetCustomSettingDataUserResult" nillable="true" type="q213:CustomSettingInternal" xmlns:q213="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataGlobal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="customSettingData" nillable="true" type="q214:CustomSettingInternalData" xmlns:q214="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+				<xs:element minOccurs="0" name="forceOverride" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataGlobalResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetCustomSettingDataGlobalResult" type="q215:SetCustomSettingResultType" xmlns:q215="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="SetCustomSettingResultType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UnspecifiedError"/>
+			<xs:enumeration value="Success"/>
+			<xs:enumeration value="ModifiedError"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="SetCustomSettingResultType" nillable="true" type="q216:SetCustomSettingResultType" xmlns:q216="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="SetCustomSettingDataUser">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="customSettingData" nillable="true" type="q217:CustomSettingInternalData" xmlns:q217="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+				<xs:element minOccurs="0" name="forceOverride" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetCustomSettingDataUserResult" type="q218:SetCustomSettingResultType" xmlns:q218="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataGlobal2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataGlobal2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetCustomSettingDataGlobal2Result" nillable="true" type="q219:CustomSettingInternal" xmlns:q219="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataUser2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetCustomSettingDataUser2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetCustomSettingDataUser2Result" nillable="true" type="q220:CustomSettingInternal" xmlns:q220="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataGlobal2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="customSettingData" nillable="true" type="q221:CustomSettingInternalData" xmlns:q221="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+				<xs:element minOccurs="0" name="forceOverride" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataGlobal2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetCustomSettingDataGlobal2Result" type="q222:SetCustomSettingResultType" xmlns:q222="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataUser2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customSettingId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="customSettingData" nillable="true" type="q223:CustomSettingInternalData" xmlns:q223="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server"/>
+				<xs:element minOccurs="0" name="forceOverride" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetCustomSettingDataUser2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetCustomSettingDataUser2Result" type="q224:SetCustomSettingResultType" xmlns:q224="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EventTrigger">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="eventId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EventTriggerResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EventTriggerWithMetadata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="eventId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="metadata" nillable="true" type="q225:ArrayOfKeyValue" xmlns:q225="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfKeyValue">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="KeyValue" nillable="true" type="q226:KeyValue" xmlns:q226="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfKeyValue" nillable="true" type="q227:ArrayOfKeyValue" xmlns:q227="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="KeyValue">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Key" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="KeyValue" nillable="true" type="q228:KeyValue" xmlns:q228="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="EventTriggerWithMetadataResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AlertsGetAroundWithSpan">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="alertIds" nillable="true" type="q229:ArrayOfguid" xmlns:q229="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="centerTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="maxTimeBefore" nillable="true" type="q230:TimeDuration" xmlns:q230="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="maxCountBefore" type="xs:int"/>
+				<xs:element minOccurs="0" name="maxTimeAfter" nillable="true" type="q231:TimeDuration" xmlns:q231="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="maxCountAfter" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AlertsGetAroundWithSpanResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="AlertsGetAroundWithSpanResult" nillable="true" type="q232:ArrayOfAlertOccurrence" xmlns:q232="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfAlertOccurrence">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="AlertOccurrence" nillable="true" type="q233:AlertOccurrence" xmlns:q233="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfAlertOccurrence" nillable="true" type="q234:ArrayOfAlertOccurrence" xmlns:q234="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="AlertOccurrence">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AlertId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Time" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AlertOccurrence" nillable="true" type="q235:AlertOccurrence" xmlns:q235="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="MatrixMonitorActivateCamera">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="matrixMonitorId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MatrixMonitorActivateCameraResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryChanges">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="changesFrom" type="xs:dateTime"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryChangesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="QueryChangesResult" nillable="true" type="q236:ArrayOfChange" xmlns:q236="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfChange">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Change" nillable="true" type="q237:Change" xmlns:q237="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfChange" nillable="true" type="q238:ArrayOfChange" xmlns:q238="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="Change">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ChangeType" nillable="true" type="q239:ChangeType" xmlns:q239="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Id" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Time" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Change" nillable="true" type="q240:Change" xmlns:q240="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ChangeType">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Hardware" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Recorder" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ChangeType" nillable="true" type="q241:ChangeType" xmlns:q241="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="QueryRecorderInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="recorderId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryRecorderInfoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="QueryRecorderInfoResult" nillable="true" type="q242:RecorderInfo" xmlns:q242="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkGetNewReference">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="live" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkGetNewReferenceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkGetNewReferenceResult" nillable="true" type="q243:BookmarkReference" xmlns:q243="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="BookmarkReference">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Time" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- xs:element name="BookmarkReference" nillable="true" type="q244:BookmarkReference" xmlns:q244="http://video.net/2/XProtectCSServerCommand"/ -->
+	<xs:element name="BookmarkCreate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="timeBegin" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeTrigged" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeEnd" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="reference" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="header" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkCreateResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkCreateResult" nillable="true" type="q245:Bookmark" xmlns:q245="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Bookmark">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="DeviceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Header" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="TimeBegin" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="TimeEnd" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="TimeTrigged" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="User" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Bookmark" nillable="true" type="q246:Bookmark" xmlns:q246="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="BookmarkUpdate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="bookmarkId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="timeBegin" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeTrigged" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeEnd" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="reference" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="header" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkUpdateResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkUpdateResult" nillable="true" type="q247:Bookmark" xmlns:q247="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkDelete">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="bookmarkId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkDeleteResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkGet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="bookmarkId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkGetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkGetResult" nillable="true" type="q248:Bookmark" xmlns:q248="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkSearchTime">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="time" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeLimit" nillable="true" type="q249:TimeDuration" xmlns:q249="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="countLimit" type="xs:int"/>
+				<xs:element minOccurs="0" name="deviceTypes" nillable="true" type="q250:ArrayOfMediaDeviceType" xmlns:q250="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="optDeviceIds" nillable="true" type="q251:ArrayOfguid" xmlns:q251="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="optUsers" nillable="true" type="q252:ArrayOfstring" xmlns:q252="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="optSearchStr" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfMediaDeviceType">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MediaDeviceType" type="q253:MediaDeviceType" xmlns:q253="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMediaDeviceType" nillable="true" type="q254:ArrayOfMediaDeviceType" xmlns:q254="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:simpleType name="MediaDeviceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Camera"/>
+			<xs:enumeration value="Microphone"/>
+			<xs:enumeration value="Speaker"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="MediaDeviceType" nillable="true" type="q255:MediaDeviceType" xmlns:q255="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="BookmarkSearchTimeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkSearchTimeResult" nillable="true" type="q256:ArrayOfBookmark" xmlns:q256="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfBookmark">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Bookmark" nillable="true" type="q257:Bookmark" xmlns:q257="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfBookmark" nillable="true" type="q258:ArrayOfBookmark" xmlns:q258="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="BookmarkSearchFromBookmark">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="fromBookmarkId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="timeLimit" nillable="true" type="q259:TimeDuration" xmlns:q259="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="countLimit" type="xs:int"/>
+				<xs:element minOccurs="0" name="deviceTypes" nillable="true" type="q260:ArrayOfMediaDeviceType" xmlns:q260="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="optDeviceIds" nillable="true" type="q261:ArrayOfguid" xmlns:q261="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="optUsers" nillable="true" type="q262:ArrayOfstring" xmlns:q262="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="optSearchStr" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BookmarkSearchFromBookmarkResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="BookmarkSearchFromBookmarkResult" nillable="true" type="q263:ArrayOfBookmark" xmlns:q263="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterIntegration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="instanceId" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="integrationId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="integrationVersion" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="integrationName" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="manufacturerName" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterIntegrationResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterPluginIntegrations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="instanceId" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="integrationType" type="q264:IntegrationType" xmlns:q264="http://video.net/2/XProtectCSServerCommand"/>
+				<xs:element minOccurs="0" name="pluginIntegrations" nillable="true" type="q265:ArrayOfPluginIntegration" xmlns:q265="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="IntegrationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Client"/>
+			<xs:enumeration value="Administration"/>
+			<xs:enumeration value="EventServer"/>
+			<xs:enumeration value="Standalone"/>
+			<xs:enumeration value="DeviceDriver"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="IntegrationType" nillable="true" type="q266:IntegrationType" xmlns:q266="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfPluginIntegration">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="PluginIntegration" nillable="true" type="q267:PluginIntegration" xmlns:q267="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfPluginIntegration" nillable="true" type="q268:ArrayOfPluginIntegration" xmlns:q268="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="PluginIntegration">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AllowIntegrationRegistration" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="IntegrationId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="IntegrationName" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="IntegrationVersion" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="ManufacturerName" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PluginIntegration" nillable="true" type="q269:PluginIntegration" xmlns:q269="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="RegisterPluginIntegrationsResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataGetNewReference">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" nillable="true" type="q270:ArrayOfguid" xmlns:q270="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="live" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataGetNewReferenceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataGetNewReferenceResult" nillable="true" type="q271:MarkedDataReference" xmlns:q271="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MarkedDataReference">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Time" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- xs:element name="MarkedDataReference" nillable="true" type="q272:MarkedDataReference" xmlns:q272="http://video.net/2/XProtectCSServerCommand"/ -->
+	<xs:element name="MarkedDataCreate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceIds" nillable="true" type="q273:ArrayOfguid" xmlns:q273="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="timeStart" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeTag" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeEnd" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="reference" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="header" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataType" type="xs:int"/>
+				<xs:element minOccurs="0" name="useRetention" type="xs:boolean"/>
+				<xs:element minOccurs="0" name="retentionExpire" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="retentionOption" nillable="true" type="q274:RetentionOption" xmlns:q274="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataCreateResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataCreateResult" nillable="true" type="q275:MarkedDataResult" xmlns:q275="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MarkedDataResult">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="FaultDevices" nillable="true" type="q276:ArrayOfFaultDevice" xmlns:q276="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="MarkedData" nillable="true" type="q277:MarkedData" xmlns:q277="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Status" type="q278:ResultStatus" xmlns:q278="http://schemas.datacontract.org/2004/07/VideoOS.WebService.Common.ServerCommandService"/>
+			<xs:element minOccurs="0" name="WarningDevices" nillable="true" type="q279:ArrayOfWarningDevice" xmlns:q279="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MarkedDataResult" nillable="true" type="q280:MarkedDataResult" xmlns:q280="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfFaultDevice">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="FaultDevice" nillable="true" type="q281:FaultDevice" xmlns:q281="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfFaultDevice" nillable="true" type="q282:ArrayOfFaultDevice" xmlns:q282="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="FaultDevice">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DeviceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ErrorCode" type="xs:int"/>
+			<xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FaultDevice" nillable="true" type="q283:FaultDevice" xmlns:q283="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="MarkedData">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Created" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="DeviceIds" nillable="true" type="q284:ArrayOfguid" xmlns:q284="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:element minOccurs="0" name="EndTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Header" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="LastModified" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="RetentionExpire" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="RetentionOption" nillable="true" type="q285:RetentionOption" xmlns:q285="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="RetentionSize" type="xs:long"/>
+			<xs:element minOccurs="0" name="StartTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="TagTime" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="UseRetention" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="User" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MarkedData" nillable="true" type="q286:MarkedData" xmlns:q286="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfWarningDevice">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="WarningDevice" nillable="true" type="q287:WarningDevice" xmlns:q287="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfWarningDevice" nillable="true" type="q288:ArrayOfWarningDevice" xmlns:q288="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="WarningDevice">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="DeviceId" type="ser:guid"/>
+			<xs:element minOccurs="0" name="ErrorCode" type="xs:int"/>
+			<xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="WarningDevice" nillable="true" type="q289:WarningDevice" xmlns:q289="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="MarkedDataUpdate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceIds" nillable="true" type="q290:ArrayOfguid" xmlns:q290="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="timeStart" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeTag" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="timeEnd" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="reference" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="header" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataType" type="xs:int"/>
+				<xs:element minOccurs="0" name="useRetention" type="xs:boolean"/>
+				<xs:element minOccurs="0" name="retentionExpire" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="retentionOption" nillable="true" type="q291:RetentionOption" xmlns:q291="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataUpdateResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataUpdateResult" nillable="true" type="q292:MarkedDataResult" xmlns:q292="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataDelete">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataIds" nillable="true" type="q293:ArrayOfguid" xmlns:q293="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataDeleteResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataDeleteResult" nillable="true" type="q294:ArrayOfMarkedDataResult" xmlns:q294="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfMarkedDataResult">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MarkedDataResult" nillable="true" type="q295:MarkedDataResult" xmlns:q295="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMarkedDataResult" nillable="true" type="q296:ArrayOfMarkedDataResult" xmlns:q296="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="MarkedDataGet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="markedDataId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataGetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataGetResult" nillable="true" type="q297:MarkedData" xmlns:q297="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataSearch">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceIds" nillable="true" type="q298:ArrayOfguid" xmlns:q298="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="searchText" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="users" nillable="true" type="q299:ArrayOfstring" xmlns:q299="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="createdFromTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="createdToTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="markedDataFromTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="markedDataToTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="tagTimeFromTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="tagTimeToTime" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="retentionExpireFrom" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="retentionExpireTo" type="xs:dateTime"/>
+				<xs:element minOccurs="0" name="pageIndex" type="xs:int"/>
+				<xs:element minOccurs="0" name="pageSize" type="xs:int"/>
+				<xs:element minOccurs="0" name="sortOrder" type="q300:SortOrderOption" xmlns:q300="http://schemas.datacontract.org/2004/07/VideoOS.WebService.Common.ServerCommandService"/>
+				<xs:element minOccurs="0" name="sortAscending" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MarkedDataSearchResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="MarkedDataSearchResult" nillable="true" type="q301:ArrayOfMarkedData" xmlns:q301="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ArrayOfMarkedData">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="MarkedData" nillable="true" type="q302:MarkedData" xmlns:q302="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMarkedData" nillable="true" type="q303:ArrayOfMarkedData" xmlns:q303="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetClientProfile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="withSetting" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetClientProfileResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetClientProfileResult" nillable="true" type="q304:ClientProfile" xmlns:q304="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ClientProfile">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ClientProfileSettings" nillable="true" type="q305:ArrayOfClientProfileSetting" xmlns:q305="http://video.net/2/XProtectCSServerCommand"/>
+			<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Id" type="ser:guid"/>
+			<xs:element minOccurs="0" name="LastModified" type="xs:dateTime"/>
+			<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="SettingsLastModified" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ClientProfile" nillable="true" type="q306:ClientProfile" xmlns:q306="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ArrayOfClientProfileSetting">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="ClientProfileSetting" nillable="true" type="q307:ClientProfileSetting" xmlns:q307="http://video.net/2/XProtectCSServerCommand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfClientProfileSetting" nillable="true" type="q308:ArrayOfClientProfileSetting" xmlns:q308="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:complexType name="ClientProfileSetting">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Key" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="Locked" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ClientProfileSetting" nillable="true" type="q309:ClientProfileSetting" xmlns:q309="http://video.net/2/XProtectCSServerCommand"/>
+	<xs:element name="GetClientProfile2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="withSetting" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetClientProfile2Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetClientProfile2Result" nillable="true" type="q310:ClientProfile" xmlns:q310="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetClientProfile3">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="withSetting" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetClientProfile3Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetClientProfile3Result" nillable="true" type="q311:ClientProfile" xmlns:q311="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetPresets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetPresetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetPresetsResult" nillable="true" type="q312:ArrayOfPresetInfo" xmlns:q312="http://video.net/2/XProtectCSServerCommand"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeletePreset">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeletePresetResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdatePresetName">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="newName" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdatePresetNameResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdatePresetPosition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="id" type="ser:guid"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UpdatePresetPositionResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreatePreset">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreatePresetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="CreatePresetResult" type="ser:guid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OrderPresets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="deviceId" type="ser:guid"/>
+				<xs:element minOccurs="0" name="ids" nillable="true" type="q313:ArrayOfguid" xmlns:q313="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OrderPresetsResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,188 @@
+---
+include:
+  - local: isc-env/docker/.gitlab-ci-common.yml
+
+stages:
+  - gradle-build
+  # - gradle-test
+  - docker-build
+  - ansible-deploy
+
+# docker-build:
+#   stage: docker
+#   image: docker:20
+#   variables:
+#     DOCKER_BUILDKIT: 1
+#     DOCKER_HOST: tcp://docker:2375/
+#     DOCKER_TLS_CERTDIR: ""
+#     DOCKER_DRIVER: overlay2
+#   # needs:
+#   #   - job: gradle-build
+#   services:
+#     - name: docker:20-dind
+#       command:
+#         # - "--bip=172.37.0.1/24"
+#         - "--tls=false"
+#         - "--dns=8.8.8.8"
+#         - "--insecure-registry=nexus.iscweb.io:5000"
+#         - "--insecure-registry=nexus.iscweb.io:5001"
+#         - "--insecure-registry=nexus.iscweb.io:5002"
+#       alias: docker
+#   before_script:
+#     # - mkdir -p /etc/docker
+#     # - |
+#     #   echo '{
+#     #     "insecure-registries" : ["nexus.iscweb.io:5000", "nexus.iscweb.io:5001", "nexus.iscweb.io:5002"],
+#     #     "bip": "172.47.0.1/16"
+#     #   }' >> /etc/docker/daemon.json
+#     - which openvpn || (apk update -qq && apk add -qq openvpn iputils bind-tools curl)
+#     # - export
+#     # - docker network ls
+#     # - dig nexus.iscweb.io +short
+#     - openvpn --config $CLIENT_OVPN --daemon
+#     - sleep 15
+#     # - echo "nameserver 8.8.8.8" > /etc/resolv.conf
+#     # - cat /etc/resolv.conf
+#     # - cat /etc/hosts
+#     # - cat /etc/openvpn/client.log
+#     # - ip route replace default via 172.27.224.1 dev tun0
+#     # - ip r
+#     # - ip a s
+#     # - sudo systemctl restart docker
+#     # - ping -c3 10.0.32.30
+#     # - ping -c3 172.17.34.11
+#     # - echo "10.0.32.30 nexus.iscweb.io" >> /etc/hosts
+#     # - dig nexus.iscweb.io +short
+#     # - ping -c3 nexus.iscweb.io
+#     # - docker info
+#     - nc -zv nexus.iscweb.io 5000
+#     - curl -s "http://nexus.iscweb.io:5000/v2/"
+#     - echo "pass" | docker login -u nexus_publisher nexus.iscweb.io:5000 --password-stdin
+#     - echo ${CI_REGISTRY_PASSWORD} | docker login -u ${CI_REGISTRY_USER} ${CI_REGISTRY} --password-stdin
+#   script:
+#     - cd isc-env/docker/isc-app
+#     - docker build --pull -t "${CI_REGISTRY_IMAGE}:mr.${CI_MERGE_REQUEST_IID}" .
+#     - docker push "${CI_REGISTRY_IMAGE}:mr.${CI_MERGE_REQUEST_IID}"
+
+# docker-build:
+#   stage: docker
+#   image: docker:20
+#   tags:
+#     - docker_spot_runner
+#   # image:
+#   #   name: gcr.io/kaniko-project/executor:debug
+#   #   entrypoint: [""]
+#   # needs:
+#   #   - job: gradle-build
+#   services:
+#     - name: docker:20-dind
+#       command:
+#         # - "--bip=172.37.0.1/24"
+#         - "--tls=false"
+#         - "--dns=8.8.8.8"
+#         - "--insecure-registry=nexus.iscweb.io:5000"
+#         - "--insecure-registry=nexus.iscweb.io:5001"
+#         - "--insecure-registry=nexus.iscweb.io:5002"
+#       alias: docker
+#   before_script:
+#     # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+#     - which openvpn || (apk update -qq && apk add -qq openvpn iputils bind-tools curl)
+#     - openvpn --config $CLIENT_OVPN --daemon
+#     - sleep 15
+#     - ping -c3 nexus.iscweb.io
+#     - |
+#       cat > ~/kaniko.json <<EOF
+#       {
+#         "auths": {
+#           "http://nexus.iscweb.io:5000": {
+#             "username": "nexus_publisher",
+#             "password": "pass"
+#           }
+#           "http://nexus.iscweb.io:5001": {
+#             "username": "nexus_publisher",
+#             "password": "pass"
+#           }
+#           "http://nexus.iscweb.io:5002": {
+#             "username": "nexus_publisher",
+#             "password": "pass"
+#           }
+#           "${CI_REGISTRY}": {
+#             "username": "${CI_REGISTRY_USER}",
+#             "password": "${CI_REGISTRY_PASSWORD}"
+#           }
+#         }
+#       }
+#       EOF
+#   script:
+#     - cd isc-env/docker/isc-app
+#     - |
+#       docker run \
+#         -v ~/kaniko.json:/kaniko/config.json \
+#         -v ${PWD}:/workspace \
+#         gcr.io/kaniko-project/executor:latest \
+#         --dockerfile /workspace/Dockerfile \
+#         --destination "nexus.iscweb.io:5002/isc-app:gitlab-test" \
+#         --skip-tls-verify \
+#         --insecure \
+#         --insecure-registry nexus.iscweb.io:5000 \
+#         --insecure-registry nexus.iscweb.io:5001 \
+#         --insecure-registry nexus.iscweb.io:5002 \
+#         --context dir:///workspace/
+#     # - /kaniko/executor --context $CI_PROJECT_DIR/isc-env/docker/isc-app --dockerfile $CI_PROJECT_DIR/isc-env/docker/isc-app/Dockerfile --destination ${CI_REGISTRY_IMAGE}:mr.${CI_MERGE_REQUEST_IID}
+
+gradle-build:
+  stage: gradle-build
+  extends: .gradle-build
+  script:
+    - cd isc-main
+    - ./gradlew --build-cache clean build sArtifacts
+  # cache:
+  #   key: ${CI_COMMIT_REF_NAME}-${APP_NAME}
+  #   policy: pull-push
+  #   paths:
+  #     - isc-main/.gradle
+  #     - isc-main/*/build
+  artifacts:
+    paths:
+      - isc-env/docker/${APP_NAME}/artifacts/*
+    expire_in: 7 days
+
+# gradle-test:
+#   image: openjdk:12.0.2-jdk
+#   stage: gradle-test
+#   needs:
+#     - job: gradle-build
+#       artifacts: false
+#   before_script:
+#     - export GRADLE_USER_HOME=$(pwd)/isc-main/.gradle
+#   script:
+#     - cd isc-main
+#     - ./gradlew check
+#   cache:
+#     key: "${CI_COMMIT_REF_NAME}"
+#     policy: pull
+#     paths:
+#       - isc-main/.gradle
+#       - isc-main/*/build
+
+docker-build:
+  stage: docker-build
+  extends: .docker-build
+  needs:
+    - job: gradle-build
+
+ansible-deploy-dev:
+  stage: ansible-deploy
+  extends: .ansible-deploy
+  needs:
+    - job: docker-build
+  except:
+    - prod
+
+ansible-deploy-prod:
+  stage: ansible-deploy
+  extends: .ansible-deploy-prod
+  needs:
+    - job: docker-build
+  only:
+    - prod

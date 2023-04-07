@@ -1,0 +1,37 @@
+ext {
+    moduleName = 'isc-service-business'
+    resilience4jVersion = '1.6.1'
+}
+
+dependencies {
+    api project(':isc-common')
+    implementation project(':isc-persistence-db')
+    implementation project(':isc-persistence-search')
+    implementation project(':isc-service-jpa')
+    testImplementation project(':isc-test')
+
+    implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.8.RELEASE'
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate', module: 'hibernate-core'
+        exclude module: 'flyway-core'
+    }
+
+    implementation group: 'com.google.http-client', name: 'google-http-client-jackson2', version: '1.34.0'
+    implementation ('com.google.api-client:google-api-client:1.30.7') {
+        exclude group: 'com.google.http-client', module: 'google-http-client-jackson2'
+    }
+    implementation ('com.google.cloud:google-cloud-storage:1.103.1') {
+        exclude group: 'com.google.http-client', module: 'google-http-client-jackson2'
+    }
+    implementation group: 'com.google.apis', name: 'google-api-services-gmail', version: 'v1-rev105-1.18.0-rc'
+    implementation group: 'com.google.apis', name: 'google-api-services-oauth2', version: 'v2-rev151-1.25.0'
+
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation group: 'com.fasterxml.jackson', name: 'jackson-datatype-json-org', version: '1.8.0'
+    implementation group: 'org.passay', name: 'passay', version: '1.3.0'
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-spring-boot2', version: "${resilience4jVersion}"
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-all', version: "${resilience4jVersion}"
+}

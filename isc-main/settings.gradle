@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'isc-main'
+
+include 'isc-common'
+include 'isc-persistence-db'
+include 'isc-persistence-search'
+include 'isc-service-jpa'
+include 'isc-service-business'
+include 'isc-component'
+include 'isc-integration-salto'
+include 'isc-integration-mip'
+include 'isc-integration-camera-mock'
+include 'isc-integration-trbonet'
+include 'isc-app'
+include 'isc-test'

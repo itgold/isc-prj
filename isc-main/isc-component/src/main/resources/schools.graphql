@@ -1,0 +1,76 @@
+
+type School {
+    id: String!
+    name: String
+
+    contactEmail: String
+    address: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+
+    status: String
+    district: SchoolDistrict
+    region: Region
+    updated: DateTime
+}
+
+input SchoolInput {
+    id: String
+    name: String
+
+    contactEmail: String
+    address: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+
+    status: String
+    schoolDistrict: SchoolDistrictInput
+    region: RegionInput
+}
+
+type SchoolSearchResult {
+    data: [School]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type SchoolDistrict {
+    id: String!
+    name: String
+
+    contactEmail: String
+    address: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+
+    status: String
+    region: Region
+    updated: DateTime
+}
+
+input SchoolDistrictInput {
+    id: String
+    name: String
+
+    contactEmail: String
+    address: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+
+    status: String
+    region: RegionInput
+}
+
+type DistrictSearchResult {
+    data: [SchoolDistrict]
+    numberOfItems: Int
+    numberOfPages: Int
+}

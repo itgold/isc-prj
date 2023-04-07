@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  isc-app:
+    image: local/isc-app:latest
+    container_name: isc-app
+    volumes:
+      - type: bind
+        source: ./artifacts/application.yml
+        target: /app/application.yml
+      - type: bind
+        source: ./artifacts/logback.xml
+        target: /app/logback.xml
+      - type: bind
+        source: /opt/isc-logs/isc-app
+        target: /opt/isc/logs
+    environment:
+      - TARGET_ENV=local
+      - APP_SERVER_HOST=isc-app
+      - DB_HOST=isc-postgres

@@ -1,0 +1,53 @@
+---
+- name: Provision hosts
+  hosts: all
+  # remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: yes
+
+  vars:
+    isc_hostname: "{{ inventory_hostname }}"
+
+  tasks:
+    - include_role:
+        name: host
+
+    - name: "Set authorized key for {{ isc_username }}"
+      authorized_key:
+        user: "{{ isc_username }}"
+        key: "{{ authorized_key_pub }}"
+
+    - import_tasks: common/aws.yml
+
+    - import_tasks: common/docker.yml
+
+    - name: Create logs directory
+      file:
+        path: "{{ isc_logs_home }}"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0755
+
+    - import_tasks: common/monit.yml
+
+    - name: Enable monit status on start
+      lineinfile:
+        path: /home/{{ isc_username }}/.bashrc
+        regexp: "echo.*monit status.*"
+        line: "echo; sudo monit status;"
+        mode: 0644
+
+    - name: Enable docker ps on start
+      lineinfile:
+        path: /home/{{ isc_username }}/.bashrc
+        regexp: "echo.*docker ps.*"
+        line: "echo; docker ps;"
+        mode: 0644
+
+    - name: Monit status alias
+      lineinfile:
+        path: /home/{{ isc_username }}/.bashrc
+        regexp: "^(alias st.*)"
+        line: "alias st='sudo monit status; docker ps; echo;'"
+        mode: 0644

@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Evgenii Vasilenko
+  description: Docker CE install
+  company: ISC
+  issue_tracker_url: https://iscweb.atlassian.net/browse/IWD
+  license: BSD
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []

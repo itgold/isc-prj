@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01" xmlns:tns="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ServiceRegistrationService_xsd1.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ServiceRegistrationService_xsd2.xsd"/>
+	<xs:import namespace="http://video.net/2/XProtectCSServiceRegistration" schemaLocation="./ServiceRegistrationService_xsd3.xsd"/>
+	<xs:element name="RegisterService">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="type" type="q1:guid" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="instance" type="q2:guid" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="uri" nillable="true" type="q3:ArrayOfstring" xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customData" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterServiceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="RegisterServiceResult" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterServiceWithEndpoints">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="type" type="q4:guid" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="instance" type="q5:guid" xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="uri" nillable="true" type="q6:ArrayOfstring" xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="customData" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="endpointDefinition" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegisterServiceWithEndpointsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="RegisterServiceWithEndpointsResult" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UnregisterService">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instance" type="q7:guid" xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UnregisterServiceResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EnableService">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instance" type="q8:guid" xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="enabled" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EnableServiceResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServices">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServicesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetServicesResult" nillable="true" type="q9:ArrayOfServiceInfo" xmlns:q9="http://video.net/2/XProtectCSServiceRegistration"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServicesIncludingDisabled">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServicesIncludingDisabledResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetServicesIncludingDisabledResult" nillable="true" type="q10:ArrayOfServiceInfo" xmlns:q10="http://video.net/2/XProtectCSServiceRegistration"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetServiceData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instance" type="q11:guid" xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/"/>
+				<xs:element minOccurs="0" name="customData" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetServiceDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetServiceDataResult" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServiceData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="instance" type="q12:guid" xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetServiceDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetServiceDataResult" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

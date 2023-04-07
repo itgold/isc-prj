@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://video.net/2/CentralServerAlarmCommand" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://video.net/2/CentralServerAlarmCommand" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://video.net/2/CentralServerAlarmCommand/Imports">
+			<xsd:import namespace="http://video.net/2/CentralServerAlarmCommand" schemaLocation="./AlarmServiceToken_xsd0.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm" schemaLocation="./AlarmServiceToken_xsd3.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./AlarmServiceToken_xsd1.xsd"/>
+			<xsd:import namespace="urn:milestone-systems" schemaLocation="./AlarmServiceToken_xsd2.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./AlarmServiceToken_xsd4.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" schemaLocation="./AlarmServiceToken_xsd5.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IAlarmCommandToken_Add_InputMessage">
+		<wsdl:part element="tns:Add" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Add_OutputMessage">
+		<wsdl:part element="tns:AddResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Add_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q1:AlarmServiceFault" name="detail" xmlns:q1="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddEvent_InputMessage">
+		<wsdl:part element="tns:AddEvent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddEvent_OutputMessage">
+		<wsdl:part element="tns:AddEventResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddEvent_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q2:AlarmServiceFault" name="detail" xmlns:q2="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddAsEvent_InputMessage">
+		<wsdl:part element="tns:AddAsEvent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddAsEvent_OutputMessage">
+		<wsdl:part element="tns:AddAsEventResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AddAsEvent_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q3:AlarmServiceFault" name="detail" xmlns:q3="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Get_InputMessage">
+		<wsdl:part element="tns:Get" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Get_OutputMessage">
+		<wsdl:part element="tns:GetResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Get_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q4:AlarmServiceFault" name="detail" xmlns:q4="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvent_InputMessage">
+		<wsdl:part element="tns:GetEvent" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvent_OutputMessage">
+		<wsdl:part element="tns:GetEventResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvent_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q5:AlarmServiceFault" name="detail" xmlns:q5="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetHeader_InputMessage">
+		<wsdl:part element="tns:GetHeader" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetHeader_OutputMessage">
+		<wsdl:part element="tns:GetHeaderResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetHeader_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q6:AlarmServiceFault" name="detail" xmlns:q6="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSnapshots_InputMessage">
+		<wsdl:part element="tns:GetSnapshots" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSnapshots_OutputMessage">
+		<wsdl:part element="tns:GetSnapshotsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSnapshots_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q7:AlarmServiceFault" name="detail" xmlns:q7="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AttachSnapshot_InputMessage">
+		<wsdl:part element="tns:AttachSnapshot" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AttachSnapshot_OutputMessage">
+		<wsdl:part element="tns:AttachSnapshotResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AttachSnapshot_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q8:AlarmServiceFault" name="detail" xmlns:q8="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarmValues_InputMessage">
+		<wsdl:part element="tns:UpdateAlarmValues" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarmValues_OutputMessage">
+		<wsdl:part element="tns:UpdateAlarmValuesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarmValues_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q9:AlarmServiceFault" name="detail" xmlns:q9="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarm_InputMessage">
+		<wsdl:part element="tns:UpdateAlarm" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarm_OutputMessage">
+		<wsdl:part element="tns:UpdateAlarmResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateAlarm_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q10:AlarmServiceFault" name="detail" xmlns:q10="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Acknowledge_InputMessage">
+		<wsdl:part element="tns:Acknowledge" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Acknowledge_OutputMessage">
+		<wsdl:part element="tns:AcknowledgeResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_Acknowledge_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q11:AlarmServiceFault" name="detail" xmlns:q11="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateMultipleAlarms_InputMessage">
+		<wsdl:part element="tns:UpdateMultipleAlarms" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateMultipleAlarms_OutputMessage">
+		<wsdl:part element="tns:UpdateMultipleAlarmsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_UpdateMultipleAlarms_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q12:AlarmServiceFault" name="detail" xmlns:q12="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AcknowledgeMultipleAlarms_InputMessage">
+		<wsdl:part element="tns:AcknowledgeMultipleAlarms" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AcknowledgeMultipleAlarms_OutputMessage">
+		<wsdl:part element="tns:AcknowledgeMultipleAlarmsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_AcknowledgeMultipleAlarms_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q13:AlarmServiceFault" name="detail" xmlns:q13="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartAlarmLineSession_InputMessage">
+		<wsdl:part element="tns:StartAlarmLineSession" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartAlarmLineSession_OutputMessage">
+		<wsdl:part element="tns:StartAlarmLineSessionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartAlarmLineSession_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q14:AlarmServiceFault" name="detail" xmlns:q14="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopAlarmLineSession_InputMessage">
+		<wsdl:part element="tns:StopAlarmLineSession" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopAlarmLineSession_OutputMessage">
+		<wsdl:part element="tns:StopAlarmLineSessionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopAlarmLineSession_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q15:AlarmServiceFault" name="detail" xmlns:q15="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionAlarmLines_InputMessage">
+		<wsdl:part element="tns:GetSessionAlarmLines" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionAlarmLines_OutputMessage">
+		<wsdl:part element="tns:GetSessionAlarmLinesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionAlarmLines_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q16:AlarmServiceFault" name="detail" xmlns:q16="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmLines_InputMessage">
+		<wsdl:part element="tns:GetAlarmLines" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmLines_OutputMessage">
+		<wsdl:part element="tns:GetAlarmLinesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmLines_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q17:AlarmServiceFault" name="detail" xmlns:q17="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmsWithRelatedHardware_InputMessage">
+		<wsdl:part element="tns:GetAlarmsWithRelatedHardware" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmsWithRelatedHardware_OutputMessage">
+		<wsdl:part element="tns:GetAlarmsWithRelatedHardwareResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmsWithRelatedHardware_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q18:AlarmServiceFault" name="detail" xmlns:q18="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartEventLineSession_InputMessage">
+		<wsdl:part element="tns:StartEventLineSession" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartEventLineSession_OutputMessage">
+		<wsdl:part element="tns:StartEventLineSessionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StartEventLineSession_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q19:AlarmServiceFault" name="detail" xmlns:q19="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopEventLineSession_InputMessage">
+		<wsdl:part element="tns:StopEventLineSession" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopEventLineSession_OutputMessage">
+		<wsdl:part element="tns:StopEventLineSessionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_StopEventLineSession_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q20:AlarmServiceFault" name="detail" xmlns:q20="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionEventLines_InputMessage">
+		<wsdl:part element="tns:GetSessionEventLines" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionEventLines_OutputMessage">
+		<wsdl:part element="tns:GetSessionEventLinesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetSessionEventLines_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q21:AlarmServiceFault" name="detail" xmlns:q21="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines_InputMessage">
+		<wsdl:part element="tns:GetEventLines" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines_OutputMessage">
+		<wsdl:part element="tns:GetEventLinesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q22:AlarmServiceFault" name="detail" xmlns:q22="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetStatistics_InputMessage">
+		<wsdl:part element="tns:GetStatistics" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetStatistics_OutputMessage">
+		<wsdl:part element="tns:GetStatisticsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetStatistics_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q23:AlarmServiceFault" name="detail" xmlns:q23="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmHistory_InputMessage">
+		<wsdl:part element="tns:GetAlarmHistory" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmHistory_OutputMessage">
+		<wsdl:part element="tns:GetAlarmHistoryResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmHistory_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q24:AlarmServiceFault" name="detail" xmlns:q24="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmUpdateHistory_InputMessage">
+		<wsdl:part element="tns:GetAlarmUpdateHistory" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmUpdateHistory_OutputMessage">
+		<wsdl:part element="tns:GetAlarmUpdateHistoryResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmUpdateHistory_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q25:AlarmServiceFault" name="detail" xmlns:q25="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmMessages_InputMessage">
+		<wsdl:part element="tns:GetAlarmMessages" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmMessages_OutputMessage">
+		<wsdl:part element="tns:GetAlarmMessagesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetAlarmMessages_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q26:AlarmServiceFault" name="detail" xmlns:q26="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines2_InputMessage">
+		<wsdl:part element="tns:GetEventLines2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines2_OutputMessage">
+		<wsdl:part element="tns:GetEventLines2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventLines2_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q27:AlarmServiceFault" name="detail" xmlns:q27="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventCount_InputMessage">
+		<wsdl:part element="tns:GetEventCount" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventCount_OutputMessage">
+		<wsdl:part element="tns:GetEventCountResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEventCount_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q28:AlarmServiceFault" name="detail" xmlns:q28="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvents_InputMessage">
+		<wsdl:part element="tns:GetEvents" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvents_OutputMessage">
+		<wsdl:part element="tns:GetEventsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IAlarmCommandToken_GetEvents_AlarmServiceFaultFault_FaultMessage">
+		<wsdl:part element="q29:AlarmServiceFault" name="detail" xmlns:q29="http://schemas.datacontract.org/2004/07/VideoOS.Platform.Proxy.Alarm"/>
+	</wsdl:message>
+	<wsdl:portType msc:usingSession="false" name="IAlarmCommandToken">
+		<wsdl:operation name="Add">
+			<wsdl:input message="tns:IAlarmCommandToken_Add_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Add"/>
+			<wsdl:output message="tns:IAlarmCommandToken_Add_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_Add_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="AddEvent">
+			<wsdl:input message="tns:IAlarmCommandToken_AddEvent_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddEvent"/>
+			<wsdl:output message="tns:IAlarmCommandToken_AddEvent_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddEventResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_AddEvent_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddEventAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="AddAsEvent">
+			<wsdl:input message="tns:IAlarmCommandToken_AddAsEvent_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddAsEvent"/>
+			<wsdl:output message="tns:IAlarmCommandToken_AddAsEvent_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddAsEventResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_AddAsEvent_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddAsEventAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<wsdl:input message="tns:IAlarmCommandToken_Get_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Get"/>
+			<wsdl:output message="tns:IAlarmCommandToken_Get_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_Get_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEvent">
+			<wsdl:input message="tns:IAlarmCommandToken_GetEvent_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEvent"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetEvent_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetEvent_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetHeader">
+			<wsdl:input message="tns:IAlarmCommandToken_GetHeader_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetHeader"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetHeader_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetHeaderResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetHeader_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetHeaderAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSnapshots">
+			<wsdl:input message="tns:IAlarmCommandToken_GetSnapshots_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSnapshots"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetSnapshots_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSnapshotsResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetSnapshots_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSnapshotsAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="AttachSnapshot">
+			<wsdl:input message="tns:IAlarmCommandToken_AttachSnapshot_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AttachSnapshot"/>
+			<wsdl:output message="tns:IAlarmCommandToken_AttachSnapshot_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AttachSnapshotResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_AttachSnapshot_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AttachSnapshotAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAlarmValues">
+			<wsdl:input message="tns:IAlarmCommandToken_UpdateAlarmValues_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmValues"/>
+			<wsdl:output message="tns:IAlarmCommandToken_UpdateAlarmValues_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmValuesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_UpdateAlarmValues_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmValuesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAlarm">
+			<wsdl:input message="tns:IAlarmCommandToken_UpdateAlarm_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarm"/>
+			<wsdl:output message="tns:IAlarmCommandToken_UpdateAlarm_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_UpdateAlarm_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Acknowledge">
+			<wsdl:input message="tns:IAlarmCommandToken_Acknowledge_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Acknowledge"/>
+			<wsdl:output message="tns:IAlarmCommandToken_Acknowledge_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_Acknowledge_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateMultipleAlarms">
+			<wsdl:input message="tns:IAlarmCommandToken_UpdateMultipleAlarms_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateMultipleAlarms"/>
+			<wsdl:output message="tns:IAlarmCommandToken_UpdateMultipleAlarms_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateMultipleAlarmsResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_UpdateMultipleAlarms_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateMultipleAlarmsAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="AcknowledgeMultipleAlarms">
+			<wsdl:input message="tns:IAlarmCommandToken_AcknowledgeMultipleAlarms_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeMultipleAlarms"/>
+			<wsdl:output message="tns:IAlarmCommandToken_AcknowledgeMultipleAlarms_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeMultipleAlarmsResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_AcknowledgeMultipleAlarms_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeMultipleAlarmsAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="StartAlarmLineSession">
+			<wsdl:input message="tns:IAlarmCommandToken_StartAlarmLineSession_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartAlarmLineSession"/>
+			<wsdl:output message="tns:IAlarmCommandToken_StartAlarmLineSession_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartAlarmLineSessionResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_StartAlarmLineSession_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartAlarmLineSessionAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="StopAlarmLineSession">
+			<wsdl:input message="tns:IAlarmCommandToken_StopAlarmLineSession_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopAlarmLineSession"/>
+			<wsdl:output message="tns:IAlarmCommandToken_StopAlarmLineSession_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopAlarmLineSessionResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_StopAlarmLineSession_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopAlarmLineSessionAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSessionAlarmLines">
+			<wsdl:input message="tns:IAlarmCommandToken_GetSessionAlarmLines_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionAlarmLines"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetSessionAlarmLines_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionAlarmLinesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetSessionAlarmLines_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionAlarmLinesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmLines">
+			<wsdl:input message="tns:IAlarmCommandToken_GetAlarmLines_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmLines"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetAlarmLines_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmLinesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetAlarmLines_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmLinesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmsWithRelatedHardware">
+			<wsdl:input message="tns:IAlarmCommandToken_GetAlarmsWithRelatedHardware_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmsWithRelatedHardware"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetAlarmsWithRelatedHardware_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmsWithRelatedHardwareResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetAlarmsWithRelatedHardware_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmsWithRelatedHardwareAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="StartEventLineSession">
+			<wsdl:input message="tns:IAlarmCommandToken_StartEventLineSession_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartEventLineSession"/>
+			<wsdl:output message="tns:IAlarmCommandToken_StartEventLineSession_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartEventLineSessionResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_StartEventLineSession_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartEventLineSessionAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="StopEventLineSession">
+			<wsdl:input message="tns:IAlarmCommandToken_StopEventLineSession_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopEventLineSession"/>
+			<wsdl:output message="tns:IAlarmCommandToken_StopEventLineSession_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopEventLineSessionResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_StopEventLineSession_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopEventLineSessionAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSessionEventLines">
+			<wsdl:input message="tns:IAlarmCommandToken_GetSessionEventLines_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionEventLines"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetSessionEventLines_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionEventLinesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetSessionEventLines_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionEventLinesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventLines">
+			<wsdl:input message="tns:IAlarmCommandToken_GetEventLines_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetEventLines_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLinesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetEventLines_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLinesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetStatistics">
+			<wsdl:input message="tns:IAlarmCommandToken_GetStatistics_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetStatistics"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetStatistics_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetStatisticsResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetStatistics_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetStatisticsAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmHistory">
+			<wsdl:input message="tns:IAlarmCommandToken_GetAlarmHistory_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmHistory"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetAlarmHistory_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmHistoryResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetAlarmHistory_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmHistoryAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmUpdateHistory">
+			<wsdl:input message="tns:IAlarmCommandToken_GetAlarmUpdateHistory_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmUpdateHistory"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetAlarmUpdateHistory_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmUpdateHistoryResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetAlarmUpdateHistory_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmUpdateHistoryAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmMessages">
+			<wsdl:input message="tns:IAlarmCommandToken_GetAlarmMessages_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmMessages"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetAlarmMessages_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmMessagesResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetAlarmMessages_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmMessagesAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventLines2">
+			<wsdl:input message="tns:IAlarmCommandToken_GetEventLines2_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines2"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetEventLines2_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines2Response"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetEventLines2_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines2AlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventCount">
+			<wsdl:input message="tns:IAlarmCommandToken_GetEventCount_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventCount"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetEventCount_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventCountResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetEventCount_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventCountAlarmServiceFaultFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetEvents">
+			<wsdl:input message="tns:IAlarmCommandToken_GetEvents_InputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEvents"/>
+			<wsdl:output message="tns:IAlarmCommandToken_GetEvents_OutputMessage" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventsResponse"/>
+			<wsdl:fault message="tns:IAlarmCommandToken_GetEvents_AlarmServiceFaultFault_FaultMessage" name="AlarmServiceFaultFault" wsaw:Action="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventsAlarmServiceFaultFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

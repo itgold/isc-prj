@@ -1,0 +1,36 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-client:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: ./conf/common-security.conf
+        target: /etc/nginx/common-security.conf
+      - type: bind
+        source: ./conf/dhparam.pem
+        target: /etc/ssl/conf/dhparam.pem
+      - type: bind
+        source: ./cert/ssl-cert.crt
+        target: /etc/ssl/certs/ssl-cert.crt
+      - type: bind
+        source: ./cert/ssl-cert.key
+        target: /etc/ssl/private/ssl-cert.key
+      - type: bind
+        source: "${ISC_LOGS_HOME}/${container_name}"
+        target: /var/log/nginx
+    environment:
+      - ES_HOST=${ES_HOST}
+      - ES_PORT=${ES_PORT}
+      - KIBANA_HOST=${KIBANA_HOST}
+      - KIBANA_PORT=${KIBANA_PORT}
+      - APP_SERVER_HOST=${APP_SERVER_HOST}
+      - APP_SERVER_PORT=${APP_SERVER_PORT}
+    ports:
+      - 80:80
+      - 443:443

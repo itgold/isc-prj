@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://video.net/2/XProtectCSServiceRegistration" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://video.net/2/XProtectCSServiceRegistration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ServiceRegistrationService_xsd1.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ServiceRegistrationService_xsd2.xsd"/>
+	<xs:complexType name="ArrayOfServiceInfo">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceInfo" nillable="true" type="tns:ServiceInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfServiceInfo" nillable="true" type="tns:ArrayOfServiceInfo"/>
+	<xs:complexType name="ServiceInfo">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="enabled" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="endpointdefinition" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="endpoints" nillable="true" type="tns:ArrayOfServiceEndpoint"/>
+			<xs:element minOccurs="0" name="instance" type="ser:guid"/>
+			<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="trusted" type="xs:boolean"/>
+			<xs:element minOccurs="0" name="type" type="ser:guid"/>
+			<xs:element minOccurs="0" name="uri" nillable="true" type="q1:ArrayOfstring" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceInfo" nillable="true" type="tns:ServiceInfo"/>
+	<xs:complexType name="ArrayOfServiceEndpoint">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="ServiceEndpoint" nillable="true" type="tns:ServiceEndpoint"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfServiceEndpoint" nillable="true" type="tns:ArrayOfServiceEndpoint"/>
+	<xs:complexType name="ServiceEndpoint">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="authentication" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+			<xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceEndpoint" nillable="true" type="tns:ServiceEndpoint"/>
+</xs:schema>

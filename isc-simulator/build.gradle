@@ -1,0 +1,125 @@
+// build script configuration for all projects
+buildscript {
+    ext {
+        springBootVersion = "2.6.2"
+        springBootESVersion = "2.6.4"
+        moduleName = 'isc-simulator'
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        //gradle plugins location
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE')
+    }
+}
+
+// configuration for all projects
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    apply plugin: 'idea'
+
+    // IntelliJ configuration
+    idea {
+        module {
+            name = "${moduleName}"
+            inheritOutputDirs = true
+        }
+    }
+
+    group 'io.iscweb'
+    version '1.0-SNAPSHOT'
+}
+
+// configuration for subprojects
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+    apply plugin: 'groovy-base'
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+//    fix jUnit jupiter version here.
+    ext['junit-jupiter.version'] = '5.3.0'
+    ext['undertow.version'] = '2.2.3.Final'
+
+    dependencies {
+        implementation group: 'org.springframework.boot', name: 'spring-boot'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-amqp'
+        implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+        implementation group: 'org.springframework.data', name: 'spring-data-commons', version: "${springBootVersion}"
+        implementation group: 'org.springframework.security', name: 'spring-security-messaging', version: '5.3.2.RELEASE'
+
+        implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+        implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+        implementation (group: 'com.google.guava', name: 'guava', version: '29.0-jre') {
+            exclude group: 'org.checkerframework', module: 'checker-qual'
+        }
+        implementation group: 'org.checkerframework', name: 'checker-qual', version: '3.5.0'
+
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.29'
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.1'
+        implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+        implementation group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.3.1.Final'
+
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+        testImplementation group: 'org.springframework.security', name: 'spring-security-test'
+
+        testImplementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.9', ext: 'pom'
+        testImplementation group: 'org.codehaus.groovy', name: 'groovy-test', version: '3.0.9'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
+        testImplementation group: 'org.junit.platform', name: 'junit-platform-engine', version: '1.8.2'
+        testImplementation group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.8.2'
+        testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
+        testImplementation group: 'org.spockframework', name: 'spock-spring', version: '2.0-groovy-3.0'
+        testImplementation group: 'com.athaydes', name: 'spock-reports', version: '2.0-groovy-3.0'
+
+        task explodedJar(type: Copy) {
+            with jar
+            into "${buildDir}/exploded"
+            into('lib') {
+                from configurations.runtimeClasspath
+            }
+        }
+
+        bootJar {
+            enabled = false
+            manifest {
+                attributes 'Start-Class': 'com.iscweb.simulator.IscSimulator'
+            }
+        }
+
+        bootRun {
+            enabled = false
+        }
+
+        jar {
+            enabled = true
+        }
+    }
+
+    task sArtifacts(type: Copy) {
+        dependsOn(bootJar)
+        group = 'build'
+        from file("${project.rootDir}/isc-simulator-app/build/libs"), file("${project.rootDir}/isc-simulator-app/src/main/resources/application.default.yml")
+        into file("${project.rootDir}/../isc-env/docker/isc-simulator/artifacts")
+        rename 'isc-simulator-(.*)', 'simulator-application.jar'
+        rename 'application.default.yml', 'application.yml'
+    }
+}

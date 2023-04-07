@@ -1,0 +1,98 @@
+---
+- name: Stop monit {{ container_name }}
+  command: monit stop {{ container_name }}
+  ignore_errors: yes
+
+- name: Stop and remove {{ container_name }}
+  docker_container:
+    name: "{{ container_name }}"
+    state: absent
+
+- name: Get AWS Login password
+  command: "aws ecr get-login-password"
+  register: aws_password
+  no_log: true
+
+- name: Login to AWS
+  command: "docker login --username AWS --password {{ aws_password.stdout }} {{ ecr_registry }}"
+
+- name: Pull the latest docker image
+  docker_image:
+    name: "{{ isc_docker_repo }}/{{ container_name }}"
+    source: pull
+    force_source: yes
+
+- name: Create docker logs folder
+  file:
+    path: "{{ isc_logs_home }}/{{ container_name }}"
+    state: directory
+    owner: "{{ isc_username }}"
+    group: "{{ isc_username }}"
+    mode: 0777
+
+- name: Create docker scripts folder
+  file:
+    path: "{{ isc_docker_home }}/{{ container_name }}"
+    state: directory
+    owner: "{{ isc_username }}"
+    group: docker
+    mode: 0750
+
+- name: Copy docker-compose script to the remote server
+  copy:
+    src: "{{ job_home }}/isc-env/docker/{{ container_name }}/docker-compose.yaml"
+    dest: "{{ isc_docker_home }}/{{ container_name }}/docker-compose.yaml"
+    owner: "{{ isc_username }}"
+    group: "{{ isc_username }}"
+    mode: 0750
+    # force: yes
+
+- name: Copy .env config files to the remote server
+  template:
+    src: "{{ job_home }}/isc-wormhole-{{ env_name }}/docker_compose/{{ container_name }}.env"
+    dest: "{{ isc_docker_home }}/{{ container_name }}/.env"
+    owner: "{{ isc_username }}"
+    group: "{{ isc_username }}"
+    mode: 0750
+    # force: yes
+
+- name: Include monit_monitors vars
+  include_vars: monit_monitors.yml
+
+- name: Init scripts directory
+  file:
+    path: "{{ monit_scripts_dir }}/{{ container_name }}"
+    state: directory
+    mode: 0755
+
+- name: Copy monit scripts
+  template:
+    src: "{{ item | basename }}"
+    dest: "{{ item }}"
+    mode: 0750
+  loop:
+    - "{{ monit_monitors | map(attribute='target') | list | join('\n') }}"
+    - "{{ monit_monitors | map(attribute='start') | list | join('\n') }}"
+    - "{{ monit_monitors | map(attribute='stop') | list | join('\n') }}"
+
+- name: Include monit role
+  include_role:
+    name: monit
+    tasks_from: monitors.yml
+
+- name: Restart monit
+  service:
+    name: monit
+    state: restarted
+
+- name: Create a network
+  docker_network:
+    name: isc-network
+
+- name: Start docker-compose {{ container_name }}
+  docker_compose:
+    project_src: "{{ isc_docker_home }}/{{ container_name }}"
+    state: present
+
+- name: Start monit {{ container_name }}
+  command: monit start {{ container_name }}

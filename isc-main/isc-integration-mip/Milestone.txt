@@ -1,0 +1,19 @@
+
+Minimal permissions for the ISC BASIC user:
+1. Management Server
+    - Connect
+    - Status API
+2. Cameras
+    - Read
+    - View live
+    - Playback ?
+3. View Groups
+    - Read
+
+4. Microphones
+    - Read ?
+    - Listen ?
+    - Playback ?
+
+5. Generic Events
+    - Read ?

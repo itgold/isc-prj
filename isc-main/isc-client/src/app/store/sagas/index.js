@@ -1,0 +1,72 @@
+import { fork, all } from 'redux-saga/effects';
+import { loginWatcher, logoutWatcher, tokenWatcher } from './auth';
+import {
+    setUserDataWatcher,
+    updateUserDataWatcher,
+    watchSchoolsQueryRequest,
+    watchSchoolUpdateRequest,
+    watchSchoolDistrictsQueryRequest,
+    watchSchoolElementsQueryRequest,
+    watchTagsQueryRequest,
+    watchUpdateDoorRequest,
+    watchUpdateCameraRequest,
+    watchUpdateDroneRequest,
+    watchUpdateRadioRequest,
+    watchRegionsQueryRequest,
+    watchRegionsDropdownQueryRequest,
+    watchRolesQueryRequest,
+    watchEventsQueryRequest,
+    watchAlertsQueryRequest,
+    watchUpdateRegionRequest,
+    watchRegionsTreeQueryRequest,
+    loadRegionsTreeWatcher,
+    watchDoorsQueryRequest,
+    watchCamerasQueryRequest,
+    watchDronesQueryRequest,
+    watchUpdateSpeakerRequest,
+    watchSpeakersQueryRequest,
+    watchRadiosQueryRequest,
+    watchDeviceActionRequest,
+    watchDeviceActionResponse,
+    watchDeviceCodesQueryRequest,
+} from './app';
+
+export default function* RootSaga() {
+    yield all([
+        fork(loginWatcher),
+        fork(logoutWatcher),
+        fork(tokenWatcher),
+        fork(setUserDataWatcher),
+        fork(updateUserDataWatcher),
+
+        fork(watchSchoolsQueryRequest),
+        fork(watchSchoolUpdateRequest),
+        fork(watchSchoolDistrictsQueryRequest),
+        fork(watchSchoolElementsQueryRequest),
+        fork(watchTagsQueryRequest),
+        fork(watchRolesQueryRequest),
+        fork(watchEventsQueryRequest),
+        fork(watchAlertsQueryRequest),
+
+        fork(watchRegionsQueryRequest),
+        fork(watchUpdateRegionRequest),
+        fork(watchRegionsDropdownQueryRequest),
+        fork(watchRegionsTreeQueryRequest),
+        fork(loadRegionsTreeWatcher),
+
+        fork(watchUpdateDoorRequest),
+        fork(watchDoorsQueryRequest),
+        fork(watchUpdateCameraRequest),
+        fork(watchCamerasQueryRequest),
+        fork(watchUpdateDroneRequest),
+        fork(watchDronesQueryRequest),
+        fork(watchUpdateSpeakerRequest),
+        fork(watchSpeakersQueryRequest),
+        fork(watchUpdateRadioRequest),
+        fork(watchRadiosQueryRequest),
+
+        fork(watchDeviceActionRequest),
+        fork(watchDeviceActionResponse),
+        fork(watchDeviceCodesQueryRequest),
+    ]);
+}

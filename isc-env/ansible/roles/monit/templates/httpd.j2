@@ -1,0 +1,20 @@
+# {{ ansible_managed }}
+
+{% if monit_httpd_enabled %}
+set httpd
+  port {{ monit_httpd_port }}
+  use address {{ monit_httpd_bind }}
+{% if monit_httpd_acl_rules is defined %}
+{% for rule in monit_httpd_acl_rules %}
+    allow {{ rule }}
+{% endfor %}
+{% endif %}
+{% if monit_httpd_rw_group is defined %}
+    allow @{{ monit_httpd_rw_group }}
+{% endif %}
+{% if monit_httpd_r_group is defined %}
+    allow @{{ monit_httpd_r_group }} readonly
+{% endif %}
+{% else %}
+# No httpd
+{% endif %}

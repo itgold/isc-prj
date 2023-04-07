@@ -1,0 +1,11 @@
+---
+- name: Include monit role
+  include_role:
+    name: monit
+
+- name: Export monit path
+  lineinfile:
+    path: /home/{{ isc_username }}/.bashrc
+    regexp: "^(export PATH.*)"
+    line: "export PATH=${PATH}:{{ monit_home_dir }}"
+    mode: 0644

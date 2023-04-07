@@ -1,0 +1,30 @@
+type Safety {
+    id: String!
+    status: String
+    name: String
+    description: String
+    parentIds: [String]
+    externalId: String
+    type: String
+    updated: DateTime
+    geoLocation: GeoPoint
+    tags: [Tag]
+}
+
+input SafetyInput {
+    id: String
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type SafetySearchResult {
+    data: [Safety]
+    numberOfItems: Int
+    numberOfPages: Int
+}

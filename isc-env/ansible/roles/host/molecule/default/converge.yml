@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include host"
+      include_role:
+        name: "host"
+      vars:
+        isc_hostname: instance
+        isc_username: satoshi

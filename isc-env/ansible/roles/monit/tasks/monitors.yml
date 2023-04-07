@@ -1,0 +1,54 @@
+---
+- name: Write monitors
+  template:
+    src: monitor.j2
+    dest: "{{ monit_conf_available_dir }}/{{ monit_monitor.name }}"
+    owner: root
+    group: root
+    mode: '0600'
+  with_items: "{{ monit_monitors }}"
+  loop_control:
+    loop_var: monit_monitor
+    label: "{{ monit_monitor.name }}"
+  notify: restart monit
+
+- name: Initialize enabled monitors list
+  set_fact:
+    monit_monitors_enabled: []
+
+- name: List enabled monitors
+  set_fact:
+    monit_monitors_enabled: "{{ monit_monitors_enabled + [ monit_monitor.name ] }}"
+  with_items: "{{ monit_monitors }}"
+  loop_control:
+    loop_var: monit_monitor
+    label: "{{ monit_monitor.name }}"
+  when: monit_monitor.enabled | default(True)
+
+- name: Enable monitors
+  file:
+    src: "{{ monit_conf_available_dir }}/{{ monit_monitor_name }}"
+    dest: "{{ monit_conf_enabled_dir }}/{{ monit_monitor_name }}"
+    state: link
+    mode: 0644
+  with_items: "{{ monit_monitors_enabled }}"
+  loop_control:
+    loop_var: monit_monitor_name
+  notify: restart monit
+
+- name: Get current enabled monitors
+  command: ls -1 {{ monit_conf_enabled_dir }}
+  register: monit_current_monitors_enabled
+  changed_when: false
+
+- name: Delete old monitors symlinks
+  file:
+    path: "{{ monit_conf_enabled_dir }}/{{ monit_monitor_name }}"
+    state: absent
+  when:
+    - monit_monitor_name not in monit_monitors_enabled
+    - monit_monitors_disable_unused
+  with_items: "{{ monit_current_monitors_enabled.stdout_lines }}"
+  loop_control:
+    loop_var: monit_monitor_name
+  notify: restart monit

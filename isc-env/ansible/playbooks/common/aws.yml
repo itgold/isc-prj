@@ -1,0 +1,22 @@
+---
+- name: Install awscli dependencies
+  pip:
+    name: "awscli"
+
+- name: Create aws client config directory
+  file:
+    path: "~/.aws"
+    state: directory
+    mode: 0755
+
+- name: Manage aws config
+  template:
+    src: templates/aws_config.j2
+    dest: "~/.aws/config"
+    mode: "0600"
+
+- name: manage aws credentials
+  template:
+    src: templates/aws_credentials.j2
+    dest: "~/.aws/credentials"
+    mode: "0600"

@@ -1,0 +1,64 @@
+
+package com.mip.alarmService;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * &lt;p&gt;Java class for anonymous complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="GetEventResult" type="{urn:milestone-systems}BaseEvent" minOccurs="0"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "getEventResult"
+})
+@XmlRootElement(name = "GetEventResponse")
+public class GetEventResponse {
+
+    @XmlElement(name = "GetEventResult", nillable = true)
+    protected BaseEvent getEventResult;
+
+    /**
+     * Gets the value of the getEventResult property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BaseEvent }
+     *     
+     */
+    public BaseEvent getGetEventResult() {
+        return getEventResult;
+    }
+
+    /**
+     * Sets the value of the getEventResult property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BaseEvent }
+     *     
+     */
+    public void setGetEventResult(BaseEvent value) {
+        this.getEventResult = value;
+    }
+
+}

@@ -1,0 +1,26 @@
+---
+# tasks file for monit
+- name: Install monit
+  apt:
+    name: monit
+    state: present
+    update_cache: yes
+
+- name: Ensure directories exists
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - "{{ monit_conf_dir }}"
+    - "{{ monit_conf_available_dir }}"
+    - "{{ monit_conf_enabled_dir }}"
+    - "{{ monit_scripts_dir }}"
+    - "{{ monit_lib_dir }}"
+
+- include_tasks: config.yml
+
+- include_tasks: monitors.yml
+  when: monit_monitors | length > 0

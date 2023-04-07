@@ -1,0 +1,268 @@
+#What environment this build is running on
+#we have environment specific configurations, that's why we need this.
+isc:
+  server:
+    environment: local
+    host: isc-local.io
+    scheme: https
+    port: 443
+    version: 1.1.0
+    infra:
+      monitoring: 127.0.0.1 #comma separated list of host IPs running monit
+  security:
+    jwt:
+      tokenExpirationTime: 10 # Number of minutes
+      refreshTokenExpTime: 1440 # Minutes, i.e. 60 * 24 = 1 day
+      tokenIssuer: http://isc-local.io
+      tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  services:
+    composite:
+      enableCaching: true
+
+#Current server environment and URL for back links generation
+server:
+  port: 9090
+  servlet:
+    session:
+      timeout: 15m
+  tomcat:
+    compressableMimeTypes: application/json,application/xml,text/html,text/xml,text/plain,text/css
+    compression: 'on'
+  use-forward-headers: true
+
+# Spring Boot Actuator INFO endpoint custom information.
+info:
+  app:
+    description: This application is a combination of the ISC services.
+    name: ISC Application Server
+    version: ${git.branch}_${git.commit.id}
+
+integration:
+  doors:
+    salto:
+      server:
+        host: 192.168.1.199
+        port: 9100
+        poolSize: 10
+        readTimeout: 1000
+        connectionTimeout: 3000
+      events:
+        listener:
+          port: 10000
+  cameras:
+    mip:
+      registry:
+        secured: false
+        address: 192.168.1.199
+        port: 8081
+        username: user
+        password: pass
+      commands:
+        secured: false
+        address: 192.168.1.199
+        port: 80
+        username: user
+        password: pass
+      config:
+        secured: false
+        address: 192.168.1.199
+        port: 80
+        username: user
+        password: pass
+      recorder:
+        secured: false
+        address: 192.168.1.199
+        port: 7563
+        username: user
+        password: pass
+      recorderStatus:
+        secured: false
+        address: 192.168.1.199
+        port: 7563
+        username: user
+        password: pass
+  radios:
+    trbonet:
+      server:
+        secured: false
+        address: 192.168.1.198
+        port: 61973
+        auth: false
+        username:
+        password:
+        connectionTimeout: 3000
+        readTimeout: 3000
+      events:
+        listener:
+          port: 10001
+
+# How often to synchronize logged in user's data.
+users:
+  active:
+    sync:
+      enabled: true
+      # every day at 4:30am
+      interval: 30 4 * * * ?
+doors:
+  active:
+    sync:
+      enabled: true
+      # every day at 4:30am
+      interval: 30 4 * * * ?
+cameras:
+  active:
+    events:
+      enabled: true
+      batchSize: 100
+      # every 5 seconds read Milestone events
+      interval: 1/5 * * * * ?
+    sync:
+      enabled: true
+      # every day at 4:30am
+      interval: 30 4 * * * ?
+radios:
+  active:
+    sync:
+      enabled: true
+      # every day at 4:30am
+      interval: 30 4 * * * ?
+
+spring:
+  #Application active profiles configuration
+  #Use "dev-ui" profile when working with the dedicated front-end server
+  #Enable station components by specifying profiles: web, api, time, salto, mip, trbonet
+  profiles:
+    active: web, time
+    dev-ui.url: https://isc-local.io:3000
+  dao:
+    exceptiontranslation:
+      enabled: false
+  # Hibernate / Postgres Configuration
+  datasource:
+    url: jdbc:postgresql://isc-postgres:5432/iscweb-db
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    # Hibernate attributes
+    hibernate:
+      dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+      # Set this value during development to "validate"
+      hbm2ddl:
+        auto: ''
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: false
+  mvc:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+  rabbitmq:
+    host: isc-rabbitmq
+    port: 5672
+    virtual-host:
+    username: user
+    password: pass
+    dead-letter:
+      exhange: loop-dead-exchange
+      queue: loop-dead-queue
+    routing:
+      exchange: loop-exchange
+      queue: main-queue
+    social:
+      exchange: social-feed-exchange
+      queue: social-main-queue
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-attempts: 3
+          max-interval: 5s
+  data:
+    elasticsearch:
+      cluster-nodes: isc-elasticsearch:9200
+      cluster-name: es_dev
+      connectionTimeout: 5000
+      repositories:
+        enabled: true
+  task:
+    scheduling:
+      pool:
+        size: 5
+
+# Flyway (see persistence/src/main/resources/migrations.README.md)
+flyway:
+  url: jdbc:postgresql://isc-postgres:5432/iscweb-db
+  user: user
+  password: pass
+  schemas: isc
+  outOfOrder: true
+  baselineVersion: 0
+  baselineOnMigrate: true
+  table: flyway_schema_version
+  locations: classpath:db/migration
+
+# Hibernate configurations
+hibernate:
+  # Hibernate library version
+  version: 5.1.0.Final
+
+  #Release mode
+  connection:
+    release_mode: ON_CLOSE
+
+  #Hibernate schema
+  default_schema: isc
+
+  ## Hikari pool config
+  hikari:
+    idleTimeOut: 60000
+    maximumPoolSize: 20
+
+#actuator endpoints
+endpoints:
+  enabled: true
+  health:
+    time-to-live: 1000
+
+# Keep an eye on this parameter. If you seeing 403 issues under the application
+# load, we might not get enough sessions and security context is getting dropped.
+webSecurityConfig:
+  maximumConcurrentSessions: 140
+
+# Multipart file max size
+multipart:
+  maxFileSize: 50Mb
+
+#Swagger configurations
+mvcConfig:
+  swaggerApi:
+    contact: support@iscweb.io
+    description: ISC API
+    license: See contact
+    licenseUrl: https://iscweb.io
+    termsOfService: https://iscweb.io/index.html#/terms
+    title: ISC
+    version: 1.0
+
+#As per Spring boot version upgrade we've got an issue with the
+#oAuth requests authentication. https://github.com/spring-projects/spring-boot/issues/5072
+#This is the solution that restores original order of the request filters.
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+
+inactivity:
+  weeklyCron: 0 0 5 * * MON
+
+#application logging configuration
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,20 @@
+---
+# - import_playbook: provision_host.yml
+
+- import_playbook: isc-postgres.yml
+
+- import_playbook: isc-elasticsearch.yml
+
+- import_playbook: isc-kibana.yml
+
+- import_playbook: isc-rabbitmq.yml
+
+- import_playbook: isc-app.yml
+
+- import_playbook: isc-client.yml
+
+- import_playbook: isc-logstash-twitter.yml
+
+- import_playbook: isc-logstash-youtube-comments.yml
+
+- import_playbook: isc-logstash-youtube-videos.yml

@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  isc-logstash-youtube-comments:
+    image: local/isc-logstash-youtube-comments:latest
+    container_name: isc-logstash-youtube-comments
+    volumes:
+      - type: bind
+        source: ./conf/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+      - type: bind
+        source: /tmp/isc-data/isc-logstash-youtube-videos
+        target: /usr/share/logstash/pipeline
+    environment:
+      - TARGET_ENV=local
+
+      - YOUTUBE_SEARCH_KEY=mQ_E
+      - YOUTUBE_SEARCH_MAX=10
+      - YOUTUBE_SEARCH_QUERY=school
+
+      - YOUTUBE_COMMENTS_KEY=Q6wqX0
+      - YOUTUBE_COMMENTS_MAX=50

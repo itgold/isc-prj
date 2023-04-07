@@ -1,0 +1,94 @@
+#What environment this build is running on
+#we have environment specific configurations, that's why we need this.
+isc:
+  server:
+    environment: local
+    host: isc-local.io
+    scheme: https
+    port: 443
+    version: 1.1.0
+
+#Current server environment and URL for back links generation
+server:
+  port: 9091
+
+# Spring Boot Actuator INFO endpoint custom information.
+info:
+  app:
+    description: This application is a simulator of the ISC services.
+    name: ISC Simulator Server
+    version: ${git.branch}_${git.commit.id}
+
+spring:
+  #Application active profiles configuration
+  #Use "dev-ui" profile when working with the dedicated front-end server
+  #Enable station components by specifying profiles: web, api, time
+  profiles:
+    active: web
+  dao:
+    exceptiontranslation:
+      enabled: false
+  # Hibernate / Postgres Configuration
+  datasource:
+    url: jdbc:postgresql://isc-postgres:5432/iscweb-db
+    username: user
+    password: pass
+  jpa:
+    generate-ddl: false
+    # Hibernate attributes
+    hibernate:
+      dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+      # Set this value during development to "validate"
+      hbm2ddl:
+        auto: ''
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: false
+  mvc:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+  rabbitmq:
+    host: isc-rabbitmq
+    port: 5672
+    virtual-host:
+    username: user
+    password: pass
+    routing:
+      exchange: loop-exchange
+      queue: main-queue
+  data:
+    elasticsearch:
+      cluster-nodes: isc-elasticsearch:9300
+      cluster-name: es_dev
+      repositories:
+        enabled: true
+  task:
+    scheduling:
+      pool:
+        size: 5
+
+# Hibernate configurations
+hibernate:
+  # Hibernate library version
+  version: 5.1.0.Final
+
+  #Release mode
+  connection:
+    release_mode: ON_CLOSE
+
+  #Hibernate schema
+  default_schema: isc
+
+  ## Hikari pool config
+  hikari:
+    idleTimeOut: 60000
+    maximumPoolSize: 20
+
+#application logging configuration
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,73 @@
+/* Standard control styles */
+button:focus {
+    outline: 0;
+}
+  
+.ol-control {
+    background-color: none;
+    border-radius: 4px
+}
+  
+.ol-control:hover {
+    background-color: none;
+}
+.ol-control button:focus {
+    text-decoration: none;
+    background-color: #6A90B6;
+}
+
+/* Widget control styles */
+.ol-control.isc-ol-widget {
+    z-index: 1;
+    max-height: 90%;
+    max-width: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.isc-ol-widget .isc-ol-widget-header {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    height: 16px;
+    text-align: center;
+}
+.isc-ol-widget .isc-ol-widget-header .isc-ol-title {
+    font-size: 12px;
+    font-weight: bold;
+}
+.isc-ol-widget .isc-ol-widget-header button.isc-ol-closebox {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    cursor: pointer;
+    z-index: 1;
+}
+.isc-ol-widget .isc-ol-widget-header button.isc-ol-closebox:before {
+    content: "\D7";
+    background: none;
+    color: rgba(0,60,136,.5);
+    font-size: 1.3em;
+}
+.isc-ol-widget .isc-ol-widget-header button.isc-ol-closebox:hover:before {
+    color: rgba(0,60,136,1);
+}
+
+.isc-ol-widget .isc-ol-widget-body {
+    position: absolute;
+    top: 18px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+}
+
+.isc-ol-hidden {
+    display: none;
+}
+
+.ol-control.ol-bar .building.ol-toggle.ol-active>button {
+    background-color: rgba(116, 4, 4, 0.7);
+}

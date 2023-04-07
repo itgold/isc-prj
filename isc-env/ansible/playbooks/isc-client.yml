@@ -1,0 +1,56 @@
+---
+- name: ISC-Client
+  hosts: isc_client
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-client
+
+  tasks:
+    - name: create target directory
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0755
+      loop:
+        - "{{ isc_docker_home }}/{{ container_name }}"
+        - "{{ isc_docker_home }}/{{ container_name }}/conf"
+        - "{{ isc_docker_home }}/{{ container_name }}/cert"
+
+    - name: copy common-security configuration
+      copy:
+        src: "{{ job_home }}/isc-wormhole-{{ env_name }}/isc-nginx/common-security.conf"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/conf/common-security.conf"
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0644
+
+    - name: copy pem file
+      copy:
+        src: "{{ job_home }}/isc-wormhole-{{ env_name }}/isc-nginx/{{ env_name }}.dhparam.pem"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/conf/dhparam.pem"
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0640
+
+    - name: copy ssl key file
+      copy:
+        src: "{{ job_home }}/isc-wormhole-{{ env_name }}/isc-cert/{{ env_name }}.ssl-cert.key"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/cert/ssl-cert.key"
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0640
+
+    - name: copy ssl certificate
+      copy:
+        src: "{{ job_home }}/isc-wormhole-{{ env_name }}/isc-cert/{{ env_name }}.ssl-cert.crt"
+        dest: "{{ isc_docker_home }}/{{ container_name }}/cert/ssl-cert.crt"
+        owner: "{{ isc_username }}"
+        group: docker
+        mode: 0640
+
+    - import_tasks: common/isc_docker_deployment.yml

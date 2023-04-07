@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="AlarmCommandToken" targetNamespace="http://tempuri.org/" xmlns:i0="http://video.net/2/CentralServerAlarmCommand" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:import location="./AlarmServiceToken/AlarmServiceToken_wsdl0.wsdl" namespace="http://video.net/2/CentralServerAlarmCommand"/>
+	<wsdl:types/>
+	<wsdl:binding name="BasicHttpBinding_IAlarmCommandToken" type="i0:IAlarmCommandToken">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="Add">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Add" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddEvent">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddEvent" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddAsEvent">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AddAsEvent" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Get" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEvent">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEvent" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetHeader">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetHeader" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetSnapshots">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSnapshots" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AttachSnapshot">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AttachSnapshot" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAlarmValues">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarmValues" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAlarm">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateAlarm" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Acknowledge">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/Acknowledge" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateMultipleAlarms">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/UpdateMultipleAlarms" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AcknowledgeMultipleAlarms">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/AcknowledgeMultipleAlarms" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="StartAlarmLineSession">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartAlarmLineSession" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="StopAlarmLineSession">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopAlarmLineSession" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetSessionAlarmLines">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionAlarmLines" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmLines">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmLines" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmsWithRelatedHardware">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmsWithRelatedHardware" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="StartEventLineSession">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StartEventLineSession" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="StopEventLineSession">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/StopEventLineSession" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetSessionEventLines">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetSessionEventLines" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventLines">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetStatistics">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetStatistics" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmHistory">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmHistory" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmUpdateHistory">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmUpdateHistory" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAlarmMessages">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetAlarmMessages" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventLines2">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventLines2" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventCount">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEventCount" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEvents">
+			<soap:operation soapAction="http://video.net/2/CentralServerAlarmCommand/IAlarmCommandToken/GetEvents" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="AlarmServiceFaultFault">
+				<soap:fault name="AlarmServiceFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="AlarmCommandToken">
+		<wsdl:port binding="tns:BasicHttpBinding_IAlarmCommandToken" name="BasicHttpBinding_IAlarmCommandToken">
+			<soap:address location="http://desktop-6q9rcaj:22331/Central/AlarmServiceToken"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

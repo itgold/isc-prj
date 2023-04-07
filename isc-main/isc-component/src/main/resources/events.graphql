@@ -1,0 +1,93 @@
+type IncrementalEventPayload {
+    type: String
+    deviceId: String
+    code: String
+    description: String
+    notes: String
+    user: String
+}
+
+type IncrementalEvent {
+    eventId: String!
+    eventTime: DateTime!
+    receivedTime: DateTime
+
+    deviceId: String
+    correlationId: String
+    referenceId: String
+    payload: IncrementalEventPayload
+
+    schoolId: String
+    districtId: String
+    type: String
+}
+
+type IncrementalEventsSearchResult {
+    data: [IncrementalEvent]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type AlertTriggerMatcher {
+    type: String
+    body: String
+    updated: DateTime
+}
+input AlertTriggerMatcherInput {
+    type: String
+    body: String
+}
+
+type AlertTrigger {
+    id: String
+    name: String
+    processorType: String
+    active: Boolean
+    updated: DateTime
+
+    matchers: [AlertTriggerMatcher]
+}
+
+input AlertTriggerInput {
+    id: String
+    name: String
+    processorType: String
+    active: Boolean
+
+    matchers: [AlertTriggerMatcherInput]
+}
+
+type AlertTriggerSearchResult {
+    data: [AlertTrigger]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+input AlertUpdateRequest {
+    alertId: String
+    alertStatus: String
+    alertSeverity: String
+    notes: String
+}
+
+type Alert {
+    id: String
+    triggerId: String
+    deviceId: String
+    deviceType: String
+    severity: String
+    count: Int
+    status: String
+    eventId: String
+    schoolId: String
+    districtId: String
+    code: String
+    description: String
+
+    updated: DateTime
+}
+type AlertSearchResult {
+    data: [Alert]
+    numberOfItems: Int
+    numberOfPages: Int
+}

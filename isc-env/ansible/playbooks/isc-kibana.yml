@@ -1,0 +1,12 @@
+---
+- name: ISC-Kibana
+  hosts: isc_kibana
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    container_name: isc-kibana
+
+  tasks:
+    - import_tasks: common/isc_docker_deployment.yml

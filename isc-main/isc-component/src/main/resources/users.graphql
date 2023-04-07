@@ -1,0 +1,78 @@
+type User {
+  id: String!
+  status: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+
+  lastLogin: DateTime
+  activationDate: DateTime
+
+  imageUrl: String
+
+  roles: [Role]
+  schoolDistrict: SchoolDistrict
+  updated: DateTime
+}
+
+input UserInput {
+  id: String
+  status: String
+  firstName: String
+  lastName: String
+
+  email: String
+  password: String
+
+  imageUrl: String
+
+  roles: [RoleInput]
+  schoolDistrict: SchoolDistrictInput
+}
+
+type UserSearchResult {
+    data: [User]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Role {
+  id: String!
+  name: String!
+  updated: DateTime
+}
+
+input RoleInput {
+  id: String
+  name: String
+}
+
+type RoleSearchResult {
+    data: [Role]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type ExternalUser {
+    id: String!
+    title: String
+    firstName: String
+    lastName: String
+    status: String
+    phoneNumber: String
+    externalId: String
+    schoolSite: String
+    officialJobTitle: String
+    idFullName: String
+    idNumber: String
+    officeClass: String
+    updated: DateTime
+    source: String
+}
+
+type ExternalUserSearchResult {
+    data: [ExternalUser]
+    numberOfItems: Int
+    numberOfPages: Int
+}

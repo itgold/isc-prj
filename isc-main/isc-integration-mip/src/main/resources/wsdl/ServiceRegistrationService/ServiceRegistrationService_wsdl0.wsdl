@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/Imports">
+			<xsd:import namespace="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01" schemaLocation="./ServiceRegistrationService_xsd0.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ServiceRegistrationService_xsd1.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ServiceRegistrationService_xsd2.xsd"/>
+			<xsd:import namespace="http://video.net/2/XProtectCSServiceRegistration" schemaLocation="./ServiceRegistrationService_xsd3.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IServiceRegistrationService_RegisterService_InputMessage">
+		<wsdl:part element="tns:RegisterService" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_RegisterService_OutputMessage">
+		<wsdl:part element="tns:RegisterServiceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_RegisterServiceWithEndpoints_InputMessage">
+		<wsdl:part element="tns:RegisterServiceWithEndpoints" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_RegisterServiceWithEndpoints_OutputMessage">
+		<wsdl:part element="tns:RegisterServiceWithEndpointsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_UnregisterService_InputMessage">
+		<wsdl:part element="tns:UnregisterService" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_UnregisterService_OutputMessage">
+		<wsdl:part element="tns:UnregisterServiceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_EnableService_InputMessage">
+		<wsdl:part element="tns:EnableService" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_EnableService_OutputMessage">
+		<wsdl:part element="tns:EnableServiceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServices_InputMessage">
+		<wsdl:part element="tns:GetServices" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServices_OutputMessage">
+		<wsdl:part element="tns:GetServicesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServicesIncludingDisabled_InputMessage">
+		<wsdl:part element="tns:GetServicesIncludingDisabled" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServicesIncludingDisabled_OutputMessage">
+		<wsdl:part element="tns:GetServicesIncludingDisabledResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_SetServiceData_InputMessage">
+		<wsdl:part element="tns:SetServiceData" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_SetServiceData_OutputMessage">
+		<wsdl:part element="tns:SetServiceDataResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServiceData_InputMessage">
+		<wsdl:part element="tns:GetServiceData" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServiceRegistrationService_GetServiceData_OutputMessage">
+		<wsdl:part element="tns:GetServiceDataResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="IServiceRegistrationService">
+		<wsdl:operation name="RegisterService">
+			<wsdl:input message="tns:IServiceRegistrationService_RegisterService_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/RegisterService"/>
+			<wsdl:output message="tns:IServiceRegistrationService_RegisterService_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/RegisterServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterServiceWithEndpoints">
+			<wsdl:input message="tns:IServiceRegistrationService_RegisterServiceWithEndpoints_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/RegisterServiceWithEndpoints"/>
+			<wsdl:output message="tns:IServiceRegistrationService_RegisterServiceWithEndpoints_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/RegisterServiceWithEndpointsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UnregisterService">
+			<wsdl:input message="tns:IServiceRegistrationService_UnregisterService_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/UnregisterService"/>
+			<wsdl:output message="tns:IServiceRegistrationService_UnregisterService_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/UnregisterServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="EnableService">
+			<wsdl:input message="tns:IServiceRegistrationService_EnableService_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/EnableService"/>
+			<wsdl:output message="tns:IServiceRegistrationService_EnableService_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/EnableServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetServices">
+			<wsdl:input message="tns:IServiceRegistrationService_GetServices_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServices"/>
+			<wsdl:output message="tns:IServiceRegistrationService_GetServices_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServicesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetServicesIncludingDisabled">
+			<wsdl:input message="tns:IServiceRegistrationService_GetServicesIncludingDisabled_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServicesIncludingDisabled"/>
+			<wsdl:output message="tns:IServiceRegistrationService_GetServicesIncludingDisabled_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServicesIncludingDisabledResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetServiceData">
+			<wsdl:input message="tns:IServiceRegistrationService_SetServiceData_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/SetServiceData"/>
+			<wsdl:output message="tns:IServiceRegistrationService_SetServiceData_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/SetServiceDataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetServiceData">
+			<wsdl:input message="tns:IServiceRegistrationService_GetServiceData_InputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServiceData"/>
+			<wsdl:output message="tns:IServiceRegistrationService_GetServiceData_OutputMessage" wsaw:Action="http://schemas.videoos/ServiceRegistrationService/2008/06/Vmo/01/IServiceRegistrationService/GetServiceDataResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

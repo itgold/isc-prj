@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  isc-logstash-twitter:
+    image: local/isc-logstash-twitter:latest
+    container_name: isc-logstash-twitter
+    volumes:
+      - type: bind
+        source: ./conf/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+    environment:
+      - TARGET_ENV=local
+
+      - TWITTER_CONSUMER_KEY=DpksHDGN
+      - TWITTER_CONSUMER_SECRET=NxrgaZks
+      - TWITTER_OAUTH_TOKEN=DzacweGdul84
+      - TWITTER_OAUTH_TOKEN_SECRET=VF9htipidHz9gs

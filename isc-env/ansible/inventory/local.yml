@@ -1,0 +1,44 @@
+---
+all:
+  hosts:
+    host1:
+      ansible_host: 192.168.1.155
+    host2:
+      ansible_host: 192.168.1.160
+    host3:
+      ansible_host: 192.168.1.165
+  vars:
+    env_name: local
+    ansible_private_key_file: '~/.ssh/pre-prod.pem'
+    isc_username: satoshi
+    isc_docker_repo: nexus.iscweb.io:5002
+    isc_docker_tag: latest
+    isc_backup_home: /opt/backup
+
+isc_app:
+  hosts:
+    host1:
+isc_client:
+  hosts:
+    host1:
+isc_postgres:
+  hosts:
+    host2:
+isc_rabbitmq:
+  hosts:
+    host2:
+isc_elasticsearch:
+  hosts:
+    host3:
+isc_kibana:
+  hosts:
+    host3:
+isc_logstash_twitter:
+  hosts:
+    host3:
+isc_logstash_youtube_comments:
+  hosts:
+    host3:
+isc_logstash_youtube_videos:
+  hosts:
+    host3:

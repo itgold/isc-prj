@@ -1,0 +1,20 @@
+schema {
+ query: Query
+}
+
+type Query {
+    schools(page: PageRequest, sort: [SortOrder]): [School]
+    districts(page: PageRequest, sort: [SortOrder]): [SchoolDistrict]
+
+    tags(page: PageRequest, sort: [SortOrder]) : [Tag]
+    camerasByRegion(regionId: String, page: PageRequest, sort: [SortOrder]): [Camera]
+
+    events(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): IncrementalEventsSearchResult
+    queryAlerts(filter: QueryFilter, page: PageRequest, sort: [SortOrder]): AlertSearchResult
+
+    deviceCodes: [CodeDictionaryTuple]
+}
+
+type Mutation {
+    deviceAction(action: DeviceAction): DeviceActionResult
+}

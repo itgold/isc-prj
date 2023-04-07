@@ -1,0 +1,15 @@
+{
+  "name": "ISC GraphQL API",
+  "extensions": {
+    "endpoints": {
+      "GraphQL API": {
+        "url": "http://localhost:9090/rest/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJhdWQiOiIxIiwic3ViIjoiYWRtaW5AaXNjd2ViLmlvIiwic2NvcGVzIjpbIkFkbWluaXN0cmF0b3IiXSwiaXNzIjoiaHR0cDovL2xvY2FsLmlzY3dlYi5pbyIsImlhdCI6MTU5NDI1MjgxMiwiZXhwIjoxNTk2MDUyODEyfQ.Iu_oM8BSXM4PZ-hxxw2g2TasDCbhIxJknInXhDm346HJoJGkteI7hIGmcv3f4DZyxDG8hrl9cFC5Xg9hCFRzng"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

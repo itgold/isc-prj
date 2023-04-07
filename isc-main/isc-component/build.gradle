@@ -1,0 +1,79 @@
+
+ext.moduleName = 'isc-component'
+
+dependencies {
+    implementation project(':isc-common')
+    implementation project(':isc-persistence-db')
+    implementation project(':isc-service-business')
+    // implementation project(':isc-integration-mip')
+
+    // Disable default Tomcat and use Undertow as underlying web server.
+    api ('org.springframework.boot:spring-boot-starter-web') {
+        // exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    api ('org.springframework.boot:spring-boot-starter-websocket') {
+        // exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    // api group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: "${springBootVersion}"
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.8.1'
+
+    api group: 'org.springframework.boot', name: 'spring-boot-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker'
+    implementation group: 'org.springframework', name: 'spring-messaging', version: '5.2.6.RELEASE'
+    implementation group: 'org.springframework.security', name: 'spring-security-messaging', version: '5.3.2.RELEASE'
+    implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.8.RELEASE'
+
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate', module: 'hibernate-core'
+        exclude group: 'org.flywaydb', module: 'flyway-core'
+    }
+
+    implementation group: 'com.fasterxml', name: 'classmate', version: '1.5.1'
+    implementation group: 'org.json', name: 'json', version: '20090211'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+    // Graph QL core
+    // Note: graphql-java-tools will bring right version of com.graphql-java:graphql-java
+    implementation 'com.graphql-java-kickstart:graphql-java-tools:11.0.0'
+    implementation 'com.graphql-java:graphql-java-extended-scalars:2019-08-31T02-34-04-3decba9'
+
+    // Support to persist HTTP Session in DB
+    api group: 'org.springframework.session', name: 'spring-session-core'
+    // implementation group: 'org.springframework.session', name: 'spring-session-jdbc'
+}
+
+/**
+ * This task copies front-end files from isc-client/build into the target artifact folder.
+ * It is a part of a standard gradle build process so no special invocation is required.
+ * It DOESN'T build FE resources, it just copies them over.
+ */
+task processResourcesFrontEnd() {
+    doLast {
+        // Copy the freemarker to template folder.
+        copy {
+            from("${rootProject.rootDir}/isc-client/build") {
+                include '**/*.ftlh'
+            }
+            into "${rootProject.rootDir}/isc-component/src/main/resources/templates/"
+            into "${rootProject.rootDir}/isc-component/build/resources/main/templates/"
+        }
+
+        // Copy the rest of the resources.
+        copy {
+            from("${rootProject.rootDir}/isc-client/build") {
+                include '**/*'
+            }
+            into "${rootProject.rootDir}/isc-component/build/resources/main/static"
+            exclude '**/*.ftlh'
+        }
+        print ":isc-component:processed front-end resources"
+    }
+}
+
+classes.dependsOn processResourcesFrontEnd

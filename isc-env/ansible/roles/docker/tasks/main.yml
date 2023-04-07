@@ -1,0 +1,76 @@
+---
+# This playbook contains docker specific actions.
+# sudo apt-get install *
+- name: Install Docker dependencies
+  apt:
+    pkg: "{{ docker_ce_requirements }}"
+    state: present
+    update_cache: yes
+
+- name: Install pip dependencies
+  pip:
+    name: "{{ docker_pip_packages }}"
+    # executable: pip3
+
+- name: Install apt key
+  apt_key:
+    url: "{{ docker_ce_apt_key_url }}"
+    state: present
+  register: result
+  until: result is success
+  retries: 5
+  delay: 3
+
+- name: Install docker_ce repository for apt
+  apt_repository:
+    repo: "{{ docker_ce_apt_repository_repo }}"
+    state: present
+    update_cache: yes
+
+- name: Install Docker
+  apt:
+    # name: docker-ce=18.03.*
+    name: "{{ docker_ce_packages }}"
+    state: present
+    update_cache: yes
+    # force: yes
+  notify:
+    - restart docker
+
+- name: Starting Docker process on boot
+  # become: yes
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Ensure handlers are notified now to avoid firewall conflicts
+  meta: flush_handlers
+
+- include_tasks: docker-compose.yml
+  when: docker_install_compose | bool
+
+- name: Add insecure registry
+  set_fact:
+    insecure_registries: "{{ insecure_registries | default([]) + [item.key] }}"
+  loop: "{{ docker_registiries | dict2items }}"
+  when:
+    - item.value.insecure is defined
+    - item.value.insecure
+
+- name: Write output to Docker daemon.json
+  copy:
+    content: "{{ new_daemon | default({}) | combine({ 'insecure-registries': insecure_registries }) | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    mode: 0640
+  when: insecure_registries is defined
+  notify:
+    - restart docker
+
+- name: Ensure docker users are added to the docker group.
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: true
+  with_items: "{{ docker_users }}"
+  when: docker_users | length > 0

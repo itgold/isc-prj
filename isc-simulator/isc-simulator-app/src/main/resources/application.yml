@@ -1,0 +1,37 @@
+########################################################################################################
+# application.sample.yml is not used by application in any way.                                        #
+# It is just to give you a template for overriding properties on local environment if needed.          #
+# Copy this file to application.yml, remove this banner, and set the properties you want to be active. #
+########################################################################################################
+isc:
+  server:
+    environment: local
+    host: isc-local.io
+
+spring:
+  profiles:
+    # Application active profiles configuration
+    # Use "dev-ui" profile when working with the dedicated front-end server
+    # Enable station components by specifying profiles: web, api, time
+    active: web
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iscweb-db
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+
+########################################################################
+# Application logging configuration cannot be declared in default yml. #
+########################################################################
+logging:
+  custom:
+    file:
+      enabled: false
+      path: "/opt/isc/logs"
+      name: "isc-colored.log"
+      rollover-size: "100MB"
+    stdout:
+      enabled: true
+  config: classpath:logback-spring.xml

@@ -1,0 +1,52 @@
+---
+# Hosts initialization
+
+- import_tasks: upgrade.yml
+
+- name: Install apt packages
+  apt:
+    pkg: "{{ apt_packages }}"
+    state: present
+    update_cache: yes
+  register: result
+  until: result is success
+  retries: 5
+  delay: 3
+
+- name: Set the host name
+  hostname:
+    name: "{{ isc_hostname }}"
+
+- name: Add user "{{ isc_username }}" to remote server
+  user:
+    name: "{{ isc_username }}"
+    comment: "{{ isc_username }} master"
+    shell: /bin/bash
+    groups: sudo
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+
+- name: Allow 'sudo' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+
+- name: Enable command line coloring
+  lineinfile:
+    path: /home/{{ isc_username }}/.bashrc
+    regexp: "^(#?PS1=)"
+    line: "PS1='{{ isc_ps1 }}'"
+    mode: 0644
+
+- name: Write /etc/hosts file
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+  tags: molecule-notest

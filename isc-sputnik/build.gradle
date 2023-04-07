@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'io.github.bonigarcia:webdrivermanager:4.3.1'
+    implementation 'org.testng:testng:7.1.0'
+}
+
+group = 'io.iscweb'
+version = '1.0'
+description = 'IscwebUITest'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.named('test') {
+    useTestNG()
+}
+
+task sBuild(type: Jar) {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from sourceSets.main.output
+    from sourceSets.test.output
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes 'Main-Class': 'com.iscweb.sputnik.uitest.IscMain'
+    }
+    with jar
+}
+
+task sArtifacts(type: Copy) {
+    dependsOn(sBuild)
+    from file("${project.rootDir}/build/libs")
+    into file("${project.rootDir}/../isc-env/docker/isc-sputnik/artifacts")
+    rename 'isc-sputnik-(.*)', 'application.jar'
+    rename 'application.default.yml', 'application.yml'
+}

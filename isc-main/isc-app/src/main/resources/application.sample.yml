@@ -1,0 +1,115 @@
+########################################################################################################
+# application.sample.yml is not used by application in any way.                                        #
+# It is just to give you a template for overriding properties on local environment if needed.          #
+# Copy this file to application.yml, remove this banner, and set the properties you want to be active. #
+########################################################################################################
+isc:
+  server:
+    environment: local
+    host: isc-local.io
+    simulator:
+      address: isc-simulator
+      port: 9091
+  dev:
+    allowGraphQlClients: true
+
+spring:
+  profiles:
+    # Application active profiles configuration
+    # Use "dev-ui" profile when working with the dedicated front-end server
+    # Enable station components by specifying profiles: web, api, time, salto, mip, camera-mock, trbonet
+    active: web, time
+    dev-ui.url: http://isc-local.io:3000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iscweb-db
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+  rabbitmq:
+    username: user
+    password: pass
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9200
+      cluster-name: es_dev
+      connectionTimeout: 5000
+      repositories:
+        enabled: true
+
+integration:
+  doors:
+    salto:
+      server:
+        host: localhost
+        port: 9100
+        poolSize: 10
+        readTimeout: 1000
+        connectionTimeout: 3000
+      events:
+        listener:
+          port: 10000
+  cameras:
+    mip:
+      registry:
+        secured: false
+        address: localhost
+        port: 8081
+        username: user
+        password: pass
+      commands:
+        secured: false
+        address: localhost
+        port: 80
+        username: user
+        password: pass
+      config:
+        secured: false
+        address: localhost
+        port: 8081
+        username: user
+        password: pass
+      recorder:
+        secured: false
+        address: localhost
+        port: 7563
+        username: user
+        password: pass
+      recorderStatus:
+        secured: false
+        address: localhost
+        port: 7563
+        username: user
+        password: pass
+    mock:
+      cameras:
+        -
+          id: test_camera_1
+          name: Mock Camera 1
+          description: Mock Camera 1
+          video: videos/traffic1.mjpeg
+        -
+          id: test_camera_2
+          name: Mock Camera 2
+          description: Mock Camera 2
+          video: videos/traffic1.mjpeg
+        -
+          id: test_camera_3
+          name: Mock Camera 3
+          description: Mock Camera 3
+          video: videos/traffic1.mjpeg
+
+########################################################################
+# Application logging configuration cannot be declared in default yml. #
+########################################################################
+logging:
+  custom:
+    file:
+      enabled: false
+      path: "/opt/isc/logs"
+      name: "isc-colored.log"
+      rollover-size: "100MB"
+    stdout:
+      enabled: true
+  config: classpath:logback-spring.xml #  file:absolute/path

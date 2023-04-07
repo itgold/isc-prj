@@ -1,0 +1,49 @@
+---
+all:
+  hosts:
+    pre-prod-dev-app:
+      ansible_host: 10.0.2.154
+    pre-prod-dev-es-kb:
+      ansible_host: 10.0.2.133
+  vars:
+    env_name: dev
+    ansible_private_key_file: '~/.ssh/id_rsa'
+    isc_username: satoshi
+    isc_docker_tag: latest
+    server_host: dev.iscweb.io
+    isc_backup_home: /opt/backup
+    isc_docker_repo: nexus.iscweb.io:5002
+    ecr_registry: "{{ lookup('env','ECR_REGISTRY') }}"
+    docker_registiries:
+      nexus.iscweb.io:5002:
+        username: nexus_publisher
+        password: pass
+        insecure: true
+
+isc_app:
+  hosts:
+    pre-prod-dev-app:
+isc_client:
+  hosts:
+    pre-prod-dev-app:
+isc_postgres:
+  hosts:
+    pre-prod-dev-app:
+isc_rabbitmq:
+  hosts:
+    pre-prod-dev-app:
+isc_elasticsearch:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_kibana:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_twitter:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_youtube_comments:
+  hosts:
+    pre-prod-dev-es-kb:
+isc_logstash_youtube_videos:
+  hosts:
+    pre-prod-dev-es-kb:

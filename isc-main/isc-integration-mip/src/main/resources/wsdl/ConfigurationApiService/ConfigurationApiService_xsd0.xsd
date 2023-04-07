@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://video.net/ConfigurationService" xmlns:tns="http://video.net/ConfigurationService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI" schemaLocation="./ConfigurationApiService_xsd2.xsd"/>
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ConfigurationApiService_xsd3.xsd"/>
+	<xs:element name="GetItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetItemResult" nillable="true" type="q1:ConfigurationItem" xmlns:q1="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="itemType" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetItemsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetItemsResult" nillable="true" type="q2:ArrayOfConfigurationItem" xmlns:q2="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="item" nillable="true" type="q3:ConfigurationItem" xmlns:q3="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SetItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="SetItemResult" nillable="true" type="q4:ValidateResult" xmlns:q4="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="HasChildItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="HasChildItemsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="HasChildItemsResult" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetChildItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetChildItemsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetChildItemsResult" nillable="true" type="q5:ArrayOfConfigurationItem" xmlns:q5="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ConstructItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="itemType" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="properties" nillable="true" type="q6:ArrayOfProperty" xmlns:q6="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ConstructItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="ConstructItemResult" nillable="true" type="q7:ConfigurationItem" xmlns:q7="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ConstructChildItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="itemType" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="parentPath" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ConstructChildItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="ConstructChildItemResult" nillable="true" type="q8:ConfigurationItem" xmlns:q8="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ValidateItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="item" nillable="true" type="q9:ConfigurationItem" xmlns:q9="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ValidateItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="ValidateItemResult" nillable="true" type="q10:ValidateResult" xmlns:q10="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeleteItem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeleteItemResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetDependantItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetDependantItemsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetDependantItemsResult" nillable="true" type="q11:ArrayOfConfigurationItem" xmlns:q11="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetMethodInfos">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetMethodInfosResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetMethodInfosResult" nillable="true" type="q12:ArrayOfMethodInfo" xmlns:q12="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetMethodInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="methodId" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetMethodInfoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetMethodInfoResult" nillable="true" type="q13:MethodInfo" xmlns:q13="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="InvokeMethod">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="item" nillable="true" type="q14:ConfigurationItem" xmlns:q14="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+				<xs:element minOccurs="0" name="method" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="InvokeMethodResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="InvokeMethodResult" nillable="true" type="q15:ConfigurationItem" xmlns:q15="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTranslations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="languageId" nillable="true" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTranslationsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetTranslationsResult" nillable="true" type="q16:ArrayOfKeyValueOfstringstring" xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetChildItemsHierarchy">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+				<xs:element minOccurs="0" name="itemTypes" nillable="true" type="q17:ArrayOfstring" xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<xs:element minOccurs="0" name="itemFilters" nillable="true" type="q18:ArrayOfItemFilter" xmlns:q18="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetChildItemsHierarchyResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="GetChildItemsHierarchyResult" nillable="true" type="q19:ArrayOfConfigurationItem" xmlns:q19="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryItems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="itemFilter" nillable="true" type="q20:ItemFilter" xmlns:q20="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+				<xs:element minOccurs="0" name="maxResult" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryItemsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="QueryItemsResult" nillable="true" type="q21:ArrayOfConfigurationItem" xmlns:q21="http://schemas.datacontract.org/2004/07/VideoOS.ConfigurationAPI"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

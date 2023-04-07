@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  isc-postgres:
+    image: local/isc-postgres:latest
+    container_name: isc-postgres
+    volumes:
+      - type: bind
+        source: /tmp/isc-data/isc-postgres
+        target: /var/lib/postgresql/data
+    environment:
+      - TARGET_ENV=local
+      - POSTGRES_DB=iscweb-db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass

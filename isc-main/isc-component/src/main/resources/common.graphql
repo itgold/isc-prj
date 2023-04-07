@@ -1,0 +1,69 @@
+scalar DateTime
+
+input SortOrder {
+  property: String!
+  direction: String!
+}
+
+input PageRequest {
+  page: Int!
+  size: Int!
+}
+
+type GeoPoint {
+    x: Float
+    y: Float
+}
+
+type GeoPolygon {
+    points: [GeoPoint]!
+}
+
+input GeoPointInput {
+    x: Float
+    y: Float
+}
+
+input GeoPolygonInput {
+    points: [GeoPointInput]!
+}
+
+type UpdateResult {
+    status: String
+    id: String
+}
+
+input ColumnFilter {
+   key: String
+   value: String
+}
+
+input QueryFilter {
+    tags: [String]
+    columns: [ColumnFilter]
+}
+
+input DeviceAction {
+    entityType: String!
+    deviceId: String!
+    action: String!
+}
+
+type DeviceActionError {
+    code: String!
+    message: String
+}
+type DeviceActionResult {
+    status: String
+    errors: [DeviceActionError]
+}
+
+type CodeDictionary {
+    code: Int
+    shortName: String
+    description: String
+}
+type CodeDictionaryTuple {
+   name: String
+   value: CodeDictionary
+}

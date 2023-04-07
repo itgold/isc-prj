@@ -1,0 +1,1 @@
+processed /etc/nginx/conf.d/default.conf file will be mapped into this folder on local environment

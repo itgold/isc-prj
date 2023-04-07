@@ -1,0 +1,19 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-logstash-twitter:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: "${isc_docker_home}/${container_name}/conf/logstash.yml"
+        target: /usr/share/logstash/config/logstash.yml
+    environment:
+      - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+      - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+      - TWITTER_OAUTH_TOKEN=${TWITTER_OAUTH_TOKEN}
+      - TWITTER_OAUTH_TOKEN_SECRET=${TWITTER_OAUTH_TOKEN_SECRET}

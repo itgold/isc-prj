@@ -1,0 +1,90 @@
+######################################################################################################
+#application.sample.yml is not used by application in any way.                                       #
+#It is just to give you a template for overriding properties on local environment if needed.         #
+#Copy this file to application.yml, remove this banner, and set the properties you want to be active.#
+######################################################################################################
+isc:
+  server:
+    environment: local
+    host: isc-local.io
+  services:
+    composite:
+      enableCaching: true
+
+spring:
+  profiles:
+    #Application active profiles configuration
+    #Use "dev-ui" profile when working with the dedicated front-end server
+    #Enable station components by specifying profiles: web, api, time, salto
+    active: web, time
+    dev-ui.url: http://isc-local.io:3000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iscweb-db
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+  rabbitmq:
+    username: user
+    password: pass
+
+integration:
+  doors:
+    salto:
+      server:
+        host: localhost
+        port: 9100
+        poolSize: 10
+        readTimeout: 1000
+        connectionTimeout: 3000
+      events:
+        listener:
+          port: 10000
+  cameras:
+    mip:
+      registry:
+        secured: false
+        address: localhost
+        port: 8081
+        username: user
+        password: pass
+      commands:
+        secured: false
+        address: localhost
+        port: 80
+        username: user
+        password: pass
+      config:
+        secured: false
+        address: localhost
+        port: 8081
+        username: user
+        password: pass
+      recorder:
+        secured: false
+        address: localhost
+        port: 7563
+        username: user
+        password: pass
+      recorderStatus:
+        secured: false
+        address: localhost
+        port: 7563
+        username: user
+        password: pass
+
+####################################
+# application logging configuration
+# can not be declared in default yml
+####################################
+logging:
+  custom:
+    file:
+      enabled: false
+      path: "/opt/isc/logs"
+      name: "isc-colored.log"
+      rollover-size: "100MB"
+    stdout:
+      enabled: true
+  config: classpath:logback-spring.xml

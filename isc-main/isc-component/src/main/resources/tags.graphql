@@ -1,0 +1,16 @@
+
+type Tag {
+    id: String!
+    name: String
+}
+
+input TagInput {
+    id: String
+    name: String
+}
+
+type TagSearchResult {
+    data: [Tag]
+    numberOfItems: Int
+    numberOfPages: Int
+}

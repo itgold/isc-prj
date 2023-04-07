@@ -1,0 +1,81 @@
+ext.moduleName = 'isc-simulator-app'
+
+// main app build configuration
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+//        gradle plugins location
+        classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.0")
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':isc-common')
+    implementation project(':isc-persistence-db')
+    implementation project(':isc-persistence-search')
+    implementation project(':isc-service-jpa')
+    implementation project(':isc-service-business')
+    implementation project(':isc-integration-salto')
+    implementation project(':isc-integration-mip')
+    testImplementation project(':isc-test')
+
+    api('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    api group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: "${springBootVersion}"
+    api('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate', module: 'hibernate-core'
+        exclude group: 'org.flywaydb', module: 'flyway-core'
+    }
+    api group: 'org.codehaus.janino', name: 'janino', version: '3.0.15'
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.amqp:spring-rabbit-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar.enabled = false
+assemble.dependsOn explodedJar
+
+mainClassName = "com.iscweb.simulator.IscSimulator"
+
+// main class for spring boot uber jar
+springBoot {
+    mainClassName = "com.iscweb.simulator.IscSimulator"
+}
+
+// enable building spring boot uber jar
+bootJar {
+    enabled = true
+}
+
+// enable running boot jar
+bootRun {
+    enabled = true
+}
+
+startScripts {
+    dependsOn(bootJar)
+}

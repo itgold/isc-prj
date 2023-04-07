@@ -1,0 +1,11 @@
+---
+monit_monitors:
+  - name: "{{ container_name }}"
+    type: program
+    timeout: 60
+    target: "{{ monit_scripts_dir }}/{{ container_name }}/docker-check.sh"
+    start: "{{ monit_scripts_dir }}/{{ container_name }}/docker-start.sh"
+    stop: "{{ monit_scripts_dir }}/{{ container_name }}/docker-stop.sh"
+    rules:
+      - if status = 1 for 8 times within 10 cycles then alert
+      - if status = 1 for 8 times within 10 cycles then exec "{{ monit_scripts_dir }}/{{ container_name }}/docker-start.sh"

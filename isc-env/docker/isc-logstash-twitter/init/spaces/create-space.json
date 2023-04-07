@@ -1,0 +1,7 @@
+{
+  "id": "isc",
+  "name": "ISC",
+  "description" : "ISC Space",
+  "color": "#aabbcc",
+  "disabledFeatures": ["discover", "visualize", "dev_tools", "advancedSettings", "indexPatterns", "savedObjectsManagement", "graph", "monitoring", "ml", "apm", "maps", "canvas", "infrastructure", "logs", "siem", "uptime"]
+}

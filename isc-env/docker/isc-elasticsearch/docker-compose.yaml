@@ -1,0 +1,26 @@
+version: '3.3'
+
+networks:
+  default:
+    name: isc-network
+
+services:
+  isc-elasticsearch:
+    image: "${isc_docker_repo}/${container_name}:${container_version}"
+    container_name: "${container_name}"
+    volumes:
+      - type: bind
+        source: "${ISC_DATA_HOME}/${container_name}"
+        target: /usr/share/elasticsearch/data
+      - type: bind
+        source: "${ISC_LOGS_HOME}/${container_name}"
+        target: /usr/share/elasticsearch/logs
+      - type: bind
+        source: "${ISC_BACKUP_HOME}/${container_name}"
+        target: /usr/share/elasticsearch/backup
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300

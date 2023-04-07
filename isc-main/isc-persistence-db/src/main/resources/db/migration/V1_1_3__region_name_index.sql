@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS isc.ix_r_name;

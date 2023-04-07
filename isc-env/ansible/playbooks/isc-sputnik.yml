@@ -1,0 +1,83 @@
+---
+- name: ISC-Sputnik
+  hosts: isc_app
+  remote_user: "{{ isc_username }}"
+  become: yes
+  gather_facts: false
+
+  vars:
+    reports_target: 'https://dev.iscweb.io'
+    reports_jar: isc-sputnik-1.0.jar
+    reports_out: test-output
+    container_name: isc-sputnik
+
+  tasks:
+  - name: Stop and remove standalone-chrome
+    docker_container:
+      name: "{{ isc_docker_repo }}/selenium/standalone-chrome:88.0.4324.150"
+      state: absent
+      force_kill: yes
+
+  - name: Cleanup
+    become: yes
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_items:
+      - "{{ isc_docker_home }}/{{ container_name }}/{{ reports_jar }}"
+      - "{{ isc_docker_home }}/{{ container_name }}/{{ reports_out }}.tar"
+
+  - name: Create docker scripts folder
+    file:
+      path: "{{ isc_docker_home }}/{{ container_name }}"
+      state: directory
+      owner: "{{ isc_username }}"
+      group: docker
+      mode: 0750
+
+  - name: Create {{ reports_out }} directory
+    file:
+      path: "{{ isc_docker_home }}/{{ container_name }}/{{ reports_out }}"
+      state: directory
+      owner: "{{ isc_username }}"
+      group: docker
+      mode: 0750
+
+  - name: Copy docker-compose script to the remote server
+    copy:
+      src: "{{ job_home }}/isc-env/docker/{{ container_name }}/docker-compose.yaml"
+      dest: "{{ isc_docker_home }}/{{ container_name }}/docker-compose.yaml"
+      owner: "{{ isc_username }}"
+      group: docker
+      mode: 0750
+      # force: yes
+
+  - name: Start docker-compose {{ container_name }}
+    docker_compose:
+      project_src: "{{ isc_docker_home }}/{{ container_name }}"
+      state: present
+
+  - name: Copy selenium jar to the host
+    copy:
+      src: "{{ job_home }}/isc-sputnik/build/libs/{{ reports_jar }}"
+      dest: "{{ isc_docker_home }}/{{ container_name }}/{{ reports_jar }}"
+      owner: "{{ isc_username }}"
+      group: docker
+      mode: 0750
+
+  - name: Running selenium jar on the target host
+    become_user: "{{ isc_username }}"
+    register: out
+    command: "chdir={{ isc_docker_home }}/{{ container_name }} nohup java -jar {{ reports_jar }} {{ reports_target }} remoteDriver"
+  # debug allows to see the output of the test in the jenkins log
+  - debug: var=out.stdout_lines
+
+  - name: Creating report results archive
+    become_user: "{{ isc_username }}"
+    command: "chdir={{ isc_docker_home }}/{{ container_name }} nohup tar -cf {{ reports_out }}.tar {{ reports_out }}"
+
+  - name: Dowloading an archive
+    fetch:
+      src: "{{ isc_docker_home }}/{{ container_name }}/{{ reports_out }}.tar"
+      dest: "{{ job_home }}/isc-sputnik/"
+      flat: yes

@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  isc-simulator:
+    image: local/isc-app:latest
+    container_name: isc-simulator
+    volumes:
+      - type: bind
+        source: ./artifacts/application.yml
+        target: /app/application.yml
+      - type: bind
+        source: /tmp/isc-logs/isc-simulator
+        target: /opt/isc/logs
+    environment:
+      - TARGET_ENV=local
+      - APP_SERVER_HOST=isc-app
+      - DB_HOST=isc-postgres

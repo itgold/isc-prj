@@ -1,0 +1,15 @@
+rootProject.name = 'isc-simulator'
+
+include ':isc-common', ':isc-test', ':isc-service-jpa', ':isc-service-business', ':isc-persistence-db', ':isc-persistence-search'
+include ':isc-simulator-app'
+include ':isc-integration-mip', ':isc-integration-salto'
+
+project(':isc-common').projectDir = file('../isc-main/isc-common')
+project(':isc-test').projectDir = file('../isc-main/isc-test')
+project(':isc-persistence-db').projectDir = file('../isc-main/isc-persistence-db')
+project(':isc-service-jpa').projectDir = file('../isc-main/isc-service-jpa')
+project(':isc-service-business').projectDir = file('../isc-main/isc-service-business')
+project(':isc-persistence-search').projectDir = file('../isc-main/isc-persistence-search')
+project(':isc-integration-mip').projectDir = file('../isc-main/isc-integration-mip')
+project(':isc-integration-salto').projectDir = file('../isc-main/isc-integration-salto')
+

@@ -1,0 +1,48 @@
+---
+include:
+  - local: isc-env/docker/.gitlab-ci-common.yml
+
+stages:
+  - gradle-build
+  - docker-build
+  - ansible-deploy
+
+gradle-build:
+  stage: gradle-build
+  extends: .gradle-build
+  script:
+    - cd ${APP_NAME}
+    - ./gradlew --build-cache clean build sArtifacts -x test
+  # cache:
+  #   key: ${CI_COMMIT_REF_NAME}-${APP_NAME}
+  #   policy: pull-push
+  #   paths:
+  #     - ${APP_NAME}/.gradle
+  #     - ${APP_NAME}/*/build
+  artifacts:
+    paths:
+      - isc-env/docker/${APP_NAME}/artifacts/*
+    expire_in: 7 days
+
+docker-build:
+  stage: docker-build
+  extends: .docker-build
+  needs:
+    - job: gradle-build
+
+ansible-deploy-dev:
+  stage: ansible-deploy
+  extends: .ansible-deploy
+  needs:
+    - job: docker-build
+  except:
+    - prod
+  when: manual
+
+ansible-deploy-prod:
+  stage: ansible-deploy
+  extends: .ansible-deploy-prod
+  needs:
+    - job: docker-build
+  only:
+    - prod

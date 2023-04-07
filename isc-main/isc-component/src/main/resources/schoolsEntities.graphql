@@ -1,0 +1,274 @@
+type RegionPropTuple {
+     key: String
+     value: String
+}
+input RegionPropTupleInput {
+     key: String
+     value: String
+}
+
+type DeviceStateItem {
+    type: String
+    value: String
+    updated: DateTime
+}
+
+type Door {
+    id: String!
+    externalId: String
+    name: String
+    description: String
+    status: String
+    type: String
+    updated: DateTime
+
+    parentIds: [String]
+    geoLocation: GeoPoint
+
+    tags: [Tag]
+    state: [DeviceStateItem]
+}
+
+input DoorInput {
+    id: String
+    externalId: String
+    name: String
+    description: String
+    status: String
+    type: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type DoorSearchResult {
+    data: [Door]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Camera {
+    id: String!
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+    updated: DateTime
+
+    parentIds: [String]
+    geoLocation: GeoPoint
+
+    tags: [Tag]
+    cameraGroup: CameraGroup
+    live: Boolean
+    streams: [CameraStream]
+    state: [DeviceStateItem]
+}
+
+input CameraInput {
+    id: String
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type CameraSearchResult {
+    data: [Camera]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type CameraGroup {
+    groupId: String!
+    name: String
+    description: String
+}
+
+type CameraStream {
+    streamId: String!
+    name: String
+}
+
+type Drone {
+    id: String!
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+    updated: DateTime
+
+    parentIds: [String]
+    geoLocation: GeoPoint
+
+    tags: [Tag]
+    state: [DeviceStateItem]
+}
+
+input DroneInput {
+    id: String
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type DroneSearchResult {
+    data: [Drone]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Speaker {
+    id: String!
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+    updated: DateTime
+
+    parentIds: [String]
+    geoLocation: GeoPoint
+
+    tags: [Tag]
+    state: [DeviceStateItem]
+}
+
+input SpeakerInput {
+    id: String
+    externalId: String
+    status: String
+    type: String
+    name: String
+    description: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type SpeakerSearchResult {
+    data: [Speaker]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Region {
+    id: String!
+    name: String
+    description: String
+    type: String
+    subType: String
+    parentIds: [String]
+    updated: DateTime
+    props: [RegionPropTuple]
+
+    geoBoundaries: GeoPolygon
+    geoLocation: GeoPoint
+    geoZoom: Float
+    geoRotation: Float
+}
+
+input RegionInput {
+    id: String
+    name: String
+    description: String
+    type: String
+    subType: String
+    parentIds: [String]
+    props: [RegionPropTupleInput]
+
+    geoBoundaries: GeoPolygonInput
+    geoLocation: GeoPointInput
+    geoZoom: Float
+    geoRotation: Float
+}
+
+type RegionSearchResult {
+    data: [Region]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Zone {
+    id: String
+    name: String
+    description: String
+    type: String
+    subType: String
+    status: String
+    parentIds: [String]
+    childIds: [String]
+    updated: DateTime
+
+    props: [RegionPropTuple]
+}
+
+input ZoneInput {
+    id: String
+    name: String
+    description: String
+    type: String
+    subType: String
+    status: String
+    parentIds: [String]
+    childIds: [String]
+    props: [RegionPropTupleInput]
+}
+
+type ZoneSearchResult {
+    data: [Zone]
+    numberOfItems: Int
+    numberOfPages: Int
+}
+
+type Radio {
+    id: String!
+    externalId: String
+    name: String
+    description: String
+    status: String
+    type: String
+    updated: DateTime
+    deviceState: Int
+    connectionStatus: String
+    radioUserId: String
+    batteryLevel: Int
+    gpsAltitude: Float
+    gpsDirection: Int
+    gpsUpdateTime: DateTime
+
+    parentIds: [String]
+    geoLocation: GeoPoint
+
+    tags: [Tag]
+    state: [DeviceStateItem]
+}
+
+input RadioInput {
+    id: String
+    externalId: String
+    name: String
+    description: String
+    status: String
+    type: String
+
+    parentIds: [String]
+    geoLocation: GeoPointInput
+}
+
+type RadioSearchResult {
+    data: [Radio]
+    numberOfItems: Int
+    numberOfPages: Int
+}

@@ -1,0 +1,84 @@
+ext.moduleName = 'isc-app'
+
+// main app build configuration
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+//        gradle plugins location
+        classpath("com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0-rc2")
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.gorylenko.gradle-git-properties'
+
+gitProperties {
+    gitPropertiesDir = new File("${projectDir}/src/main/resources")
+}
+
+dependencies {
+    implementation project(':isc-common')
+    implementation project(':isc-persistence-db')
+    implementation project(':isc-persistence-search')
+    implementation project(':isc-service-jpa')
+    implementation project(':isc-service-business')
+    implementation project(':isc-component')
+    implementation project(':isc-integration-salto')
+    implementation project(':isc-integration-mip')
+    implementation project(':isc-integration-camera-mock')
+    implementation project(':isc-integration-trbonet')
+    testImplementation project(':isc-test')
+
+    implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.8.RELEASE'
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate', module: 'hibernate-core'
+        exclude group: 'org.flywaydb', module: 'flyway-core'
+    }
+
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation group: 'com.fasterxml', name: 'classmate', version: '1.5.1'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'org.codehaus.janino', name: 'janino', version: '3.0.15'
+}
+
+jar.enabled = false
+assemble.dependsOn explodedJar
+
+mainClassName = "com.iscweb.app.ControlCenter"
+
+// main class for spring boot uber jar
+springBoot {
+    mainClassName = "com.iscweb.app.ControlCenter"
+    // mainClass = "com.iscweb.app.ControlCenter"
+}
+
+// enable building spring boot uber jar
+bootJar {
+    enabled = true
+}
+
+// enable running boot jar
+bootRun {
+    enabled = true
+}
+
+//run {
+//    debugOptions {
+//        enabled = true
+//        port = 5005
+//        server = true
+//        suspend = false
+//    }
+//}
+
+processResources {
+    dependsOn(generateGitProperties)
+}

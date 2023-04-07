@@ -1,0 +1,19 @@
+ext {
+    moduleName = 'isc-integration-camera-mock'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {}
+}
+
+dependencies {
+    implementation project(':isc-common')
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.29'
+}

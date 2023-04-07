@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://video.net/2/XProtectCSServerCommand" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://video.net/2/XProtectCSServerCommand" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://video.net/2/XProtectCSServerCommand/Imports">
+			<xsd:import namespace="http://video.net/2/XProtectCSServerCommand" schemaLocation="./ServerCommandService_xsd0.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="./ServerCommandService_xsd1.xsd"/>
+			<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="./ServerCommandService_xsd2.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.WebService.Common.ServerCommandService" schemaLocation="./ServerCommandService_xsd3.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Collections" schemaLocation="./ServerCommandService_xsd4.xsd"/>
+			<xsd:import namespace="http://schemas.datacontract.org/2004/07/VideoOS.Common.Proxy.Server" schemaLocation="./ServerCommandService_xsd5.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IServerCommandService_GetVersion_InputMessage">
+		<wsdl:part element="tns:GetVersion" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetVersion_OutputMessage">
+		<wsdl:part element="tns:GetVersionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetServerVersion_InputMessage">
+		<wsdl:part element="tns:GetServerVersion" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetServerVersion_OutputMessage">
+		<wsdl:part element="tns:GetServerVersionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetProductInfo_InputMessage">
+		<wsdl:part element="tns:GetProductInfo" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetProductInfo_OutputMessage">
+		<wsdl:part element="tns:GetProductInfoResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetSystemLicenseInfo_InputMessage">
+		<wsdl:part element="tns:GetSystemLicenseInfo" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetSystemLicenseInfo_OutputMessage">
+		<wsdl:part element="tns:GetSystemLicenseInfoResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetSmartClientVersion_InputMessage">
+		<wsdl:part element="tns:GetSmartClientVersion" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetSmartClientVersion_OutputMessage">
+		<wsdl:part element="tns:GetSmartClientVersionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_CheckSmartClientVersion_InputMessage">
+		<wsdl:part element="tns:CheckSmartClientVersion" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_CheckSmartClientVersion_OutputMessage">
+		<wsdl:part element="tns:CheckSmartClientVersionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_IsOnline_InputMessage">
+		<wsdl:part element="tns:IsOnline" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_IsOnline_OutputMessage">
+		<wsdl:part element="tns:IsOnlineResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Login_InputMessage">
+		<wsdl:part element="tns:Login" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Login_OutputMessage">
+		<wsdl:part element="tns:LoginResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Logout_InputMessage">
+		<wsdl:part element="tns:Logout" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Logout_OutputMessage">
+		<wsdl:part element="tns:LogoutResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Authorize_InputMessage">
+		<wsdl:part element="tns:Authorize" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_Authorize_OutputMessage">
+		<wsdl:part element="tns:AuthorizeResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetUserInfo_InputMessage">
+		<wsdl:part element="tns:GetUserInfo" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetUserInfo_OutputMessage">
+		<wsdl:part element="tns:GetUserInfoResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfiguration_InputMessage">
+		<wsdl:part element="tns:GetConfiguration" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfiguration_OutputMessage">
+		<wsdl:part element="tns:GetConfigurationResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfigurationRecorders_InputMessage">
+		<wsdl:part element="tns:GetConfigurationRecorders" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfigurationRecorders_OutputMessage">
+		<wsdl:part element="tns:GetConfigurationRecordersResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfigurationHardware_InputMessage">
+		<wsdl:part element="tns:GetConfigurationHardware" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetConfigurationHardware_OutputMessage">
+		<wsdl:part element="tns:GetConfigurationHardwareResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetDevicesDisabled_InputMessage">
+		<wsdl:part element="tns:GetDevicesDisabled" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetDevicesDisabled_OutputMessage">
+		<wsdl:part element="tns:GetDevicesDisabledResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetVmoServicesList_InputMessage">
+		<wsdl:part element="tns:GetVmoServicesList" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetVmoServicesList_OutputMessage">
+		<wsdl:part element="tns:GetVmoServicesListResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetViewGroups_InputMessage">
+		<wsdl:part element="tns:GetViewGroups" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetViewGroups_OutputMessage">
+		<wsdl:part element="tns:GetViewGroupsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetViewGroupData_InputMessage">
+		<wsdl:part element="tns:GetViewGroupData" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetViewGroupData_OutputMessage">
+		<wsdl:part element="tns:GetViewGroupDataResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetViewGroupData_InputMessage">
+		<wsdl:part element="tns:SetViewGroupData" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetViewGroupData_OutputMessage">
+		<wsdl:part element="tns:SetViewGroupDataResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataGlobal_InputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataGlobal" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataGlobal_OutputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataGlobalResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataUser_InputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataUser" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataUser_OutputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataUserResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataGlobal_InputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataGlobal" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataGlobal_OutputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataGlobalResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataUser_InputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataUser" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataUser_OutputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataUserResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataGlobal2_InputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataGlobal2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataGlobal2_OutputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataGlobal2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataUser2_InputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataUser2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetCustomSettingDataUser2_OutputMessage">
+		<wsdl:part element="tns:GetCustomSettingDataUser2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataGlobal2_InputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataGlobal2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataGlobal2_OutputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataGlobal2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataUser2_InputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataUser2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_SetCustomSettingDataUser2_OutputMessage">
+		<wsdl:part element="tns:SetCustomSettingDataUser2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_EventTrigger_InputMessage">
+		<wsdl:part element="tns:EventTrigger" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_EventTrigger_OutputMessage">
+		<wsdl:part element="tns:EventTriggerResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_EventTriggerWithMetadata_InputMessage">
+		<wsdl:part element="tns:EventTriggerWithMetadata" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_EventTriggerWithMetadata_OutputMessage">
+		<wsdl:part element="tns:EventTriggerWithMetadataResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_AlertsGetAroundWithSpan_InputMessage">
+		<wsdl:part element="tns:AlertsGetAroundWithSpan" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_AlertsGetAroundWithSpan_OutputMessage">
+		<wsdl:part element="tns:AlertsGetAroundWithSpanResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MatrixMonitorActivateCamera_InputMessage">
+		<wsdl:part element="tns:MatrixMonitorActivateCamera" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MatrixMonitorActivateCamera_OutputMessage">
+		<wsdl:part element="tns:MatrixMonitorActivateCameraResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_QueryChanges_InputMessage">
+		<wsdl:part element="tns:QueryChanges" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_QueryChanges_OutputMessage">
+		<wsdl:part element="tns:QueryChangesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_QueryRecorderInfo_InputMessage">
+		<wsdl:part element="tns:QueryRecorderInfo" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_QueryRecorderInfo_OutputMessage">
+		<wsdl:part element="tns:QueryRecorderInfoResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkGetNewReference_InputMessage">
+		<wsdl:part element="tns:BookmarkGetNewReference" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkGetNewReference_OutputMessage">
+		<wsdl:part element="tns:BookmarkGetNewReferenceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkCreate_InputMessage">
+		<wsdl:part element="tns:BookmarkCreate" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkCreate_OutputMessage">
+		<wsdl:part element="tns:BookmarkCreateResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkUpdate_InputMessage">
+		<wsdl:part element="tns:BookmarkUpdate" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkUpdate_OutputMessage">
+		<wsdl:part element="tns:BookmarkUpdateResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkDelete_InputMessage">
+		<wsdl:part element="tns:BookmarkDelete" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkDelete_OutputMessage">
+		<wsdl:part element="tns:BookmarkDeleteResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkGet_InputMessage">
+		<wsdl:part element="tns:BookmarkGet" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkGet_OutputMessage">
+		<wsdl:part element="tns:BookmarkGetResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkSearchTime_InputMessage">
+		<wsdl:part element="tns:BookmarkSearchTime" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkSearchTime_OutputMessage">
+		<wsdl:part element="tns:BookmarkSearchTimeResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkSearchFromBookmark_InputMessage">
+		<wsdl:part element="tns:BookmarkSearchFromBookmark" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_BookmarkSearchFromBookmark_OutputMessage">
+		<wsdl:part element="tns:BookmarkSearchFromBookmarkResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_RegisterIntegration_InputMessage">
+		<wsdl:part element="tns:RegisterIntegration" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_RegisterIntegration_OutputMessage">
+		<wsdl:part element="tns:RegisterIntegrationResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_RegisterPluginIntegrations_InputMessage">
+		<wsdl:part element="tns:RegisterPluginIntegrations" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_RegisterPluginIntegrations_OutputMessage">
+		<wsdl:part element="tns:RegisterPluginIntegrationsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataGetNewReference_InputMessage">
+		<wsdl:part element="tns:MarkedDataGetNewReference" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataGetNewReference_OutputMessage">
+		<wsdl:part element="tns:MarkedDataGetNewReferenceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataCreate_InputMessage">
+		<wsdl:part element="tns:MarkedDataCreate" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataCreate_OutputMessage">
+		<wsdl:part element="tns:MarkedDataCreateResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataUpdate_InputMessage">
+		<wsdl:part element="tns:MarkedDataUpdate" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataUpdate_OutputMessage">
+		<wsdl:part element="tns:MarkedDataUpdateResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataDelete_InputMessage">
+		<wsdl:part element="tns:MarkedDataDelete" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataDelete_OutputMessage">
+		<wsdl:part element="tns:MarkedDataDeleteResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataGet_InputMessage">
+		<wsdl:part element="tns:MarkedDataGet" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataGet_OutputMessage">
+		<wsdl:part element="tns:MarkedDataGetResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataSearch_InputMessage">
+		<wsdl:part element="tns:MarkedDataSearch" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_MarkedDataSearch_OutputMessage">
+		<wsdl:part element="tns:MarkedDataSearchResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile_InputMessage">
+		<wsdl:part element="tns:GetClientProfile" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile_OutputMessage">
+		<wsdl:part element="tns:GetClientProfileResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile2_InputMessage">
+		<wsdl:part element="tns:GetClientProfile2" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile2_OutputMessage">
+		<wsdl:part element="tns:GetClientProfile2Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile3_InputMessage">
+		<wsdl:part element="tns:GetClientProfile3" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetClientProfile3_OutputMessage">
+		<wsdl:part element="tns:GetClientProfile3Response" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetPresets_InputMessage">
+		<wsdl:part element="tns:GetPresets" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_GetPresets_OutputMessage">
+		<wsdl:part element="tns:GetPresetsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_DeletePreset_InputMessage">
+		<wsdl:part element="tns:DeletePreset" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_DeletePreset_OutputMessage">
+		<wsdl:part element="tns:DeletePresetResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_UpdatePresetName_InputMessage">
+		<wsdl:part element="tns:UpdatePresetName" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_UpdatePresetName_OutputMessage">
+		<wsdl:part element="tns:UpdatePresetNameResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_UpdatePresetPosition_InputMessage">
+		<wsdl:part element="tns:UpdatePresetPosition" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_UpdatePresetPosition_OutputMessage">
+		<wsdl:part element="tns:UpdatePresetPositionResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_CreatePreset_InputMessage">
+		<wsdl:part element="tns:CreatePreset" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_CreatePreset_OutputMessage">
+		<wsdl:part element="tns:CreatePresetResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_OrderPresets_InputMessage">
+		<wsdl:part element="tns:OrderPresets" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="IServerCommandService_OrderPresets_OutputMessage">
+		<wsdl:part element="tns:OrderPresetsResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="IServerCommandService">
+		<wsdl:operation name="GetVersion">
+			<wsdl:input message="tns:IServerCommandService_GetVersion_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetVersion"/>
+			<wsdl:output message="tns:IServerCommandService_GetVersion_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetVersionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetServerVersion">
+			<wsdl:input message="tns:IServerCommandService_GetServerVersion_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetServerVersion"/>
+			<wsdl:output message="tns:IServerCommandService_GetServerVersion_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetServerVersionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetProductInfo">
+			<wsdl:input message="tns:IServerCommandService_GetProductInfo_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetProductInfo"/>
+			<wsdl:output message="tns:IServerCommandService_GetProductInfo_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetProductInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSystemLicenseInfo">
+			<wsdl:input message="tns:IServerCommandService_GetSystemLicenseInfo_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetSystemLicenseInfo"/>
+			<wsdl:output message="tns:IServerCommandService_GetSystemLicenseInfo_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetSystemLicenseInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSmartClientVersion">
+			<wsdl:input message="tns:IServerCommandService_GetSmartClientVersion_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetSmartClientVersion"/>
+			<wsdl:output message="tns:IServerCommandService_GetSmartClientVersion_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetSmartClientVersionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="CheckSmartClientVersion">
+			<wsdl:input message="tns:IServerCommandService_CheckSmartClientVersion_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/CheckSmartClientVersion"/>
+			<wsdl:output message="tns:IServerCommandService_CheckSmartClientVersion_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/CheckSmartClientVersionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="IsOnline">
+			<wsdl:input message="tns:IServerCommandService_IsOnline_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/IsOnline"/>
+			<wsdl:output message="tns:IServerCommandService_IsOnline_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/IsOnlineResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="Login">
+			<wsdl:input message="tns:IServerCommandService_Login_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/Login"/>
+			<wsdl:output message="tns:IServerCommandService_Login_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/LoginResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="Logout">
+			<wsdl:input message="tns:IServerCommandService_Logout_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/Logout"/>
+			<wsdl:output message="tns:IServerCommandService_Logout_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/LogoutResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="Authorize">
+			<wsdl:input message="tns:IServerCommandService_Authorize_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/Authorize"/>
+			<wsdl:output message="tns:IServerCommandService_Authorize_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/AuthorizeResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetUserInfo">
+			<wsdl:input message="tns:IServerCommandService_GetUserInfo_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetUserInfo"/>
+			<wsdl:output message="tns:IServerCommandService_GetUserInfo_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetUserInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfiguration">
+			<wsdl:input message="tns:IServerCommandService_GetConfiguration_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfiguration"/>
+			<wsdl:output message="tns:IServerCommandService_GetConfiguration_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfigurationResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfigurationRecorders">
+			<wsdl:input message="tns:IServerCommandService_GetConfigurationRecorders_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfigurationRecorders"/>
+			<wsdl:output message="tns:IServerCommandService_GetConfigurationRecorders_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfigurationRecordersResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfigurationHardware">
+			<wsdl:input message="tns:IServerCommandService_GetConfigurationHardware_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfigurationHardware"/>
+			<wsdl:output message="tns:IServerCommandService_GetConfigurationHardware_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetConfigurationHardwareResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetDevicesDisabled">
+			<wsdl:input message="tns:IServerCommandService_GetDevicesDisabled_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetDevicesDisabled"/>
+			<wsdl:output message="tns:IServerCommandService_GetDevicesDisabled_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetDevicesDisabledResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetVmoServicesList">
+			<wsdl:input message="tns:IServerCommandService_GetVmoServicesList_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetVmoServicesList"/>
+			<wsdl:output message="tns:IServerCommandService_GetVmoServicesList_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetVmoServicesListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetViewGroups">
+			<wsdl:input message="tns:IServerCommandService_GetViewGroups_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetViewGroups"/>
+			<wsdl:output message="tns:IServerCommandService_GetViewGroups_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetViewGroupsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetViewGroupData">
+			<wsdl:input message="tns:IServerCommandService_GetViewGroupData_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetViewGroupData"/>
+			<wsdl:output message="tns:IServerCommandService_GetViewGroupData_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetViewGroupDataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetViewGroupData">
+			<wsdl:input message="tns:IServerCommandService_SetViewGroupData_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetViewGroupData"/>
+			<wsdl:output message="tns:IServerCommandService_SetViewGroupData_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetViewGroupDataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCustomSettingDataGlobal">
+			<wsdl:input message="tns:IServerCommandService_GetCustomSettingDataGlobal_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataGlobal"/>
+			<wsdl:output message="tns:IServerCommandService_GetCustomSettingDataGlobal_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataGlobalResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCustomSettingDataUser">
+			<wsdl:input message="tns:IServerCommandService_GetCustomSettingDataUser_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataUser"/>
+			<wsdl:output message="tns:IServerCommandService_GetCustomSettingDataUser_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetCustomSettingDataGlobal">
+			<wsdl:input message="tns:IServerCommandService_SetCustomSettingDataGlobal_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataGlobal"/>
+			<wsdl:output message="tns:IServerCommandService_SetCustomSettingDataGlobal_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataGlobalResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetCustomSettingDataUser">
+			<wsdl:input message="tns:IServerCommandService_SetCustomSettingDataUser_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataUser"/>
+			<wsdl:output message="tns:IServerCommandService_SetCustomSettingDataUser_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCustomSettingDataGlobal2">
+			<wsdl:input message="tns:IServerCommandService_GetCustomSettingDataGlobal2_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataGlobal2"/>
+			<wsdl:output message="tns:IServerCommandService_GetCustomSettingDataGlobal2_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataGlobal2Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetCustomSettingDataUser2">
+			<wsdl:input message="tns:IServerCommandService_GetCustomSettingDataUser2_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataUser2"/>
+			<wsdl:output message="tns:IServerCommandService_GetCustomSettingDataUser2_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetCustomSettingDataUser2Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetCustomSettingDataGlobal2">
+			<wsdl:input message="tns:IServerCommandService_SetCustomSettingDataGlobal2_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataGlobal2"/>
+			<wsdl:output message="tns:IServerCommandService_SetCustomSettingDataGlobal2_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataGlobal2Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="SetCustomSettingDataUser2">
+			<wsdl:input message="tns:IServerCommandService_SetCustomSettingDataUser2_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataUser2"/>
+			<wsdl:output message="tns:IServerCommandService_SetCustomSettingDataUser2_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/SetCustomSettingDataUser2Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="EventTrigger">
+			<wsdl:input message="tns:IServerCommandService_EventTrigger_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/EventTrigger"/>
+			<wsdl:output message="tns:IServerCommandService_EventTrigger_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/EventTriggerResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="EventTriggerWithMetadata">
+			<wsdl:input message="tns:IServerCommandService_EventTriggerWithMetadata_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/EventTriggerWithMetadata"/>
+			<wsdl:output message="tns:IServerCommandService_EventTriggerWithMetadata_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/EventTriggerWithMetadataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="AlertsGetAroundWithSpan">
+			<wsdl:input message="tns:IServerCommandService_AlertsGetAroundWithSpan_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/AlertsGetAroundWithSpan"/>
+			<wsdl:output message="tns:IServerCommandService_AlertsGetAroundWithSpan_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/AlertsGetAroundWithSpanResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MatrixMonitorActivateCamera">
+			<wsdl:input message="tns:IServerCommandService_MatrixMonitorActivateCamera_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MatrixMonitorActivateCamera"/>
+			<wsdl:output message="tns:IServerCommandService_MatrixMonitorActivateCamera_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MatrixMonitorActivateCameraResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="QueryChanges">
+			<wsdl:input message="tns:IServerCommandService_QueryChanges_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/QueryChanges"/>
+			<wsdl:output message="tns:IServerCommandService_QueryChanges_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/QueryChangesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="QueryRecorderInfo">
+			<wsdl:input message="tns:IServerCommandService_QueryRecorderInfo_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/QueryRecorderInfo"/>
+			<wsdl:output message="tns:IServerCommandService_QueryRecorderInfo_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/QueryRecorderInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkGetNewReference">
+			<wsdl:input message="tns:IServerCommandService_BookmarkGetNewReference_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkGetNewReference"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkGetNewReference_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkGetNewReferenceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkCreate">
+			<wsdl:input message="tns:IServerCommandService_BookmarkCreate_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkCreate"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkCreate_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkCreateResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkUpdate">
+			<wsdl:input message="tns:IServerCommandService_BookmarkUpdate_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkUpdate"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkUpdate_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkUpdateResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkDelete">
+			<wsdl:input message="tns:IServerCommandService_BookmarkDelete_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkDelete"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkDelete_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkDeleteResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkGet">
+			<wsdl:input message="tns:IServerCommandService_BookmarkGet_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkGet"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkGet_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkGetResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkSearchTime">
+			<wsdl:input message="tns:IServerCommandService_BookmarkSearchTime_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkSearchTime"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkSearchTime_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkSearchTimeResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookmarkSearchFromBookmark">
+			<wsdl:input message="tns:IServerCommandService_BookmarkSearchFromBookmark_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkSearchFromBookmark"/>
+			<wsdl:output message="tns:IServerCommandService_BookmarkSearchFromBookmark_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/BookmarkSearchFromBookmarkResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterIntegration">
+			<wsdl:input message="tns:IServerCommandService_RegisterIntegration_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/RegisterIntegration"/>
+			<wsdl:output message="tns:IServerCommandService_RegisterIntegration_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/RegisterIntegrationResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterPluginIntegrations">
+			<wsdl:input message="tns:IServerCommandService_RegisterPluginIntegrations_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/RegisterPluginIntegrations"/>
+			<wsdl:output message="tns:IServerCommandService_RegisterPluginIntegrations_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/RegisterPluginIntegrationsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataGetNewReference">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataGetNewReference_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataGetNewReference"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataGetNewReference_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataGetNewReferenceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataCreate">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataCreate_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataCreate"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataCreate_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataCreateResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataUpdate">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataUpdate_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataUpdate"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataUpdate_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataUpdateResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataDelete">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataDelete_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataDelete"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataDelete_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataDeleteResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataGet">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataGet_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataGet"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataGet_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataGetResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="MarkedDataSearch">
+			<wsdl:input message="tns:IServerCommandService_MarkedDataSearch_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataSearch"/>
+			<wsdl:output message="tns:IServerCommandService_MarkedDataSearch_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/MarkedDataSearchResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetClientProfile">
+			<wsdl:input message="tns:IServerCommandService_GetClientProfile_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfile"/>
+			<wsdl:output message="tns:IServerCommandService_GetClientProfile_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfileResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetClientProfile2">
+			<wsdl:input message="tns:IServerCommandService_GetClientProfile2_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfile2"/>
+			<wsdl:output message="tns:IServerCommandService_GetClientProfile2_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfile2Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetClientProfile3">
+			<wsdl:input message="tns:IServerCommandService_GetClientProfile3_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfile3"/>
+			<wsdl:output message="tns:IServerCommandService_GetClientProfile3_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetClientProfile3Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetPresets">
+			<wsdl:input message="tns:IServerCommandService_GetPresets_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetPresets"/>
+			<wsdl:output message="tns:IServerCommandService_GetPresets_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/GetPresetsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="DeletePreset">
+			<wsdl:input message="tns:IServerCommandService_DeletePreset_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/DeletePreset"/>
+			<wsdl:output message="tns:IServerCommandService_DeletePreset_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/DeletePresetResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePresetName">
+			<wsdl:input message="tns:IServerCommandService_UpdatePresetName_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/UpdatePresetName"/>
+			<wsdl:output message="tns:IServerCommandService_UpdatePresetName_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/UpdatePresetNameResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePresetPosition">
+			<wsdl:input message="tns:IServerCommandService_UpdatePresetPosition_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/UpdatePresetPosition"/>
+			<wsdl:output message="tns:IServerCommandService_UpdatePresetPosition_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/UpdatePresetPositionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="CreatePreset">
+			<wsdl:input message="tns:IServerCommandService_CreatePreset_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/CreatePreset"/>
+			<wsdl:output message="tns:IServerCommandService_CreatePreset_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/CreatePresetResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="OrderPresets">
+			<wsdl:input message="tns:IServerCommandService_OrderPresets_InputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/OrderPresets"/>
+			<wsdl:output message="tns:IServerCommandService_OrderPresets_OutputMessage" wsaw:Action="http://video.net/2/XProtectCSServerCommand/IServerCommandService/OrderPresetsResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

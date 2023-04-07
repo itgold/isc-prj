@@ -1,0 +1,25 @@
+---
+# This is an example playbook to execute Ansible tests.
+- name: Verify
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    # test package is installed
+    - name: populate package facts
+      package_facts:
+        manager: "auto"
+
+    - name: test monit is installed
+      assert:
+        that: "'monit' in ansible_facts.packages"
+
+    # test service is running
+    - name: populate service facts
+      service_facts:
+
+    - name: test monit service exists and is running
+      assert:
+        that:
+          - "ansible_facts.services['monit'] is defined"
+          - "ansible_facts.services['monit'].state == 'running'"

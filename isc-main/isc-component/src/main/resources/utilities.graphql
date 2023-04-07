@@ -1,0 +1,30 @@
+type Utility {
+  id: String!
+  status: String
+  name: String
+  description: String
+  parentIds: [String]
+  externalId: String
+  type: String
+  updated: DateTime
+  geoLocation: GeoPoint
+  tags: [Tag]
+}
+
+input UtilityInput {
+  id: String
+  externalId: String
+  status: String
+  type: String
+  name: String
+  description: String
+
+  parentIds: [String]
+  geoLocation: GeoPointInput
+}
+
+type UtilitySearchResult {
+  data: [Utility]
+  numberOfItems: Int
+  numberOfPages: Int
+}
